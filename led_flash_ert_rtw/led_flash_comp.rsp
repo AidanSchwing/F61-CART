@@ -1,0 +1,34 @@
+-IC:/Users/Aidan/Documents/F61-CART
+-IC:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/include
+-IC:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw
+-IC:/Program\ Files/MATLAB/R2023b/extern/include
+-IC:/Program\ Files/MATLAB/R2023b/simulink/include
+-IC:/Program\ Files/MATLAB/R2023b/rtw/c/src
+-IC:/Program\ Files/MATLAB/R2023b/rtw/c/src/ext_mode/common
+-IC:/Program\ Files/MATLAB/R2023b/rtw/c/ert
+-IC:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/armcortexmbase/scheduler/include
+-IC:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/armcortexmbase/xcp/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/3P.instrset/cmsis.instrset/CMSIS/Core/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/3P.instrset/lwip.instrset/lwip-1.4.1/src/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/3P.instrset/lwip.instrset/lwip-1.4.1/src/include/ipv4
+-IC:/Program\ Files/MATLAB/R2023b/rtw/c/src/ext_mode/serial
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed/drivers
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed/hal
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed/hal/storage_abstraction
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed/platform
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/mbed/platform/cxxsupport
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM/TARGET_STM32F7
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM/TARGET_STM32F7/device
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM/TARGET_STM32F7/TARGET_STM32F746xG
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM/TARGET_STM32F7/TARGET_STM32F746xG/device
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F746ZG/TARGET_STM/TARGET_STM32F7/TARGET_STM32F746xG/TARGET_NUCLEO_F746ZG
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmmbed/include/arch
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/3P.instrset/cmsis_dsp.instrset/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023b/3P.instrset/cmsis_dsp.instrset/Include/dsp
