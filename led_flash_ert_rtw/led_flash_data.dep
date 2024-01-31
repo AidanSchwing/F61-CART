@@ -4,14 +4,17 @@ led_flash_data.o: \
  C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/led_flash.h \
  C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/rtwtypes.h \
  C:/Program\ Files/MATLAB/R2023b/extern/include/tmwtypes.h \
- C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h \
+ C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_extmode.h \
  C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/rtwtypes.h \
+ C:/Program\ Files/MATLAB/R2023b/simulink/include/sysran_types.h \
+ C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h \
  C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_solver.h \
  C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h \
  C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/include/MW_MbedPinInterface.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_digitalIO.h \
+ C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_I2C.h \
  C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/led_flash_types.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h \
  C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/MW_target_hardware_resources.h \
@@ -103,14 +106,17 @@ C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmn
 C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/led_flash.h:
 C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/rtwtypes.h:
 C:/Program\ Files/MATLAB/R2023b/extern/include/tmwtypes.h:
-C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h:
+C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_extmode.h:
 C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/rtwtypes.h:
+C:/Program\ Files/MATLAB/R2023b/simulink/include/sysran_types.h:
+C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h:
 C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_solver.h:
 C:/Program\ Files/MATLAB/R2023b/simulink/include/rtw_continuous.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h:
 C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/include/MW_MbedPinInterface.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_digitalIO.h:
+C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_I2C.h:
 C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/led_flash_types.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h:
 C:/Users/Aidan/Documents/F61-CART/led_flash_ert_rtw/MW_target_hardware_resources.h:

@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.3
+ * Model version              : 1.15
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 23 21:09:35 2024
+ * C source code generated on : Tue Jan 30 17:15:05 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,6 +21,12 @@
 #ifndef MULTIWORD_TYPES_H
 #define MULTIWORD_TYPES_H
 #include "rtwtypes.h"
+
+/*
+ * Definitions supporting external data access
+ */
+typedef int64_T chunk_T;
+typedef uint64_T uchunk_T;
 
 /*
  * MultiWord supporting definitions

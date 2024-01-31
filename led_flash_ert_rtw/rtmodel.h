@@ -4,7 +4,7 @@
  * Code generation for Simulink model "led_flash".
  *
  * Simulink Coder version                : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 23 21:09:35 2024
+ * C source code generated on : Tue Jan 30 17:15:05 2024
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.
@@ -16,9 +16,4 @@
 #ifndef RTW_HEADER_rtmodel_h_
 #define RTW_HEADER_rtmodel_h_
 #include "led_flash.h"
-
-/* Macros generated for backwards compatibility  */
-#ifndef rtmGetStopRequested
-#define rtmGetStopRequested(rtm)       ((void*) 0)
-#endif
 #endif                                 /* RTW_HEADER_rtmodel_h_ */

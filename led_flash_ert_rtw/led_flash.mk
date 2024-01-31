@@ -2,7 +2,7 @@
 ## Makefile generated for component 'led_flash'. 
 ## 
 ## Makefile     : led_flash.mk
-## Generated on : Tue Jan 23 21:09:38 2024
+## Generated on : Tue Jan 30 17:15:09 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/led_flash.elf
 ## Product type : executable
 ## 
@@ -151,45 +151,44 @@ RUN                 =
 # "Faster Builds" Build Configuration
 #----------------------------------------
 
-ARFLAGS              = ruvs
-ASFLAGS              = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -Wall \
-                       -x assembler-with-cpp \
-                       $(ASFLAGS_ADDITIONAL) \
-                       $(DEFINES) \
-                       $(INCLUDES) \
-                       -c
-OBJCOPYFLAGS_BIN     = -O binary $(PRODUCT) $(PRODUCT_BIN)
-CFLAGS               = $(FDATASECTIONS_FLG) \
-                       -Wall \
-                       -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -c \
-                       -O0
-CPPFLAGS             = -std=gnu++14 \
-                       -fno-rtti \
-                       -fno-exceptions \
-                       $(FDATASECTIONS_FLG) \
-                       -Wall \
-                       -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -c \
-                       -O0
-CPP_LDFLAGS          = -Wl,--gc-sections \
-                       -Wl,-Map="$(PRODUCT_NAME).map"
-CPP_SHAREDLIB_LDFLAGS  =
-DOWNLOAD_FLAGS       =
-EXESIZE_FLAGS        = $(PRODUCT)
-EXECUTE_FLAGS        =
-OBJCOPYFLAGS_HEX     = -O ihex $(PRODUCT) $(PRODUCT_HEX)
-LDFLAGS              = -Wl,--gc-sections \
-                       -Wl,-Map="$(PRODUCT_NAME).map"
 MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
 MEX_CFLAGS           =
 MEX_LDFLAGS          =
-MAKE_FLAGS           = -f $(MAKEFILE)
-SHAREDLIB_LDFLAGS    =
 
 
+
+#---------------------------
+# Model-Specific Options
+#---------------------------
+
+ASFLAGS = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -Wall -x assembler-with-cpp $(ASFLAGS_ADDITIONAL) $(DEFINES) $(INCLUDES) -c
+
+CFLAGS = $(FDATASECTIONS_FLG) -Wall -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -c -O0 -g
+
+LDFLAGS = -Wl,--gc-sections -Wl,-Map="$(PRODUCT_NAME).map" -g
+
+SHAREDLIB_LDFLAGS = -g
+
+CPPFLAGS = -std=gnu++14 -fno-rtti -fno-exceptions $(FDATASECTIONS_FLG) -Wall -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -c -O0 -g
+
+CPP_LDFLAGS = -Wl,--gc-sections -Wl,-Map="$(PRODUCT_NAME).map" -g
+
+CPP_SHAREDLIB_LDFLAGS = -g
+
+ARFLAGS = ruvs
+
+OBJCOPYFLAGS_BIN = -O binary $(PRODUCT) $(PRODUCT_BIN)
+
+OBJCOPYFLAGS_HEX = -O ihex $(PRODUCT) $(PRODUCT_HEX)
+
+EXESIZE_FLAGS = $(PRODUCT)
+
+DOWNLOAD_FLAGS = 
+
+EXECUTE_FLAGS = 
+
+MAKE_FLAGS = -f $(MAKEFILE)
 
 ###########################################################################
 ## OUTPUT INFO
@@ -212,10 +211,10 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ###########################################################################
 
 DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DMW_NUM_UDP_RECEIVE_BLKS=0 -DMW_NUM_TCP_RECEIVE_BLKS=0 -DMW_NUM_TCP_TRANSMIT_BLKS=0 -DMW_NUM_UDP_TRANSMIT_BLKS=0 -DMW_NUM_THINGSPEAK_BLKS=0 -DLWIP_NETIF_HOSTNAME=1 -DMW_MAC_ADDR0=0x00 -DMW_MAC_ADDR1=0x80 -DMW_MAC_ADDR2=0xE1 -DMW_MAC_ADDR3=0x00 -DMW_MAC_ADDR4=0x00 -DMW_MAC_ADDR5=0x00
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DEXT_MODE=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DTID01EQ=0
-DEFINES_SKIPFORSIL = -DARM_MATH_CM7 -DCOMPONENT_NSPE=1 -DCOMPONENT_PSA_SRV_EMUL=1 -DCOMPONENT_PSA_SRV_IMPL=1 -DDEVICE_ANALOGIN=1 -DDEVICE_ANALOGOUT=1 -DDEVICE_CAN=1 -DDEVICE_CRC=1 -DDEVICE_EMAC=1 -DDEVICE_FLASH=1 -DDEVICE_I2C=1 -DDEVICE_I2CSLAVE=1 -DDEVICE_I2C_ASYNCH=1 -DDEVICE_INTERRUPTIN=1 -DDEVICE_LPTICKER=1 -DDEVICE_MPU=1 -DDEVICE_PORTIN=1 -DDEVICE_PORTINOUT=1 -DDEVICE_PORTOUT=1 -DDEVICE_PWMOUT=1 -DDEVICE_RTC=1 -DDEVICE_SERIAL=1 -DDEVICE_SERIAL_ASYNCH=1 -DDEVICE_SERIAL_FC=1 -DDEVICE_SLEEP=1 -DDEVICE_SPI=1 -DDEVICE_SPISLAVE=1 -DDEVICE_SPI_ASYNCH=1 -DDEVICE_STDIO_MESSAGES=1 -DDEVICE_TRNG=1 -DDEVICE_USBDEVICE=1 -DDEVICE_USTICKER=1 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DFEATURE_IPV4=1 -DMBEDTLS_ENTROPY_HARDWARE_ALT -DMBED_CONF_PLATFORM_DEFAULT_SERIAL_BAUD_RATE=9600 -DMBED_RAM1_SIZE=0x10000 -DMBED_RAM1_START=0x20000000 -DMBED_RAM_SIZE=0x40000 -DMBED_RAM_START=0x20010000 -DMBED_ROM1_SIZE=0x100000 -DMBED_ROM1_START=0x200000 -DMBED_ROM_SIZE=0x100000 -DMBED_ROM_START=0x8000000 -DMBED_TICKLESS -DMBED_TRAP_ERRORS_ENABLED=1 -DNULL=0 -DSTM32F746xx -DSTM32_D11_SPI_ETHERNET_PIN=PA_7 -DTARGET_CORTEX -DTARGET_CORTEX_M -DTARGET_FAMILY_STM32 -DTARGET_FF_ARDUINO -DTARGET_LIKE_CORTEX_M7 -DTARGET_LIKE_MBED -DTARGET_M7 -DTARGET_NAME=NUCLEO_F746ZG -DTARGET_NUCLEO_F746ZG -DTARGET_RELEASE -DTARGET_STM32F746 -DTARGET_STM32F746ZG -DTARGET_STM32F746xG -DTARGET_STM32F7 -DTARGET_STM -DTARGET_STM_EMAC -DTARGET_UVISOR_UNSUPPORTED -DTOOLCHAIN_GCC -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_object -DTRANSACTION_QUEUE_SIZE_SPI=2 -DUSBHOST_OTHER -DXCP_CUSTOM_PLATFORM -D__CORTEX_M7 -D__FPU_PRESENT=1 -D__FPU_USED=1U -D__MBED__=1 -D__START=_start -DSTACK_SIZE=64 -DRT
+DEFINES_OPTS = -DXCP_DAQ_SUPPORT -DXCP_CALIBRATION_SUPPORT -DXCP_TIMESTAMP_SUPPORT -DXCP_TIMESTAMP_BASED_ON_SIMULATION_TIME -DXCP_SET_MTA_SUPPORT -DEXTMODE_XCP_TRIGGER_SUPPORT -DINTERNAL_XCP_MEM_BLOCK_1_SIZE=128 -DINTERNAL_XCP_MEM_BLOCK_1_NUMBER=1 -DINTERNAL_XCP_MEM_BLOCK_2_SIZE=168 -DINTERNAL_XCP_MEM_BLOCK_2_NUMBER=4 -DINTERNAL_XCP_MEM_BLOCK_3_SIZE=48 -DINTERNAL_XCP_MEM_BLOCK_3_NUMBER=4 -DINTERNAL_XCP_MEM_RESERVED_POOLS_TOTAL_SIZE=1060 -DINTERNAL_XCP_MEM_RESERVED_POOLS_NUMBER=5 -DXCP_MEM_DAQ_RESERVED_POOL_BLOCKS_NUMBER=3 -DXCP_MEM_DAQ_RESERVED_POOLS_NUMBER=1 -DXCP_MIN_EVENT_NO_RESERVED_POOL=1 -DXCP_MAX_CTO_SIZE=255 -DXCP_MAX_DTO_SIZE=65532 -DXCP_MAX_ODT_ENTRY_SIZE=255 -DEXTMODE_STATIC -DEXTMODE_STATIC_SIZE=2000 -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=0
+DEFINES_SKIPFORSIL = -DARM_MATH_CM7 -DCOMPONENT_NSPE=1 -DCOMPONENT_PSA_SRV_EMUL=1 -DCOMPONENT_PSA_SRV_IMPL=1 -DDEVICE_ANALOGIN=1 -DDEVICE_ANALOGOUT=1 -DDEVICE_CAN=1 -DDEVICE_CRC=1 -DDEVICE_EMAC=1 -DDEVICE_FLASH=1 -DDEVICE_I2C=1 -DDEVICE_I2CSLAVE=1 -DDEVICE_I2C_ASYNCH=1 -DDEVICE_INTERRUPTIN=1 -DDEVICE_LPTICKER=1 -DDEVICE_MPU=1 -DDEVICE_PORTIN=1 -DDEVICE_PORTINOUT=1 -DDEVICE_PORTOUT=1 -DDEVICE_PWMOUT=1 -DDEVICE_RTC=1 -DDEVICE_SERIAL=1 -DDEVICE_SERIAL_ASYNCH=1 -DDEVICE_SERIAL_FC=1 -DDEVICE_SLEEP=1 -DDEVICE_SPI=1 -DDEVICE_SPISLAVE=1 -DDEVICE_SPI_ASYNCH=1 -DDEVICE_STDIO_MESSAGES=1 -DDEVICE_TRNG=1 -DDEVICE_USBDEVICE=1 -DDEVICE_USTICKER=1 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DFEATURE_IPV4=1 -DMBEDTLS_ENTROPY_HARDWARE_ALT -DMBED_CONF_PLATFORM_DEFAULT_SERIAL_BAUD_RATE=9600 -DMBED_RAM1_SIZE=0x10000 -DMBED_RAM1_START=0x20000000 -DMBED_RAM_SIZE=0x40000 -DMBED_RAM_START=0x20010000 -DMBED_ROM1_SIZE=0x100000 -DMBED_ROM1_START=0x200000 -DMBED_ROM_SIZE=0x100000 -DMBED_ROM_START=0x8000000 -DMBED_TICKLESS -DMBED_TRAP_ERRORS_ENABLED=1 -DNULL=0 -DSTM32F746xx -DSTM32_D11_SPI_ETHERNET_PIN=PA_7 -DTARGET_CORTEX -DTARGET_CORTEX_M -DTARGET_FAMILY_STM32 -DTARGET_FF_ARDUINO -DTARGET_LIKE_CORTEX_M7 -DTARGET_LIKE_MBED -DTARGET_M7 -DTARGET_NAME=NUCLEO_F746ZG -DTARGET_NUCLEO_F746ZG -DTARGET_RELEASE -DTARGET_STM32F746 -DTARGET_STM32F746ZG -DTARGET_STM32F746xG -DTARGET_STM32F7 -DTARGET_STM -DTARGET_STM_EMAC -DTARGET_UVISOR_UNSUPPORTED -DTOOLCHAIN_GCC -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_object -DTRANSACTION_QUEUE_SIZE_SPI=2 -DUSBHOST_OTHER -DXCP_CUSTOM_PLATFORM -D__CORTEX_M7 -D__FPU_PRESENT=1 -D__FPU_USED=1U -D__MBED__=1 -D__START=_start -DSTACK_SIZE=64 -DRT -DMW_RTIOSTREAM_BAUDRATE="115200"
 DEFINES_STANDARD = -DMODEL=led_flash -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
@@ -224,7 +223,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp $(START_DIR)/led_flash_ert_rtw/led_flash.c $(START_DIR)/led_flash_ert_rtw/led_flash_data.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/mw_mbed_interface.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/BufferedSerial.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/stm32nucleof7xx_init_board.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/GCC/mbed_syscalls.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_I2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_GetPeripheralObjects.cpp $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c $(START_DIR)/led_flash_ert_rtw/led_flash.c $(START_DIR)/led_flash_ert_rtw/led_flash_data.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/mw_mbed_interface.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/BufferedSerial.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/stm32nucleof7xx_init_board.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/GCC/mbed_syscalls.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/xcp_platform_timer_mbed.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/rtiostream_serial_mbed.cpp
 
 MAIN_SRC = $(START_DIR)/led_flash_ert_rtw/ert_main.c
 
@@ -234,7 +233,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_AnalogInput.o MW_digitalIO.o led_flash.o led_flash_data.o mw_mbed_interface.o BufferedSerial.o stm32nucleof7xx_init_board.o mbed_syscalls.o SysTickScheduler.o m3m4m4f_multitasking.o
+OBJS = MW_AnalogInput.o MW_digitalIO.o MW_I2C.o MW_GetPeripheralObjects.o xcp_ext_mode.o led_flash.o led_flash_data.o xcp_ext_common.o xcp_ext_classic_trigger.o xcp.o xcp_standard.o xcp_daq.o xcp_calibration.o xcp_fifo.o xcp_transport.o xcp_mem_default.o xcp_drv_rtiostream.o xcp_utils.o xcp_frame_serial.o xcp_ext_param_default_serial.o mw_mbed_interface.o BufferedSerial.o stm32nucleof7xx_init_board.o mbed_syscalls.o SysTickScheduler.o m3m4m4f_multitasking.o sys_arch.o xcp_platform_timer_mbed.o rtiostream_serial_mbed.o
 
 MAIN_OBJ = ert_main.o
 
@@ -271,6 +270,24 @@ CFLAGS_BASIC = $(DEFINES) $(INCLUDES) @$(COMPILER_COMMAND_FILE)
 
 CFLAGS += $(CFLAGS_SKIPFORSIL) $(CFLAGS_BASIC)
 
+#-----------
+# Linker
+#-----------
+
+LDFLAGS_ = @C:\Users\Aidan\DOCUME~1\F61-CART\LED_FL~1\MBED_O~1.RSP
+LDFLAGS_SKIPFORSIL = -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 --entry Reset_Handler --specs=nano.specs --specs=nosys.specs -T"C:\ProgramData\MATLAB\SupportPackages\R2023b\toolbox\target\supportpackages\stmnucleo\registry\../mbed/NUCLEO_F746ZG/TOOLCHAIN_GCC_ARM/STM32F746xG.ld"
+
+LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
+
+#--------------------------
+# Shared Library Linker
+#--------------------------
+
+SHAREDLIB_LDFLAGS_ = @C:\Users\Aidan\DOCUME~1\F61-CART\LED_FL~1\MBED_O~1.RSP
+SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 --entry Reset_Handler --specs=nano.specs --specs=nosys.specs -T"C:\ProgramData\MATLAB\SupportPackages\R2023b\toolbox\target\supportpackages\stmnucleo\registry\../mbed/NUCLEO_F746ZG/TOOLCHAIN_GCC_ARM/STM32F746xG.ld"
+
+SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
+
 #-----------------
 # C++ Compiler
 #-----------------
@@ -297,40 +314,6 @@ CPP_SHAREDLIB_LDFLAGS_ = @C:\Users\Aidan\DOCUME~1\F61-CART\LED_FL~1\MBED_O~1.RSP
 CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 --entry Reset_Handler --specs=nano.specs --specs=nosys.specs -T"C:\ProgramData\MATLAB\SupportPackages\R2023b\toolbox\target\supportpackages\stmnucleo\registry\../mbed/NUCLEO_F746ZG/TOOLCHAIN_GCC_ARM/STM32F746xG.ld"
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
-
-#-----------
-# Linker
-#-----------
-
-LDFLAGS_ = @C:\Users\Aidan\DOCUME~1\F61-CART\LED_FL~1\MBED_O~1.RSP
-LDFLAGS_SKIPFORSIL = -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 --entry Reset_Handler --specs=nano.specs --specs=nosys.specs -T"C:\ProgramData\MATLAB\SupportPackages\R2023b\toolbox\target\supportpackages\stmnucleo\registry\../mbed/NUCLEO_F746ZG/TOOLCHAIN_GCC_ARM/STM32F746xG.ld"
-
-LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
-
-#---------------------
-# MEX C++ Compiler
-#---------------------
-
-MEX_CPP_Compiler_BASIC =  @$(COMPILER_COMMAND_FILE)
-
-MEX_CPPFLAGS += $(MEX_CPP_Compiler_BASIC)
-
-#-----------------
-# MEX Compiler
-#-----------------
-
-MEX_Compiler_BASIC =  @$(COMPILER_COMMAND_FILE)
-
-MEX_CFLAGS += $(MEX_Compiler_BASIC)
-
-#--------------------------
-# Shared Library Linker
-#--------------------------
-
-SHAREDLIB_LDFLAGS_ = @C:\Users\Aidan\DOCUME~1\F61-CART\LED_FL~1\MBED_O~1.RSP
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m7 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv5-sp-d16 --entry Reset_Handler --specs=nano.specs --specs=nosys.specs -T"C:\ProgramData\MATLAB\SupportPackages\R2023b\toolbox\target\supportpackages\stmnucleo\registry\../mbed/NUCLEO_F746ZG/TOOLCHAIN_GCC_ARM/STM32F746xG.ld"
-
-SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
 ###########################################################################
 ## INLINED COMMANDS
@@ -615,12 +598,164 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 MW_AnalogInput.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 MW_digitalIO.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+MW_I2C.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_I2C.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+MW_GetPeripheralObjects.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_GetPeripheralObjects.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+xcp_ext_mode.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
 ert_main.o : $(START_DIR)/led_flash_ert_rtw/ert_main.c
@@ -632,6 +767,58 @@ led_flash.o : $(START_DIR)/led_flash_ert_rtw/led_flash.c
 
 
 led_flash_data.o : $(START_DIR)/led_flash_ert_rtw/led_flash_data.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_common.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_classic_trigger.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_standard.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_daq.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_calibration.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_fifo.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_transport.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_mem_default.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_drv_rtiostream.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_utils.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_frame_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_param_default_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -657,6 +844,18 @@ SysTickScheduler.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/schedul
 
 m3m4m4f_multitasking.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+sys_arch.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_platform_timer_mbed.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/xcp_platform_timer_mbed.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rtiostream_serial_mbed.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/rtiostream_serial_mbed.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 ###########################################################################

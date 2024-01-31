@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.3
+ * Model version              : 1.15
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 23 21:09:35 2024
+ * C source code generated on : Tue Jan 30 17:15:05 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,6 +24,31 @@
 P_led_flash_T led_flash_P = {
   /* Expression: -1
    * Referenced by: '<Root>/Analog Input'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Analog Input2'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Analog Input3'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Digital Read'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Digital Read2'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/ICM20948 IMU Sensor'
    */
   -1.0,
 

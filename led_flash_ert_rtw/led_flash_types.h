@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.3
+ * Model version              : 1.15
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 23 21:09:35 2024
+ * C source code generated on : Tue Jan 30 17:15:05 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,7 +23,7 @@
 #include "rtwtypes.h"
 #include "MW_SVD.h"
 
-/* Custom Type definition for MATLABSystem: '<Root>/Digital Write2' */
+/* Custom Type definition for MATLABSystem: '<Root>/ICM20948 IMU Sensor' */
 #include "MW_SVD.h"
 #ifndef struct_tag_p5Oj7yF0nd6COoUgI0GAlG
 #define struct_tag_p5Oj7yF0nd6COoUgI0GAlG
@@ -46,6 +46,27 @@ typedef struct tag_p5Oj7yF0nd6COoUgI0GAlG mbed_AnalogInput_led_flash_T;
 
 #endif                                /* typedef_mbed_AnalogInput_led_flash_T */
 
+#ifndef struct_tag_5FwKk6wA1XPbMoI1XCDeDF
+#define struct_tag_5FwKk6wA1XPbMoI1XCDeDF
+
+struct tag_5FwKk6wA1XPbMoI1XCDeDF
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_DIGITALIO_HANDLE;
+  real_T SampleTime;
+};
+
+#endif                                 /* struct_tag_5FwKk6wA1XPbMoI1XCDeDF */
+
+#ifndef typedef_mbed_DigitalRead_led_flash_T
+#define typedef_mbed_DigitalRead_led_flash_T
+
+typedef struct tag_5FwKk6wA1XPbMoI1XCDeDF mbed_DigitalRead_led_flash_T;
+
+#endif                                /* typedef_mbed_DigitalRead_led_flash_T */
+
 #ifndef struct_tag_KxFW01GBdhqk5JOEHU3GlD
 #define struct_tag_KxFW01GBdhqk5JOEHU3GlD
 
@@ -65,6 +86,224 @@ struct tag_KxFW01GBdhqk5JOEHU3GlD
 typedef struct tag_KxFW01GBdhqk5JOEHU3GlD mbed_DigitalWrite_led_flash_T;
 
 #endif                               /* typedef_mbed_DigitalWrite_led_flash_T */
+
+#ifndef struct_tag_45NO01sr76bOLMYCTk1zwH
+#define struct_tag_45NO01sr76bOLMYCTk1zwH
+
+struct tag_45NO01sr76bOLMYCTk1zwH
+{
+  real_T currentTime;
+};
+
+#endif                                 /* struct_tag_45NO01sr76bOLMYCTk1zwH */
+
+#ifndef typedef_f_codertarget_mbed_internal_M_T
+#define typedef_f_codertarget_mbed_internal_M_T
+
+typedef struct tag_45NO01sr76bOLMYCTk1zwH f_codertarget_mbed_internal_M_T;
+
+#endif                             /* typedef_f_codertarget_mbed_internal_M_T */
+
+#ifndef struct_tag_aKWq6a6RxmYGQum8qfKjlF
+#define struct_tag_aKWq6a6RxmYGQum8qfKjlF
+
+struct tag_aKWq6a6RxmYGQum8qfKjlF
+{
+  MW_Handle_Type MW_I2C_HANDLE;
+};
+
+#endif                                 /* struct_tag_aKWq6a6RxmYGQum8qfKjlF */
+
+#ifndef typedef_f_matlabshared_devicedrivers__T
+#define typedef_f_matlabshared_devicedrivers__T
+
+typedef struct tag_aKWq6a6RxmYGQum8qfKjlF f_matlabshared_devicedrivers__T;
+
+#endif                             /* typedef_f_matlabshared_devicedrivers__T */
+
+#ifndef struct_tag_MYJ770bjSLi75gskT6UTJF
+#define struct_tag_MYJ770bjSLi75gskT6UTJF
+
+struct tag_MYJ770bjSLi75gskT6UTJF
+{
+  uint8_T Bus;
+  uint8_T DeviceAddress;
+  f_matlabshared_devicedrivers__T *InterfaceObj;
+  f_matlabshared_devicedrivers__T _pobj0;
+};
+
+#endif                                 /* struct_tag_MYJ770bjSLi75gskT6UTJF */
+
+#ifndef typedef_f_matlabshared_sensors_coder__T
+#define typedef_f_matlabshared_sensors_coder__T
+
+typedef struct tag_MYJ770bjSLi75gskT6UTJF f_matlabshared_sensors_coder__T;
+
+#endif                             /* typedef_f_matlabshared_sensors_coder__T */
+
+#ifndef struct_tag_muda4i2FAYG3EuGictkYcG
+#define struct_tag_muda4i2FAYG3EuGictkYcG
+
+struct tag_muda4i2FAYG3EuGictkYcG
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  f_codertarget_mbed_internal_M_T *Parent;
+  f_matlabshared_sensors_coder__T *Device;
+  real_T UserBank;
+  f_matlabshared_sensors_coder__T _pobj0;
+};
+
+#endif                                 /* struct_tag_muda4i2FAYG3EuGictkYcG */
+
+#ifndef typedef_e_sensors_internal_icm20948_a_T
+#define typedef_e_sensors_internal_icm20948_a_T
+
+typedef struct tag_muda4i2FAYG3EuGictkYcG e_sensors_internal_icm20948_a_T;
+
+#endif                             /* typedef_e_sensors_internal_icm20948_a_T */
+
+#ifndef struct_tag_eFI6gcYu2CWgNWChW3jiGC
+#define struct_tag_eFI6gcYu2CWgNWChW3jiGC
+
+struct tag_eFI6gcYu2CWgNWChW3jiGC
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  f_codertarget_mbed_internal_M_T *Parent;
+  f_matlabshared_sensors_coder__T *Device;
+  f_matlabshared_sensors_coder__T _pobj0;
+};
+
+#endif                                 /* struct_tag_eFI6gcYu2CWgNWChW3jiGC */
+
+#ifndef typedef_b_sensors_internal_ak09916_le_T
+#define typedef_b_sensors_internal_ak09916_le_T
+
+typedef struct tag_eFI6gcYu2CWgNWChW3jiGC b_sensors_internal_ak09916_le_T;
+
+#endif                             /* typedef_b_sensors_internal_ak09916_le_T */
+
+#ifndef struct_tag_LBGcLZTtGRb7kSFgx384e
+#define struct_tag_LBGcLZTtGRb7kSFgx384e
+
+struct tag_LBGcLZTtGRb7kSFgx384e
+{
+  e_sensors_internal_icm20948_a_T *f1;
+  b_sensors_internal_ak09916_le_T *f2;
+};
+
+#endif                                 /* struct_tag_LBGcLZTtGRb7kSFgx384e */
+
+#ifndef typedef_dc_cell_led_flash_T
+#define typedef_dc_cell_led_flash_T
+
+typedef struct tag_LBGcLZTtGRb7kSFgx384e dc_cell_led_flash_T;
+
+#endif                                 /* typedef_dc_cell_led_flash_T */
+
+#ifndef struct_tag_vAdOa5udNO5g0UB6E8cPDB
+#define struct_tag_vAdOa5udNO5g0UB6E8cPDB
+
+struct tag_vAdOa5udNO5g0UB6E8cPDB
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  f_codertarget_mbed_internal_M_T *Parent;
+  dc_cell_led_flash_T SensorObjects;
+  b_sensors_internal_ak09916_le_T _pobj0;
+  e_sensors_internal_icm20948_a_T _pobj1;
+};
+
+#endif                                 /* struct_tag_vAdOa5udNO5g0UB6E8cPDB */
+
+#ifndef typedef_b_icm20948_led_flash_T
+#define typedef_b_icm20948_led_flash_T
+
+typedef struct tag_vAdOa5udNO5g0UB6E8cPDB b_icm20948_led_flash_T;
+
+#endif                                 /* typedef_b_icm20948_led_flash_T */
+
+#ifndef struct_tag_As8gYj3mjzMic4nXDF1rQG
+#define struct_tag_As8gYj3mjzMic4nXDF1rQG
+
+struct tag_As8gYj3mjzMic4nXDF1rQG
+{
+  int32_T __dummy;
+};
+
+#endif                                 /* struct_tag_As8gYj3mjzMic4nXDF1rQG */
+
+#ifndef typedef_h_matlabshared_sensors_simuli_T
+#define typedef_h_matlabshared_sensors_simuli_T
+
+typedef struct tag_As8gYj3mjzMic4nXDF1rQG h_matlabshared_sensors_simuli_T;
+
+#endif                             /* typedef_h_matlabshared_sensors_simuli_T */
+
+#ifndef struct_tag_emaM8BrQJAuATZkkqWHyXF
+#define struct_tag_emaM8BrQJAuATZkkqWHyXF
+
+struct tag_emaM8BrQJAuATZkkqWHyXF
+{
+  int32_T __dummy;
+};
+
+#endif                                 /* struct_tag_emaM8BrQJAuATZkkqWHyXF */
+
+#ifndef typedef_i_matlabshared_sensors_simuli_T
+#define typedef_i_matlabshared_sensors_simuli_T
+
+typedef struct tag_emaM8BrQJAuATZkkqWHyXF i_matlabshared_sensors_simuli_T;
+
+#endif                             /* typedef_i_matlabshared_sensors_simuli_T */
+
+#ifndef struct_tag_n1EGzm0lQI5HNFCanDcWuD
+#define struct_tag_n1EGzm0lQI5HNFCanDcWuD
+
+struct tag_n1EGzm0lQI5HNFCanDcWuD
+{
+  h_matlabshared_sensors_simuli_T *f1;
+  i_matlabshared_sensors_simuli_T *f2;
+};
+
+#endif                                 /* struct_tag_n1EGzm0lQI5HNFCanDcWuD */
+
+#ifndef typedef_ec_cell_led_flash_T
+#define typedef_ec_cell_led_flash_T
+
+typedef struct tag_n1EGzm0lQI5HNFCanDcWuD ec_cell_led_flash_T;
+
+#endif                                 /* typedef_ec_cell_led_flash_T */
+
+#ifndef struct_tag_SOZSojNkdsyIbJ9UrSNKSE
+#define struct_tag_SOZSojNkdsyIbJ9UrSNKSE
+
+struct tag_SOZSojNkdsyIbJ9UrSNKSE
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  boolean_T TunablePropsChanged;
+  real_T SampleTime;
+  f_codertarget_mbed_internal_M_T *HwUtilityObject;
+  b_icm20948_led_flash_T *SensorObject;
+  ec_cell_led_flash_T OutputModules;
+  boolean_T __OutputModules_AssignmentSentinel;
+  i_matlabshared_sensors_simuli_T _pobj0;
+  h_matlabshared_sensors_simuli_T _pobj1;
+  b_icm20948_led_flash_T _pobj2;
+  f_codertarget_mbed_internal_M_T _pobj3;
+};
+
+#endif                                 /* struct_tag_SOZSojNkdsyIbJ9UrSNKSE */
+
+#ifndef typedef_sensors_raspberrypi_ICM20948B_T
+#define typedef_sensors_raspberrypi_ICM20948B_T
+
+typedef struct tag_SOZSojNkdsyIbJ9UrSNKSE sensors_raspberrypi_ICM20948B_T;
+
+#endif                             /* typedef_sensors_raspberrypi_ICM20948B_T */
 
 /* Parameters (default storage) */
 typedef struct P_led_flash_T_ P_led_flash_T;
