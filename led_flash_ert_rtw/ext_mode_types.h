@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.15
+ * Model version              : 1.30
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 30 17:15:05 2024
+ * C source code generated on : Sun Feb  4 22:36:48 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -44,7 +44,7 @@ typedef real_T extmodeClassicTriggerSignal_T;
 #define XCP_UINT32_MAX                 0xFFFFFFFFU
 
 /** External Mode Base rate event id */
-#define EXTMODE_BASE_RATE_EVENT_ID     0
+#define EXTMODE_BASE_RATE_EVENT_ID     1
 
 /** External Mode Max Event Id */
 #define EXTMODE_MAX_EVENT_ID           0xFF

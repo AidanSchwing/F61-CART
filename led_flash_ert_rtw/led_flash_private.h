@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.15
+ * Model version              : 1.30
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Tue Jan 30 17:15:05 2024
+ * C source code generated on : Sun Feb  4 22:36:48 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -22,12 +22,25 @@
 #define RTW_HEADER_led_flash_private_h_
 #include "rtwtypes.h"
 #include "multiword_types.h"
+#include "zero_crossing_types.h"
 #include "led_flash_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
 
 /* Private macros used by the generated code to access rtModel */
+#ifndef rtmIsMajorTimeStep
+#define rtmIsMajorTimeStep(rtm)        (((rtm)->Timing.simTimeStep) == MAJOR_TIME_STEP)
+#endif
+
+#ifndef rtmIsMinorTimeStep
+#define rtmIsMinorTimeStep(rtm)        (((rtm)->Timing.simTimeStep) == MINOR_TIME_STEP)
+#endif
+
 #ifndef rtmSetTFinal
 #define rtmSetTFinal(rtm, val)         ((rtm)->Timing.tFinal = (val))
+#endif
+
+#ifndef rtmSetTPtr
+#define rtmSetTPtr(rtm, val)           ((rtm)->Timing.t = (val))
 #endif
 #endif                                 /* RTW_HEADER_led_flash_private_h_ */

@@ -1,4 +1,5 @@
 MW_AnalogInput.o
+MW_AnalogOutput.o
 MW_digitalIO.o
 MW_I2C.o
 MW_GetPeripheralObjects.o
@@ -6,6 +7,7 @@ xcp_ext_mode.o
 ert_main.o
 led_flash.o
 led_flash_data.o
+rt_zcfcn.o
 xcp_ext_common.o
 xcp_ext_classic_trigger.o
 xcp.o
