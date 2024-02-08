@@ -7,9 +7,9 @@
  *
  * Code generation for model "led_flash".
  *
- * Model version              : 1.30
+ * Model version              : 1.33
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Sun Feb  4 22:36:48 2024
+ * C source code generated on : Wed Feb  7 19:31:31 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -22,21 +22,6 @@
 
 /* Block parameters (default storage) */
 P_led_flash_T led_flash_P = {
-  /* Expression: -1
-   * Referenced by: '<Root>/Analog Input2'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/Analog Input3'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/Digital Read'
-   */
-  -1.0,
-
   /* Expression: -1
    * Referenced by: '<Root>/Digital Read2'
    */
@@ -62,10 +47,10 @@ P_led_flash_T led_flash_P = {
    */
   0.0,
 
-  /* Expression: 1
+  /* Expression: 0
    * Referenced by: '<Root>/Constant'
    */
-  1.0,
+  0.0,
 
   /* Expression: .5
    * Referenced by: '<S1>/Constant'
