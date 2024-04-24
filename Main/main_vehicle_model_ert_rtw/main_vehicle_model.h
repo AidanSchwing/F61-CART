@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.15
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed Feb  7 20:55:20 2024
+ * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,10 +26,12 @@
 #include "sysran_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
-#include "MW_AnalogOut.h"
+#include "MW_AnalogIn.h"
 #include "MW_MbedPinInterface.h"
+#include "MW_AnalogOut.h"
 #include "MW_digitalIO.h"
 #include "MW_I2C.h"
+#include "MW_PWM.h"
 #endif                                 /* main_vehicle_model_COMMON_INCLUDES_ */
 
 #include "main_vehicle_model_types.h"
@@ -88,10 +90,13 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T In1;                          /* '<S3>/In1' */
-  real_T In1_g;                        /* '<S2>/In1' */
+  real_T Round;                        /* '<Root>/Round' */
+  real_T Round1;                       /* '<Root>/Round1' */
+  real_T In1;                          /* '<S12>/In1' */
+  real_T In1_g;                        /* '<S11>/In1' */
   real_T IMUACCEL[3];                  /* '<Root>/ICM20948 IMU Sensor' */
-  real_T Sum;                          /* '<S1>/Sum' */
+  real_T AnalogInput1;                 /* '<Root>/Analog Input1' */
+  real_T Sum;                          /* '<S2>/Sum' */
   uint8_T b_data[2];
   uint8_T b_data_m[2];
   uint8_T b_data_c[2];
@@ -105,58 +110,90 @@ typedef struct {
   uint8_T b_value;
   uint8_T slaveAddress;
   uint8_T b_status_p;
-  boolean_T DigitalRead2;              /* '<Root>/Digital Read2' */
+  boolean_T CHAN_A;                    /* '<Root>/Digital Read3' */
+  boolean_T WHEELSPEEDTOGGLE;          /* '<Root>/Digital Read2' */
+  boolean_T CHAN_B;                    /* '<Root>/Digital Read' */
 } B_main_vehicle_model_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   sensors_raspberrypi_ICM20948B_T obj; /* '<Root>/ICM20948 IMU Sensor' */
-  mbed_DigitalRead_main_vehicle_T obj_n;/* '<Root>/Digital Read2' */
+  mbed_AnalogInput_main_vehicle_T obj_n;/* '<Root>/Analog Input1' */
+  mbed_DigitalRead_main_vehicle_T obj_f;/* '<Root>/Digital Read3' */
+  mbed_DigitalRead_main_vehicle_T obj_n2;/* '<Root>/Digital Read2' */
+  mbed_DigitalRead_main_vehicle_T obj_i;/* '<Root>/Digital Read' */
   mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/Analog Output' */
+  mbed_DigitalWrite_main_vehicl_T obj_nh;/* '<Root>/Digital Write6' */
+  mbed_DigitalWrite_main_vehicl_T obj_e;/* '<Root>/Digital Write5' */
   mbed_DigitalWrite_main_vehicl_T obj_l;/* '<Root>/Digital Write4' */
   mbed_DigitalWrite_main_vehicl_T obj_nv;/* '<Root>/Digital Write3' */
-  mbed_DigitalWrite_main_vehicl_T obj_i;/* '<Root>/Digital Write2' */
+  mbed_DigitalWrite_main_vehicl_T obj_ii;/* '<Root>/Digital Write2' */
   mbed_DigitalWrite_main_vehicl_T obj_m;/* '<Root>/Digital Write1' */
   mbed_DigitalWrite_main_vehicl_T obj_j;/* '<Root>/Digital Write' */
-  real_T UnitDelay_DSTATE;             /* '<S1>/Unit Delay' */
+  mbed_PWMOutput_main_vehicle_m_T obj_iw;/* '<Root>/PWM Output1' */
+  mbed_PWMOutput_main_vehicle_m_T obj_ef;/* '<Root>/PWM Output' */
+  real_T UnitDelay_DSTATE;             /* '<S2>/Unit Delay' */
   int32_T clockTickCounter;            /* '<Root>/Pulse Generator' */
-  int8_T TriggeredSubsystem_SubsysRanBC;/* '<S1>/Triggered Subsystem' */
-  int8_T IfActionSubsystem_SubsysRanBC;/* '<S1>/If Action Subsystem' */
+  int8_T TriggeredSubsystem_SubsysRanBC;/* '<S2>/Triggered Subsystem' */
+  int8_T IfActionSubsystem_SubsysRanBC;/* '<S2>/If Action Subsystem' */
+  int8_T PositionResetAtIndex_SubsysRanB;/* '<S1>/PositionResetAtIndex' */
+  int8_T PositionNoReset_SubsysRanBC;  /* '<S1>/PositionNoReset' */
 } DW_main_vehicle_model_T;
 
 /* Zero-crossing (trigger) state */
 typedef struct {
-  ZCSigState TriggeredSubsystem_Trig_ZCE;/* '<S1>/Triggered Subsystem' */
+  ZCSigState TriggeredSubsystem_Trig_ZCE;/* '<S2>/Triggered Subsystem' */
 } PrevZCX_main_vehicle_model_T;
 
 /* Parameters (default storage) */
 struct P_main_vehicle_model_T_ {
+  real_T AnalogInput1_SampleTime;      /* Expression: -1
+                                        * Referenced by: '<Root>/Analog Input1'
+                                        */
+  real_T DigitalRead_SampleTime;       /* Expression: -1
+                                        * Referenced by: '<Root>/Digital Read'
+                                        */
   real_T DigitalRead2_SampleTime;      /* Expression: -1
                                         * Referenced by: '<Root>/Digital Read2'
+                                        */
+  real_T DigitalRead3_SampleTime;      /* Expression: -1
+                                        * Referenced by: '<Root>/Digital Read3'
                                         */
   real_T ICM20948IMUSensor_SampleTime; /* Expression: -1
                                         * Referenced by: '<Root>/ICM20948 IMU Sensor'
                                         */
   real_T Out1_Y0;                      /* Computed Parameter: Out1_Y0
-                                        * Referenced by: '<S2>/Out1'
+                                        * Referenced by: '<S11>/Out1'
                                         */
   real_T Out1_Y0_b;                    /* Computed Parameter: Out1_Y0_b
-                                        * Referenced by: '<S3>/Out1'
+                                        * Referenced by: '<S12>/Out1'
                                         */
-  real_T ActuatorRelay_Value;          /* Expression: 1
+  real_T ActuatorRelay_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/Actuator Relay'
                                         */
-  real_T Constant_Value;               /* Expression: 0.4103313840155945
+  real_T Constant_Value;               /* Expression: 0
                                         * Referenced by: '<Root>/Constant'
                                         */
+  real_T Constant1_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/Constant1'
+                                        */
+  real_T Constant2_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/Constant2'
+                                        */
   real_T Constant_Value_i;             /* Expression: .5
-                                        * Referenced by: '<S1>/Constant'
+                                        * Referenced by: '<S2>/Constant'
                                         */
   real_T UnitDelay_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S1>/Unit Delay'
+                                        * Referenced by: '<S2>/Unit Delay'
                                         */
-  real_T DriveRelay_Value;             /* Expression: 0
+  real_T DriveRelay_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/Drive Relay'
+                                        */
+  real_T STEERINGMOTORDUTY_Value;      /* Expression: 0
+                                        * Referenced by: '<Root>/STEERING MOTOR DUTY'
+                                        */
+  real_T STEERINGMOTORDUTY2_Value;     /* Expression: 0
+                                        * Referenced by: '<Root>/STEERING MOTOR DUTY2'
                                         */
   real_T PulseGenerator_Amp;           /* Expression: 1
                                         * Referenced by: '<Root>/Pulse Generator'
@@ -169,6 +206,12 @@ struct P_main_vehicle_model_T_ {
                                         */
   real_T PulseGenerator_PhaseDelay;    /* Expression: 0
                                         * Referenced by: '<Root>/Pulse Generator'
+                                        */
+  int16_T ResetMode_Value;             /* Computed Parameter: ResetMode_Value
+                                        * Referenced by: '<S1>/ResetMode'
+                                        */
+  uint16_T Constant_Value_c;           /* Computed Parameter: Constant_Value_c
+                                        * Referenced by: '<S9>/Constant'
                                         */
 };
 
@@ -248,8 +291,13 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S1>/Constant1' : Unused code path elimination
- * Block '<S1>/Divide' : Unused code path elimination
+ * Block '<S7>/DTC' : Unused code path elimination
+ * Block '<S1>/Product' : Unused code path elimination
+ * Block '<S1>/ReplaceInport_CountsPerRev' : Unused code path elimination
+ * Block '<S1>/ReplaceInport_OneByCountsPerRev' : Unused code path elimination
+ * Block '<S10>/Constant' : Unused code path elimination
+ * Block '<S2>/Constant1' : Unused code path elimination
+ * Block '<S2>/Divide' : Unused code path elimination
  */
 
 /*-
@@ -267,9 +315,18 @@ extern volatile boolean_T runModel;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'main_vehicle_model'
- * '<S1>'   : 'main_vehicle_model/Subsystem'
- * '<S2>'   : 'main_vehicle_model/Subsystem/If Action Subsystem'
- * '<S3>'   : 'main_vehicle_model/Subsystem/Triggered Subsystem'
+ * '<S1>'   : 'main_vehicle_model/Quadrature Decoder'
+ * '<S2>'   : 'main_vehicle_model/Subsystem'
+ * '<S3>'   : 'main_vehicle_model/Quadrature Decoder/DT_Handle'
+ * '<S4>'   : 'main_vehicle_model/Quadrature Decoder/PositionNoReset'
+ * '<S5>'   : 'main_vehicle_model/Quadrature Decoder/PositionResetAtIndex'
+ * '<S6>'   : 'main_vehicle_model/Quadrature Decoder/Variant Subsystem'
+ * '<S7>'   : 'main_vehicle_model/Quadrature Decoder/DT_Handle/floating-point'
+ * '<S8>'   : 'main_vehicle_model/Quadrature Decoder/PositionNoReset/Variant Subsystem'
+ * '<S9>'   : 'main_vehicle_model/Quadrature Decoder/PositionNoReset/Variant Subsystem/Dialog'
+ * '<S10>'  : 'main_vehicle_model/Quadrature Decoder/Variant Subsystem/Dialog'
+ * '<S11>'  : 'main_vehicle_model/Subsystem/If Action Subsystem'
+ * '<S12>'  : 'main_vehicle_model/Subsystem/Triggered Subsystem'
  */
 #endif                                 /* RTW_HEADER_main_vehicle_model_h_ */
 

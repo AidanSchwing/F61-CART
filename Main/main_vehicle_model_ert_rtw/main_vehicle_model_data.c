@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.15
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed Feb  7 20:55:20 2024
+ * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,7 +22,22 @@
 /* Block parameters (default storage) */
 P_main_vehicle_model_T main_vehicle_model_P = {
   /* Expression: -1
+   * Referenced by: '<Root>/Analog Input1'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Digital Read'
+   */
+  -1.0,
+
+  /* Expression: -1
    * Referenced by: '<Root>/Digital Read2'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Digital Read3'
    */
   -1.0,
 
@@ -32,37 +47,57 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   -1.0,
 
   /* Computed Parameter: Out1_Y0
-   * Referenced by: '<S2>/Out1'
+   * Referenced by: '<S11>/Out1'
    */
   0.0,
 
   /* Computed Parameter: Out1_Y0_b
-   * Referenced by: '<S3>/Out1'
+   * Referenced by: '<S12>/Out1'
    */
   0.0,
 
-  /* Expression: 1
+  /* Expression: 0
    * Referenced by: '<Root>/Actuator Relay'
    */
-  1.0,
+  0.0,
 
-  /* Expression: 0.4103313840155945
+  /* Expression: 0
    * Referenced by: '<Root>/Constant'
    */
-  0.41033138401559449,
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Constant1'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Constant2'
+   */
+  0.0,
 
   /* Expression: .5
-   * Referenced by: '<S1>/Constant'
+   * Referenced by: '<S2>/Constant'
    */
   0.5,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Unit Delay'
+   * Referenced by: '<S2>/Unit Delay'
+   */
+  0.0,
+
+  /* Expression: 1
+   * Referenced by: '<Root>/Drive Relay'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/STEERING MOTOR DUTY'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Drive Relay'
+   * Referenced by: '<Root>/STEERING MOTOR DUTY2'
    */
   0.0,
 
@@ -84,7 +119,17 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   /* Expression: 0
    * Referenced by: '<Root>/Pulse Generator'
    */
-  0.0
+  0.0,
+
+  /* Computed Parameter: ResetMode_Value
+   * Referenced by: '<S1>/ResetMode'
+   */
+  1,
+
+  /* Computed Parameter: Constant_Value_c
+   * Referenced by: '<S9>/Constant'
+   */
+  4000U
 };
 
 /*

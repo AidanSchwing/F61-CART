@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.15
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed Feb  7 20:55:20 2024
+ * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,6 +21,30 @@
 #define RTW_HEADER_main_vehicle_model_types_h_
 #include "rtwtypes.h"
 #include "MW_SVD.h"
+
+/* Custom Type definition for MATLABSystem: '<Root>/PWM Output1' */
+#include "MW_SVD.h"
+#ifndef struct_tag_p5Oj7yF0nd6COoUgI0GAlG
+#define struct_tag_p5Oj7yF0nd6COoUgI0GAlG
+
+struct tag_p5Oj7yF0nd6COoUgI0GAlG
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_ANALOGIN_HANDLE;
+  real_T SampleTime;
+};
+
+#endif                                 /* struct_tag_p5Oj7yF0nd6COoUgI0GAlG */
+
+#ifndef typedef_mbed_AnalogInput_main_vehicle_T
+#define typedef_mbed_AnalogInput_main_vehicle_T
+
+typedef struct tag_p5Oj7yF0nd6COoUgI0GAlG mbed_AnalogInput_main_vehicle_T;
+
+#endif                             /* typedef_mbed_AnalogInput_main_vehicle_T */
+
 #ifndef struct_tag_LqyuMmJIWYfQ3MCRdlPEPB
 #define struct_tag_LqyuMmJIWYfQ3MCRdlPEPB
 
@@ -41,8 +65,6 @@ typedef struct tag_LqyuMmJIWYfQ3MCRdlPEPB mbed_AnalogOutput_main_vehicl_T;
 
 #endif                             /* typedef_mbed_AnalogOutput_main_vehicl_T */
 
-/* Custom Type definition for MATLABSystem: '<Root>/ICM20948 IMU Sensor' */
-#include "MW_SVD.h"
 #ifndef struct_tag_5FwKk6wA1XPbMoI1XCDeDF
 #define struct_tag_5FwKk6wA1XPbMoI1XCDeDF
 
@@ -301,6 +323,26 @@ struct tag_SOZSojNkdsyIbJ9UrSNKSE
 typedef struct tag_SOZSojNkdsyIbJ9UrSNKSE sensors_raspberrypi_ICM20948B_T;
 
 #endif                             /* typedef_sensors_raspberrypi_ICM20948B_T */
+
+#ifndef struct_tag_UndvUYqhBVOhRRpUse3fWF
+#define struct_tag_UndvUYqhBVOhRRpUse3fWF
+
+struct tag_UndvUYqhBVOhRRpUse3fWF
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_PWM_HANDLE;
+};
+
+#endif                                 /* struct_tag_UndvUYqhBVOhRRpUse3fWF */
+
+#ifndef typedef_mbed_PWMOutput_main_vehicle_m_T
+#define typedef_mbed_PWMOutput_main_vehicle_m_T
+
+typedef struct tag_UndvUYqhBVOhRRpUse3fWF mbed_PWMOutput_main_vehicle_m_T;
+
+#endif                             /* typedef_mbed_PWMOutput_main_vehicle_m_T */
 
 /* Parameters (default storage) */
 typedef struct P_main_vehicle_model_T_ P_main_vehicle_model_T;

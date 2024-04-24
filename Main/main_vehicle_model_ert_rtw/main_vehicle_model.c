@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.15
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed Feb  7 20:55:20 2024
+ * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,8 +20,9 @@
 #include "main_vehicle_model.h"
 #include "main_vehicle_model_types.h"
 #include "rtwtypes.h"
-#include "zero_crossing_types.h"
 #include "main_vehicle_model_private.h"
+#include "zero_crossing_types.h"
+#include <math.h>
 
 /* Block signals (default storage) */
 B_main_vehicle_model_T main_vehicle_model_B;
@@ -136,6 +137,24 @@ static void icm20948_accel_gyro_temp_change(e_sensors_internal_icm20948_a_T *obj
                        &main_vehicle_model_B.b_data_c[0], 2U, false, false);
     obj->UserBank = bankNo;
   }
+}
+
+real_T rt_roundd_snf(real_T u)
+{
+  real_T y;
+  if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+      y = floor(u + 0.5);
+    } else if (u > -0.5) {
+      y = u * 0.0;
+    } else {
+      y = ceil(u - 0.5);
+    }
+  } else {
+    y = u;
+  }
+
+  return y;
 }
 
 static e_sensors_internal_icm20948_a_T *icm20948_accel_gyro_temp_icm209
@@ -668,6 +687,12 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
   }
 
   /* Reset subsysRan breadcrumbs */
+  srClearBC(main_vehicle_model_DW.PositionNoReset_SubsysRanBC);
+
+  /* Reset subsysRan breadcrumbs */
+  srClearBC(main_vehicle_model_DW.PositionResetAtIndex_SubsysRanB);
+
+  /* Reset subsysRan breadcrumbs */
   srClearBC(main_vehicle_model_DW.IfActionSubsystem_SubsysRanBC);
 
   /* Reset subsysRan breadcrumbs */
@@ -728,75 +753,165 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
   MW_digitalIO_write(main_vehicle_model_DW.obj_nv.MW_DIGITALIO_HANDLE,
                      main_vehicle_model_P.ActuatorRelay_Value != 0.0);
 
+  /* MATLABSystem: '<Root>/Analog Input1' */
+  if (main_vehicle_model_DW.obj_n.SampleTime !=
+      main_vehicle_model_P.AnalogInput1_SampleTime) {
+    main_vehicle_model_DW.obj_n.SampleTime =
+      main_vehicle_model_P.AnalogInput1_SampleTime;
+  }
+
+  MW_AnalogIn_Start(main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE);
+
+  /* MATLABSystem: '<Root>/Analog Input1' */
+  MW_AnalogInSingle_ReadResult(main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE,
+    &main_vehicle_model_B.AnalogInput1, 7);
+
   /* MATLABSystem: '<Root>/Analog Output' incorporates:
    *  Constant: '<Root>/Constant'
    */
   MW_AnalogOut_Write(main_vehicle_model_DW.obj_h.MW_ANALOGOUT_HANDLE, (real32_T)
                      main_vehicle_model_P.Constant_Value);
 
+  /* MATLABSystem: '<Root>/Digital Write5' incorporates:
+   *  Constant: '<Root>/Constant1'
+   */
+  MW_digitalIO_write(main_vehicle_model_DW.obj_e.MW_DIGITALIO_HANDLE,
+                     main_vehicle_model_P.Constant1_Value != 0.0);
+
+  /* MATLABSystem: '<Root>/Digital Write6' incorporates:
+   *  Constant: '<Root>/Constant2'
+   */
+  MW_digitalIO_write(main_vehicle_model_DW.obj_nh.MW_DIGITALIO_HANDLE,
+                     main_vehicle_model_P.Constant2_Value != 0.0);
+
+  /* MATLABSystem: '<Root>/Digital Read' */
+  if (main_vehicle_model_DW.obj_i.SampleTime !=
+      main_vehicle_model_P.DigitalRead_SampleTime) {
+    main_vehicle_model_DW.obj_i.SampleTime =
+      main_vehicle_model_P.DigitalRead_SampleTime;
+  }
+
+  /* MATLABSystem: '<Root>/Digital Read' */
+  main_vehicle_model_B.CHAN_B = MW_digitalIO_read
+    (main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE);
+
   /* MATLABSystem: '<Root>/Digital Read2' */
-  if (main_vehicle_model_DW.obj_n.SampleTime !=
+  if (main_vehicle_model_DW.obj_n2.SampleTime !=
       main_vehicle_model_P.DigitalRead2_SampleTime) {
-    main_vehicle_model_DW.obj_n.SampleTime =
+    main_vehicle_model_DW.obj_n2.SampleTime =
       main_vehicle_model_P.DigitalRead2_SampleTime;
   }
 
   /* MATLABSystem: '<Root>/Digital Read2' */
-  main_vehicle_model_B.DigitalRead2 = MW_digitalIO_read
-    (main_vehicle_model_DW.obj_n.MW_DIGITALIO_HANDLE);
+  main_vehicle_model_B.WHEELSPEEDTOGGLE = MW_digitalIO_read
+    (main_vehicle_model_DW.obj_n2.MW_DIGITALIO_HANDLE);
 
-  /* Outputs for Triggered SubSystem: '<S1>/Triggered Subsystem' incorporates:
-   *  TriggerPort: '<S3>/Trigger'
+  /* Outputs for Triggered SubSystem: '<S2>/Triggered Subsystem' incorporates:
+   *  TriggerPort: '<S12>/Trigger'
    */
-  /* Sum: '<S1>/Sum1' incorporates:
-   *  Constant: '<S1>/Constant'
+  /* Sum: '<S2>/Sum1' incorporates:
+   *  Constant: '<S2>/Constant'
    */
   zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
                      &main_vehicle_model_PrevZCX.TriggeredSubsystem_Trig_ZCE,
-                     ((real_T)main_vehicle_model_B.DigitalRead2 -
+                     ((real_T)main_vehicle_model_B.WHEELSPEEDTOGGLE -
                       main_vehicle_model_P.Constant_Value_i));
   if (zcEvent != NO_ZCEVENT) {
-    /* SignalConversion generated from: '<S3>/In1' incorporates:
-     *  Clock: '<S1>/Clock'
+    /* SignalConversion generated from: '<S12>/In1' incorporates:
+     *  Clock: '<S2>/Clock'
      */
     main_vehicle_model_B.In1 = main_vehicle_model_M->Timing.t[0];
     main_vehicle_model_DW.TriggeredSubsystem_SubsysRanBC = 4;
   }
 
-  /* End of Outputs for SubSystem: '<S1>/Triggered Subsystem' */
-  /* Sum: '<S1>/Sum' incorporates:
-   *  UnitDelay: '<S1>/Unit Delay'
+  /* End of Outputs for SubSystem: '<S2>/Triggered Subsystem' */
+  /* Sum: '<S2>/Sum' incorporates:
+   *  UnitDelay: '<S2>/Unit Delay'
    */
   main_vehicle_model_B.Sum = main_vehicle_model_B.In1 -
     main_vehicle_model_DW.UnitDelay_DSTATE;
 
-  /* If: '<S1>/If' */
+  /* If: '<S2>/If' */
   if (main_vehicle_model_B.Sum > 0.0) {
-    /* Outputs for IfAction SubSystem: '<S1>/If Action Subsystem' incorporates:
-     *  ActionPort: '<S2>/Action Port'
+    /* Outputs for IfAction SubSystem: '<S2>/If Action Subsystem' incorporates:
+     *  ActionPort: '<S11>/Action Port'
      */
-    /* SignalConversion generated from: '<S2>/In1' */
+    /* SignalConversion generated from: '<S11>/In1' */
     main_vehicle_model_B.In1_g = main_vehicle_model_B.Sum;
 
-    /* End of Outputs for SubSystem: '<S1>/If Action Subsystem' */
+    /* End of Outputs for SubSystem: '<S2>/If Action Subsystem' */
 
-    /* Update for IfAction SubSystem: '<S1>/If Action Subsystem' incorporates:
-     *  ActionPort: '<S2>/Action Port'
+    /* Update for IfAction SubSystem: '<S2>/If Action Subsystem' incorporates:
+     *  ActionPort: '<S11>/Action Port'
      */
-    /* Update for If: '<S1>/If' */
+    /* Update for If: '<S2>/If' */
     srUpdateBC(main_vehicle_model_DW.IfActionSubsystem_SubsysRanBC);
 
-    /* End of Update for SubSystem: '<S1>/If Action Subsystem' */
+    /* End of Update for SubSystem: '<S2>/If Action Subsystem' */
   }
 
-  /* End of If: '<S1>/If' */
+  /* End of If: '<S2>/If' */
+  /* MATLABSystem: '<Root>/Digital Read3' */
+  if (main_vehicle_model_DW.obj_f.SampleTime !=
+      main_vehicle_model_P.DigitalRead3_SampleTime) {
+    main_vehicle_model_DW.obj_f.SampleTime =
+      main_vehicle_model_P.DigitalRead3_SampleTime;
+  }
+
+  /* MATLABSystem: '<Root>/Digital Read3' */
+  main_vehicle_model_B.CHAN_A = MW_digitalIO_read
+    (main_vehicle_model_DW.obj_f.MW_DIGITALIO_HANDLE);
+
   /* MATLABSystem: '<Root>/Digital Write4' incorporates:
    *  Constant: '<Root>/Drive Relay'
    */
   MW_digitalIO_write(main_vehicle_model_DW.obj_l.MW_DIGITALIO_HANDLE,
                      main_vehicle_model_P.DriveRelay_Value != 0.0);
 
-  /* Update for UnitDelay: '<S1>/Unit Delay' */
+  /* Rounding: '<Root>/Round' incorporates:
+   *  Constant: '<Root>/STEERING MOTOR DUTY'
+   */
+  main_vehicle_model_B.Round = rt_roundd_snf
+    (main_vehicle_model_P.STEERINGMOTORDUTY_Value);
+
+  /* MATLABSystem: '<Root>/PWM Output' */
+  MW_PWM_SetDutyCycle(main_vehicle_model_DW.obj_ef.MW_PWM_HANDLE,
+                      main_vehicle_model_B.Round);
+
+  /* Rounding: '<Root>/Round1' incorporates:
+   *  Constant: '<Root>/STEERING MOTOR DUTY2'
+   */
+  main_vehicle_model_B.Round1 = rt_roundd_snf
+    (main_vehicle_model_P.STEERINGMOTORDUTY2_Value);
+
+  /* MATLABSystem: '<Root>/PWM Output1' */
+  MW_PWM_SetDutyCycle(main_vehicle_model_DW.obj_iw.MW_PWM_HANDLE,
+                      main_vehicle_model_B.Round1);
+
+  /* If: '<S1>/If1' incorporates:
+   *  Constant: '<S1>/ResetMode'
+   */
+  if (main_vehicle_model_P.ResetMode_Value > 0) {
+    /* Update for IfAction SubSystem: '<S1>/PositionNoReset' incorporates:
+     *  ActionPort: '<S4>/Action Port'
+     */
+    /* Update for If: '<S1>/If1' */
+    srUpdateBC(main_vehicle_model_DW.PositionNoReset_SubsysRanBC);
+
+    /* End of Update for SubSystem: '<S1>/PositionNoReset' */
+  } else {
+    /* Update for IfAction SubSystem: '<S1>/PositionResetAtIndex' incorporates:
+     *  ActionPort: '<S5>/Action Port'
+     */
+    /* Update for If: '<S1>/If1' */
+    srUpdateBC(main_vehicle_model_DW.PositionResetAtIndex_SubsysRanB);
+
+    /* End of Update for SubSystem: '<S1>/PositionResetAtIndex' */
+  }
+
+  /* End of If: '<S1>/If1' */
+
+  /* Update for UnitDelay: '<S2>/Unit Delay' */
   main_vehicle_model_DW.UnitDelay_DSTATE = main_vehicle_model_B.In1;
 
   /* Update absolute time */
@@ -846,7 +961,7 @@ void main_vehicle_model_step2(void)    /* Sample time: [0.1s, 0.0s] */
                      rtb_PulseGenerator != 0.0);
 
   /* MATLABSystem: '<Root>/Digital Write2' */
-  MW_digitalIO_write(main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE,
+  MW_digitalIO_write(main_vehicle_model_DW.obj_ii.MW_DIGITALIO_HANDLE,
                      rtb_PulseGenerator != 0.0);
 
   /* Update absolute time */
@@ -882,15 +997,15 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  main_vehicle_model_M->Sizes.checksums[0] = (865313027U);
-  main_vehicle_model_M->Sizes.checksums[1] = (2781223436U);
-  main_vehicle_model_M->Sizes.checksums[2] = (4069583706U);
-  main_vehicle_model_M->Sizes.checksums[3] = (380231828U);
+  main_vehicle_model_M->Sizes.checksums[0] = (1621460044U);
+  main_vehicle_model_M->Sizes.checksums[1] = (3748489001U);
+  main_vehicle_model_M->Sizes.checksums[2] = (1998901057U);
+  main_vehicle_model_M->Sizes.checksums[3] = (4056318586U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[11];
+    static const sysRanDType *systemRan[20];
     main_vehicle_model_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
@@ -902,9 +1017,20 @@ void main_vehicle_model_initialize(void)
     systemRan[6] = &rtAlwaysEnabled;
     systemRan[7] = &rtAlwaysEnabled;
     systemRan[8] = &rtAlwaysEnabled;
-    systemRan[9] = (sysRanDType *)
+    systemRan[9] = &rtAlwaysEnabled;
+    systemRan[10] = &rtAlwaysEnabled;
+    systemRan[11] = &rtAlwaysEnabled;
+    systemRan[12] = &rtAlwaysEnabled;
+    systemRan[13] = &rtAlwaysEnabled;
+    systemRan[14] = &rtAlwaysEnabled;
+    systemRan[15] = &rtAlwaysEnabled;
+    systemRan[16] = (sysRanDType *)
+      &main_vehicle_model_DW.PositionNoReset_SubsysRanBC;
+    systemRan[17] = (sysRanDType *)
+      &main_vehicle_model_DW.PositionResetAtIndex_SubsysRanB;
+    systemRan[18] = (sysRanDType *)
       &main_vehicle_model_DW.IfActionSubsystem_SubsysRanBC;
-    systemRan[10] = (sysRanDType *)
+    systemRan[19] = (sysRanDType *)
       &main_vehicle_model_DW.TriggeredSubsystem_SubsysRanBC;
     rteiSetModelMappingInfoPtr(main_vehicle_model_M->extModeInfo,
       &main_vehicle_model_M->SpecialInfo.mappingInfo);
@@ -916,25 +1042,25 @@ void main_vehicle_model_initialize(void)
 
   main_vehicle_model_PrevZCX.TriggeredSubsystem_Trig_ZCE = UNINITIALIZED_ZCSIG;
 
-  /* InitializeConditions for UnitDelay: '<S1>/Unit Delay' */
+  /* InitializeConditions for UnitDelay: '<S2>/Unit Delay' */
   main_vehicle_model_DW.UnitDelay_DSTATE =
     main_vehicle_model_P.UnitDelay_InitialCondition;
 
-  /* SystemInitialize for IfAction SubSystem: '<S1>/If Action Subsystem' */
-  /* SystemInitialize for SignalConversion generated from: '<S2>/In1' incorporates:
-   *  Outport: '<S2>/Out1'
+  /* SystemInitialize for IfAction SubSystem: '<S2>/If Action Subsystem' */
+  /* SystemInitialize for SignalConversion generated from: '<S11>/In1' incorporates:
+   *  Outport: '<S11>/Out1'
    */
   main_vehicle_model_B.In1_g = main_vehicle_model_P.Out1_Y0;
 
-  /* End of SystemInitialize for SubSystem: '<S1>/If Action Subsystem' */
+  /* End of SystemInitialize for SubSystem: '<S2>/If Action Subsystem' */
 
-  /* SystemInitialize for Triggered SubSystem: '<S1>/Triggered Subsystem' */
-  /* SystemInitialize for SignalConversion generated from: '<S3>/In1' incorporates:
-   *  Outport: '<S3>/Out1'
+  /* SystemInitialize for Triggered SubSystem: '<S2>/Triggered Subsystem' */
+  /* SystemInitialize for SignalConversion generated from: '<S12>/In1' incorporates:
+   *  Outport: '<S12>/Out1'
    */
   main_vehicle_model_B.In1 = main_vehicle_model_P.Out1_Y0_b;
 
-  /* End of SystemInitialize for SubSystem: '<S1>/Triggered Subsystem' */
+  /* End of SystemInitialize for SubSystem: '<S2>/Triggered Subsystem' */
 
   /* Start for MATLABSystem: '<Root>/ICM20948 IMU Sensor' */
   main_vehicle_model_DW.obj._pobj2._pobj1.matlabCodegenIsDeleted = true;
@@ -952,25 +1078,77 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_DW.obj_nv.MW_DIGITALIO_HANDLE = MW_digitalIO_open(D8, 1);
   main_vehicle_model_DW.obj_nv.isSetupComplete = true;
 
+  /* Start for MATLABSystem: '<Root>/Analog Input1' */
+  main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_n.SampleTime =
+    main_vehicle_model_P.AnalogInput1_SampleTime;
+  main_vehicle_model_DW.obj_n.isInitialized = 1;
+  main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE = MW_AnalogInSingle_Open(A3);
+  MW_AnalogIn_SetTriggerSource(main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE,
+    MW_ANALOGIN_SOFTWARE_TRIGGER, 0U);
+  main_vehicle_model_DW.obj_n.isSetupComplete = true;
+
   /* Start for MATLABSystem: '<Root>/Analog Output' */
   main_vehicle_model_DW.obj_h.matlabCodegenIsDeleted = false;
   main_vehicle_model_DW.obj_h.isInitialized = 1;
   main_vehicle_model_DW.obj_h.MW_ANALOGOUT_HANDLE = MW_AnalogOut_Open(D13);
   main_vehicle_model_DW.obj_h.isSetupComplete = true;
 
+  /* Start for MATLABSystem: '<Root>/Digital Write5' */
+  main_vehicle_model_DW.obj_e.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_e.isInitialized = 1;
+  main_vehicle_model_DW.obj_e.MW_DIGITALIO_HANDLE = MW_digitalIO_open(D2, 1);
+  main_vehicle_model_DW.obj_e.isSetupComplete = true;
+
+  /* Start for MATLABSystem: '<Root>/Digital Write6' */
+  main_vehicle_model_DW.obj_nh.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_nh.isInitialized = 1;
+  main_vehicle_model_DW.obj_nh.MW_DIGITALIO_HANDLE = MW_digitalIO_open(D7, 1);
+  main_vehicle_model_DW.obj_nh.isSetupComplete = true;
+
+  /* Start for MATLABSystem: '<Root>/Digital Read' */
+  main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_i.SampleTime =
+    main_vehicle_model_P.DigitalRead_SampleTime;
+  main_vehicle_model_DW.obj_i.isInitialized = 1;
+  main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE = MW_digitalIO_open(A2, 0);
+  main_vehicle_model_DW.obj_i.isSetupComplete = true;
+
   /* Start for MATLABSystem: '<Root>/Digital Read2' */
-  main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted = false;
-  main_vehicle_model_DW.obj_n.SampleTime =
+  main_vehicle_model_DW.obj_n2.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_n2.SampleTime =
     main_vehicle_model_P.DigitalRead2_SampleTime;
-  main_vehicle_model_DW.obj_n.isInitialized = 1;
-  main_vehicle_model_DW.obj_n.MW_DIGITALIO_HANDLE = MW_digitalIO_open(A1, 0);
-  main_vehicle_model_DW.obj_n.isSetupComplete = true;
+  main_vehicle_model_DW.obj_n2.isInitialized = 1;
+  main_vehicle_model_DW.obj_n2.MW_DIGITALIO_HANDLE = MW_digitalIO_open(A0, 0);
+  main_vehicle_model_DW.obj_n2.isSetupComplete = true;
+
+  /* Start for MATLABSystem: '<Root>/Digital Read3' */
+  main_vehicle_model_DW.obj_f.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_f.SampleTime =
+    main_vehicle_model_P.DigitalRead3_SampleTime;
+  main_vehicle_model_DW.obj_f.isInitialized = 1;
+  main_vehicle_model_DW.obj_f.MW_DIGITALIO_HANDLE = MW_digitalIO_open(A1, 0);
+  main_vehicle_model_DW.obj_f.isSetupComplete = true;
 
   /* Start for MATLABSystem: '<Root>/Digital Write4' */
   main_vehicle_model_DW.obj_l.matlabCodegenIsDeleted = false;
   main_vehicle_model_DW.obj_l.isInitialized = 1;
   main_vehicle_model_DW.obj_l.MW_DIGITALIO_HANDLE = MW_digitalIO_open(D9, 1);
   main_vehicle_model_DW.obj_l.isSetupComplete = true;
+
+  /* Start for MATLABSystem: '<Root>/PWM Output' */
+  main_vehicle_model_DW.obj_ef.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_ef.isInitialized = 1;
+  main_vehicle_model_DW.obj_ef.MW_PWM_HANDLE = MW_PWM_Open(D3, 20000.0, 50.0);
+  MW_PWM_Start(main_vehicle_model_DW.obj_ef.MW_PWM_HANDLE);
+  main_vehicle_model_DW.obj_ef.isSetupComplete = true;
+
+  /* Start for MATLABSystem: '<Root>/PWM Output1' */
+  main_vehicle_model_DW.obj_iw.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_iw.isInitialized = 1;
+  main_vehicle_model_DW.obj_iw.MW_PWM_HANDLE = MW_PWM_Open(D11, 20000.0, 50.0);
+  MW_PWM_Start(main_vehicle_model_DW.obj_iw.MW_PWM_HANDLE);
+  main_vehicle_model_DW.obj_iw.isSetupComplete = true;
 
   /* Start for MATLABSystem: '<Root>/Digital Write' */
   main_vehicle_model_DW.obj_j.matlabCodegenIsDeleted = false;
@@ -985,10 +1163,10 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_DW.obj_m.isSetupComplete = true;
 
   /* Start for MATLABSystem: '<Root>/Digital Write2' */
-  main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted = false;
-  main_vehicle_model_DW.obj_i.isInitialized = 1;
-  main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE = MW_digitalIO_open(PB_0, 1);
-  main_vehicle_model_DW.obj_i.isSetupComplete = true;
+  main_vehicle_model_DW.obj_ii.matlabCodegenIsDeleted = false;
+  main_vehicle_model_DW.obj_ii.isInitialized = 1;
+  main_vehicle_model_DW.obj_ii.MW_DIGITALIO_HANDLE = MW_digitalIO_open(PB_0, 1);
+  main_vehicle_model_DW.obj_ii.isSetupComplete = true;
 }
 
 /* Model terminate function */
@@ -1039,6 +1217,17 @@ void main_vehicle_model_terminate(void)
 
   /* End of Terminate for MATLABSystem: '<Root>/Digital Write3' */
 
+  /* Terminate for MATLABSystem: '<Root>/Analog Input1' */
+  if (!main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_n.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_n.isSetupComplete) {
+      MW_AnalogIn_Stop(main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE);
+      MW_AnalogIn_Close(main_vehicle_model_DW.obj_n.MW_ANALOGIN_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/Analog Input1' */
   /* Terminate for MATLABSystem: '<Root>/Analog Output' */
   if (!main_vehicle_model_DW.obj_h.matlabCodegenIsDeleted) {
     main_vehicle_model_DW.obj_h.matlabCodegenIsDeleted = true;
@@ -1050,16 +1239,58 @@ void main_vehicle_model_terminate(void)
 
   /* End of Terminate for MATLABSystem: '<Root>/Analog Output' */
 
+  /* Terminate for MATLABSystem: '<Root>/Digital Write5' */
+  if (!main_vehicle_model_DW.obj_e.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_e.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_e.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_e.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_e.MW_DIGITALIO_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/Digital Write5' */
+
+  /* Terminate for MATLABSystem: '<Root>/Digital Write6' */
+  if (!main_vehicle_model_DW.obj_nh.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_nh.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_nh.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_nh.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_nh.MW_DIGITALIO_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/Digital Write6' */
+
+  /* Terminate for MATLABSystem: '<Root>/Digital Read' */
+  if (!main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_i.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_i.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/Digital Read' */
   /* Terminate for MATLABSystem: '<Root>/Digital Read2' */
-  if (!main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted) {
-    main_vehicle_model_DW.obj_n.matlabCodegenIsDeleted = true;
-    if ((main_vehicle_model_DW.obj_n.isInitialized == 1) &&
-        main_vehicle_model_DW.obj_n.isSetupComplete) {
-      MW_digitalIO_close(main_vehicle_model_DW.obj_n.MW_DIGITALIO_HANDLE);
+  if (!main_vehicle_model_DW.obj_n2.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_n2.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_n2.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_n2.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_n2.MW_DIGITALIO_HANDLE);
     }
   }
 
   /* End of Terminate for MATLABSystem: '<Root>/Digital Read2' */
+  /* Terminate for MATLABSystem: '<Root>/Digital Read3' */
+  if (!main_vehicle_model_DW.obj_f.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_f.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_f.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_f.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_f.MW_DIGITALIO_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/Digital Read3' */
   /* Terminate for MATLABSystem: '<Root>/Digital Write4' */
   if (!main_vehicle_model_DW.obj_l.matlabCodegenIsDeleted) {
     main_vehicle_model_DW.obj_l.matlabCodegenIsDeleted = true;
@@ -1071,6 +1302,28 @@ void main_vehicle_model_terminate(void)
 
   /* End of Terminate for MATLABSystem: '<Root>/Digital Write4' */
 
+  /* Terminate for MATLABSystem: '<Root>/PWM Output' */
+  if (!main_vehicle_model_DW.obj_ef.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_ef.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_ef.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_ef.isSetupComplete) {
+      MW_PWM_Stop(main_vehicle_model_DW.obj_ef.MW_PWM_HANDLE);
+      MW_PWM_Close(main_vehicle_model_DW.obj_ef.MW_PWM_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/PWM Output' */
+  /* Terminate for MATLABSystem: '<Root>/PWM Output1' */
+  if (!main_vehicle_model_DW.obj_iw.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_iw.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_iw.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_iw.isSetupComplete) {
+      MW_PWM_Stop(main_vehicle_model_DW.obj_iw.MW_PWM_HANDLE);
+      MW_PWM_Close(main_vehicle_model_DW.obj_iw.MW_PWM_HANDLE);
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<Root>/PWM Output1' */
   /* Terminate for MATLABSystem: '<Root>/Digital Write' */
   if (!main_vehicle_model_DW.obj_j.matlabCodegenIsDeleted) {
     main_vehicle_model_DW.obj_j.matlabCodegenIsDeleted = true;
@@ -1094,11 +1347,11 @@ void main_vehicle_model_terminate(void)
   /* End of Terminate for MATLABSystem: '<Root>/Digital Write1' */
 
   /* Terminate for MATLABSystem: '<Root>/Digital Write2' */
-  if (!main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted) {
-    main_vehicle_model_DW.obj_i.matlabCodegenIsDeleted = true;
-    if ((main_vehicle_model_DW.obj_i.isInitialized == 1) &&
-        main_vehicle_model_DW.obj_i.isSetupComplete) {
-      MW_digitalIO_close(main_vehicle_model_DW.obj_i.MW_DIGITALIO_HANDLE);
+  if (!main_vehicle_model_DW.obj_ii.matlabCodegenIsDeleted) {
+    main_vehicle_model_DW.obj_ii.matlabCodegenIsDeleted = true;
+    if ((main_vehicle_model_DW.obj_ii.isInitialized == 1) &&
+        main_vehicle_model_DW.obj_ii.isSetupComplete) {
+      MW_digitalIO_close(main_vehicle_model_DW.obj_ii.MW_DIGITALIO_HANDLE);
     }
   }
 
