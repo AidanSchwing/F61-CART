@@ -1,0 +1,290 @@
+Added Component: Designator=X1(PHEONIX-1988943)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "DIGIKEY"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/en/products/detail/phoenix-contact/1988943/950906"; VariantName = "[No Variations]"
+Added Component: Designator=X2(GenericPinHeader(.1in))
+Added Component: Designator=X3(GenericPinHeader(.1in))
+Added Component: Designator=X4(GenericPinHeader(.1in))
+Added Component: Designator=X5(GenericPinHeader(.1in))
+Added Component: Designator=X6(GenericPinHeader(.1in))
+Added Component: Designator=X7(GenericPinHeader(.1in))
+Added Component: Designator=X8(GenericPinHeader(.1in))
+Added Component: Designator=X9(GenericPinHeader(.1in))
+Added Component: Designator=X10(GenericPinHeader(.1in))
+Added Component: Designator=X11(GenericPinHeader(.1in))
+Added Component: Designator=X12(GenericPinHeader(.1in))
+Added Component: Designator=X13(GenericPinHeader(.1in))
+Added Component: Designator=X14(GenericPinHeader(.1in))
+Added Component: Designator=X15(GenericPinHeader(.1in))
+Added Component: Designator=X16(GenericPinHeader(.1in))
+Added Component: Designator=X17(GenericPinHeader(.1in))
+Added Component: Designator=X18(GenericPinHeader(.1in))
+Added Component: Designator=X19(GenericPinHeader(.1in))
+Added Component: Designator=X20(GenericPinHeader(.1in))
+Added Component: Designator=X21(GenericPinHeader(.1in))
+Added Component: Designator=X22(GenericPinHeader(.1in))
+Added Component: Designator=X23(GenericPinHeader(.1in))
+Added Component: Designator=X24(GenericPinHeader(.1in))
+Added Component: Designator=X25(GenericPinHeader(.1in))
+Added Component: Designator=X26(GenericPinHeader(.1in))
+Added Component: Designator=X27(GenericPinHeader(.1in))
+Added Component: Designator=X28(GenericPinHeader(.1in))
+Added Component: Designator=X29(GenericPinHeader(.1in))
+Added Component: Designator=X30(GenericPinHeader(.1in))
+Added Component: Designator=X31(GenericPinHeader(.1in))
+Added Component: Designator=X32(GenericPinHeader(.1in))
+Added Component: Designator=X33(GenericPinHeader(.1in))
+Added Component: Designator=X34(GenericPinHeader(.1in))
+Added Component: Designator=X35(GenericPinHeader(.1in))
+Added Component: Designator=X36(GenericPinHeader(.1in))
+Added Component: Designator=X37(GenericPinHeader(.1in))
+Added Component: Designator=X38(GenericPinHeader(.1in))
+Added Component: Designator=X39(GenericPinHeader(.1in))
+Added Component: Designator=X40(GenericPinHeader(.1in))
+Added Component: Designator=X41(GenericPinHeader(.1in))
+Added Component: Designator=X42(GenericPinHeader(.1in))
+Added Component: Designator=X43(GenericPinHeader(.1in))
+Added Component: Designator=X44(GenericPinHeader(.1in))
+Added Component: Designator=X45(GenericPinHeader(.1in))
+Added Component: Designator=X46(GenericPinHeader(.1in))
+Added Component: Designator=X47(GenericPinHeader(.1in))
+Added Component: Designator=X48(GenericPinHeader(.1in))
+Added Component: Designator=X49(GenericPinHeader(.1in))
+Added Component: Designator=X50(GenericPinHeader(.1in))
+Added Component: Designator=X51(GenericPinHeader(.1in))
+Added Component: Designator=X52(GenericPinHeader(.1in))
+Added Component: Designator=X53(GenericPinHeader(.1in))
+Added Component: Designator=X54(GenericPinHeader(.1in))
+Added Component: Designator=X55(GenericPinHeader(.1in))
+Added Component: Designator=X56(GenericPinHeader(.1in))
+Added Component: Designator=X57(GenericPinHeader(.1in))
+Added Component: Designator=X58(GenericPinHeader(.1in))
+Added Component: Designator=X59(GenericPinHeader(.1in))
+Added Component: Designator=X60(GenericPinHeader(.1in))
+Added Component: Designator=X61(GenericPinHeader(.1in))
+Added Component: Designator=X62(GenericPinHeader(.1in))
+Added Component: Designator=X63(GenericPinHeader(.1in))
+Added Component: Designator=X64(GenericPinHeader(.1in))
+Added Component: Designator=X65(GenericPinHeader(.1in))
+Added Component: Designator=X66(GenericPinHeader(.1in))
+Added Component: Designator=X67(GenericPinHeader(.1in))
+Added Component: Designator=X68(GenericPinHeader(.1in))
+Added Component: Designator=X69(GenericPinHeader(.1in))
+Added Component: Designator=X70(GenericPinHeader(.1in))
+Added Component: Designator=X71(GenericPinHeader(.1in))
+Added Component: Designator=X72(GenericPinHeader(.1in))
+Added Component: Designator=X73(GenericPinHeader(.1in))
+Added Component: Designator=X74(GenericPinHeader(.1in))
+Added Component: Designator=X75(GenericPinHeader(.1in))
+Added Component: Designator=X76(GenericPinHeader(.1in))
+Added Component: Designator=X77(GenericPinHeader(.1in))
+Added Component: Designator=X78(GenericPinHeader(.1in))
+Added Component: Designator=X79(GenericPinHeader(.1in))
+Added Component: Designator=X80(GenericPinHeader(.1in))
+Added Component: Designator=X81(GenericPinHeader(.1in))
+Added Component: Designator=X82(GenericPinHeader(.1in))
+Added Component: Designator=X83(GenericPinHeader(.1in))
+Added Component: Designator=X84(GenericPinHeader(.1in))
+Added Component: Designator=X85(GenericPinHeader(.1in))
+Added Component: Designator=X86(GenericPinHeader(.1in))
+Added Component: Designator=X87(GenericPinHeader(.1in))
+Added Component: Designator=X88(GenericPinHeader(.1in))
+Added Component: Designator=X89(GenericPinHeader(.1in))
+Added Component: Designator=X90(GenericPinHeader(.1in))
+Added Component: Designator=X91(GenericPinHeader(.1in))
+Added Component: Designator=X92(GenericPinHeader(.1in))
+Added Component: Designator=X93(GenericPinHeader(.1in))
+Added Component: Designator=X94(GenericPinHeader(.1in))
+Added Component: Designator=X95(GenericPinHeader(.1in))
+Added Component: Designator=X96(GenericPinHeader(.1in))
+Added Component: Designator=X97(GenericPinHeader(.1in))
+Added Component: Designator=X98(GenericPinHeader(.1in))
+Added Component: Designator=X99(GenericPinHeader(.1in))
+Added Component: Designator=X100(GenericPinHeader(.1in))
+Added Component: Designator=X101(GenericPinHeader(.1in))
+Added Pin To Net: NetName=+3V3 Pin=X1-5
+Added Pin To Net: NetName=+3V3 Pin=X32-1
+Added Net: Name=+3V3
+Added Pin To Net: NetName=+5V Pin=X1-4
+Added Pin To Net: NetName=+5V Pin=X36-1
+Added Net: Name=+5V
+Added Pin To Net: NetName=AVDD Pin=X48-1
+Added Pin To Net: NetName=AVDD Pin=X50-1
+Added Net: Name=AVDD
+Added Pin To Net: NetName=GND Pin=X1-2
+Added Pin To Net: NetName=GND Pin=X1-3
+Added Pin To Net: NetName=GND Pin=X13-1
+Added Pin To Net: NetName=GND Pin=X30-1
+Added Pin To Net: NetName=GND Pin=X40-1
+Added Pin To Net: NetName=GND Pin=X44-1
+Added Pin To Net: NetName=GND Pin=X54-1
+Added Pin To Net: NetName=GND Pin=X76-1
+Added Pin To Net: NetName=GND Pin=X83-1
+Added Pin To Net: NetName=GND Pin=X94-1
+Added Net: Name=GND
+Added Pin To Net: NetName=IOREF Pin=X1-7
+Added Pin To Net: NetName=IOREF Pin=X24-1
+Added Net: Name=IOREF
+Added Pin To Net: NetName=NC Pin=X1-8
+Added Pin To Net: NetName=NC Pin=X14-1
+Added Pin To Net: NetName=NC Pin=X18-1
+Added Net: Name=NC
+Added Pin To Net: NetName=PA_0 Pin=X96-1
+Added Net: Name=PA_0
+Added Pin To Net: NetName=PA_3/A0 Pin=X2-1
+Added Net: Name=PA_3/A0
+Added Pin To Net: NetName=PA_4 Pin=X88-1
+Added Net: Name=PA_4
+Added Pin To Net: NetName=PA_7 Pin=X16-1
+Added Net: Name=PA_7
+Added Pin To Net: NetName=PA_15 Pin=X70-1
+Added Net: Name=PA_15
+Added Pin To Net: NetName=PB_0 Pin=X98-1
+Added Net: Name=PB_0
+Added Pin To Net: NetName=PB_1 Pin=X56-1
+Added Net: Name=PB_1
+Added Pin To Net: NetName=PB_2 Pin=X72-1
+Added Net: Name=PB_2
+Added Pin To Net: NetName=PB_3 Pin=X84-1
+Added Net: Name=PB_3
+Added Pin To Net: NetName=PB_4 Pin=X92-1
+Added Net: Name=PB_4
+Added Pin To Net: NetName=PB_5 Pin=X78-1
+Added Net: Name=PB_5
+Added Pin To Net: NetName=PB_6 Pin=X68-1
+Added Net: Name=PB_6
+Added Pin To Net: NetName=PB_10 Pin=X99-1
+Added Net: Name=PB_10
+Added Pin To Net: NetName=PB_11 Pin=X101-1
+Added Net: Name=PB_11
+Added Pin To Net: NetName=PB_12 Pin=X66-1
+Added Net: Name=PB_12
+Added Pin To Net: NetName=PB_13 Pin=X62-1
+Added Net: Name=PB_13
+Added Pin To Net: NetName=PB_15 Pin=X58-1
+Added Net: Name=PB_15
+Added Pin To Net: NetName=PC_0/A1 Pin=X4-1
+Added Net: Name=PC_0/A1
+Added Pin To Net: NetName=PC_2 Pin=X60-1
+Added Net: Name=PC_2
+Added Pin To Net: NetName=PC_3/A2 Pin=X6-1
+Added Net: Name=PC_3/A2
+Added Pin To Net: NetName=PC_6 Pin=X52-1
+Added Net: Name=PC_6
+Added Pin To Net: NetName=PC_7 Pin=X74-1
+Added Net: Name=PC_7
+Added Pin To Net: NetName=PC_8 Pin=X1-9
+Added Pin To Net: NetName=PC_8 Pin=X19-1
+Added Net: Name=PC_8
+Added Pin To Net: NetName=PC_9 Pin=X1-10
+Added Pin To Net: NetName=PC_9 Pin=X25-1
+Added Net: Name=PC_9
+Added Pin To Net: NetName=PC_10 Pin=X1-11
+Added Pin To Net: NetName=PC_10 Pin=X29-1
+Added Net: Name=PC_10
+Added Pin To Net: NetName=PC_11 Pin=X1-12
+Added Pin To Net: NetName=PC_11 Pin=X33-1
+Added Net: Name=PC_11
+Added Pin To Net: NetName=PC_12 Pin=X1-13
+Added Pin To Net: NetName=PC_12 Pin=X37-1
+Added Net: Name=PC_12
+Added Pin To Net: NetName=PD_0 Pin=X34-1
+Added Net: Name=PD_0
+Added Pin To Net: NetName=PD_1 Pin=X38-1
+Added Net: Name=PD_1
+Added Pin To Net: NetName=PD_2 Pin=X1-14
+Added Pin To Net: NetName=PD_2 Pin=X41-1
+Added Net: Name=PD_2
+Added Pin To Net: NetName=PD_3 Pin=X11-1
+Added Net: Name=PD_3
+Added Pin To Net: NetName=PD_4 Pin=X9-1
+Added Net: Name=PD_4
+Added Pin To Net: NetName=PD_5 Pin=X7-1
+Added Net: Name=PD_5
+Added Pin To Net: NetName=PD_6 Pin=X5-1
+Added Net: Name=PD_6
+Added Pin To Net: NetName=PD_7 Pin=X3-1
+Added Net: Name=PD_7
+Added Pin To Net: NetName=PD_11 Pin=X86-1
+Added Net: Name=PD_11
+Added Pin To Net: NetName=PD_12 Pin=X82-1
+Added Net: Name=PD_12
+Added Pin To Net: NetName=PD_13 Pin=X80-1
+Added Net: Name=PD_13
+Added Pin To Net: NetName=PE_0 Pin=X100-1
+Added Net: Name=PE_0
+Added Pin To Net: NetName=PE_2 Pin=X15-1
+Added Pin To Net: NetName=PE_2 Pin=X90-1
+Added Net: Name=PE_2
+Added Pin To Net: NetName=PE_3 Pin=X27-1
+Added Net: Name=PE_3
+Added Pin To Net: NetName=PE_4 Pin=X17-1
+Added Net: Name=PE_4
+Added Pin To Net: NetName=PE_5 Pin=X21-1
+Added Net: Name=PE_5
+Added Pin To Net: NetName=PE_6 Pin=X23-1
+Added Net: Name=PE_6
+Added Pin To Net: NetName=PE_7 Pin=X81-1
+Added Net: Name=PE_7
+Added Pin To Net: NetName=PE_8 Pin=X77-1
+Added Net: Name=PE_8
+Added Pin To Net: NetName=PE_9/D6 Pin=X51-1
+Added Net: Name=PE_9/D6
+Added Pin To Net: NetName=PE_10 Pin=X87-1
+Added Net: Name=PE_10
+Added Pin To Net: NetName=PE_11/D5 Pin=X55-1
+Added Net: Name=PE_11/D5
+Added Pin To Net: NetName=PE_12 Pin=X91-1
+Added Net: Name=PE_12
+Added Pin To Net: NetName=PE_14 Pin=X95-1
+Added Net: Name=PE_14
+Added Pin To Net: NetName=PE_15 Pin=X97-1
+Added Net: Name=PE_15
+Added Pin To Net: NetName=PF_2 Pin=X20-1
+Added Net: Name=PF_2
+Added Pin To Net: NetName=PF_3/A3 Pin=X8-1
+Added Net: Name=PF_3/A3
+Added Pin To Net: NetName=PF_4 Pin=X64-1
+Added Net: Name=PF_4
+Added Pin To Net: NetName=PF_5/A4 Pin=X10-1
+Added Net: Name=PF_5/A4
+Added Pin To Net: NetName=PF_7 Pin=X35-1
+Added Net: Name=PF_7
+Added Pin To Net: NetName=PF_8 Pin=X31-1
+Added Net: Name=PF_8
+Added Pin To Net: NetName=PF_9 Pin=X39-1
+Added Net: Name=PF_9
+Added Pin To Net: NetName=PF_10/A5 Pin=X12-1
+Added Net: Name=PF_10/A5
+Added Pin To Net: NetName=PF_13/D3 Pin=X61-1
+Added Net: Name=PF_13/D3
+Added Pin To Net: NetName=PF_13/D7 Pin=X49-1
+Added Net: Name=PF_13/D7
+Added Pin To Net: NetName=PF_14/D1 Pin=X69-1
+Added Net: Name=PF_14/D1
+Added Pin To Net: NetName=PF_14/D4 Pin=X57-1
+Added Net: Name=PF_14/D4
+Added Pin To Net: NetName=PF_15/D2 Pin=X65-1
+Added Net: Name=PF_15/D2
+Added Pin To Net: NetName=PG_0 Pin=X42-1
+Added Net: Name=PG_0
+Added Pin To Net: NetName=PG_1 Pin=X43-1
+Added Net: Name=PG_1
+Added Pin To Net: NetName=PG_2 Pin=X1-15
+Added Pin To Net: NetName=PG_2 Pin=X45-1
+Added Net: Name=PG_2
+Added Pin To Net: NetName=PG_3 Pin=X1-16
+Added Pin To Net: NetName=PG_3 Pin=X47-1
+Added Net: Name=PG_3
+Added Pin To Net: NetName=PG_9/D0 Pin=X73-1
+Added Net: Name=PG_9/D0
+Added Pin To Net: NetName=PH_0 Pin=X26-1
+Added Net: Name=PH_0
+Added Pin To Net: NetName=PH_1 Pin=X22-1
+Added Net: Name=PH_1
+Added Pin To Net: NetName=RESET Pin=X1-6
+Added Pin To Net: NetName=RESET Pin=X28-1
+Added Net: Name=RESET
+Added Pin To Net: NetName=VIN Pin=X1-1
+Added Pin To Net: NetName=VIN Pin=X46-1
+Added Net: Name=VIN
+Added Class: Name=main_sch

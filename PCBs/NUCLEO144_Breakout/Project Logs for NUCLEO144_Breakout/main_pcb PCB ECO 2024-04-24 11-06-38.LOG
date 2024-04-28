@@ -1,0 +1,52 @@
+Removed Pin From Net: NetName=NC Pin=X18-1
+Removed Pin From Net: NetName=PC_8 Pin=X19-1
+Removed Pin From Net: NetName=IOREF Pin=X24-1
+Removed Pin From Net: NetName=PC_9 Pin=X25-1
+Removed Pin From Net: NetName=RESET Pin=X28-1
+Removed Pin From Net: NetName=PC_10 Pin=X29-1
+Removed Pin From Net: NetName=+3V3 Pin=X32-1
+Removed Pin From Net: NetName=PC_11 Pin=X33-1
+Removed Pin From Net: NetName=+5V Pin=X36-1
+Removed Pin From Net: NetName=PC_12 Pin=X37-1
+Removed Pin From Net: NetName=GND1 Pin=X40-1
+Removed Pin From Net: NetName=PD_2 Pin=X41-1
+Removed Pin From Net: NetName=GND2 Pin=X44-1
+Removed Pin From Net: NetName=PG_2 Pin=X45-1
+Removed Pin From Net: NetName=VIN Pin=X46-1
+Removed Pin From Net: NetName=PG_3 Pin=X47-1
+Removed Member From Class: ClassName=main_sch Member=X18
+Removed Member From Class: ClassName=main_sch Member=X19
+Removed Member From Class: ClassName=main_sch Member=X24
+Removed Member From Class: ClassName=main_sch Member=X25
+Removed Member From Class: ClassName=main_sch Member=X28
+Removed Member From Class: ClassName=main_sch Member=X29
+Removed Member From Class: ClassName=main_sch Member=X32
+Removed Member From Class: ClassName=main_sch Member=X33
+Removed Member From Class: ClassName=main_sch Member=X36
+Removed Member From Class: ClassName=main_sch Member=X37
+Removed Member From Class: ClassName=main_sch Member=X40
+Removed Member From Class: ClassName=main_sch Member=X41
+Removed Member From Class: ClassName=main_sch Member=X44
+Removed Member From Class: ClassName=main_sch Member=X45
+Removed Member From Class: ClassName=main_sch Member=X46
+Removed Member From Class: ClassName=main_sch Member=X47
+Added Component: Designator=X2(2x17PinHeader_0.1in)
+Add component (AddParameter): Name = "Circuits"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Name"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NC Pin=X2-10
+Added Pin To Net: NetName=IOREF Pin=X2-11
+Added Pin To Net: NetName=RESET Pin=X2-12
+Added Pin To Net: NetName=+3V3 Pin=X2-13
+Added Pin To Net: NetName=+5V Pin=X2-14
+Added Pin To Net: NetName=GND1 Pin=X2-15
+Added Pin To Net: NetName=GND2 Pin=X2-16
+Added Pin To Net: NetName=VIN Pin=X2-17
+Added Pin To Net: NetName=PG_3 Pin=X2-18
+Added Pin To Net: NetName=PG_2 Pin=X2-19
+Added Pin To Net: NetName=PD_2 Pin=X2-20
+Added Pin To Net: NetName=PC_12 Pin=X2-21
+Added Pin To Net: NetName=PC_11 Pin=X2-22
+Added Pin To Net: NetName=PC_10 Pin=X2-23
+Added Pin To Net: NetName=PC_9 Pin=X2-24
+Added Pin To Net: NetName=PC_8 Pin=X2-25
+Added Member To Class: ClassName=main_sch Member=Component X2

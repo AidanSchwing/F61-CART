@@ -1,0 +1,28 @@
+Added Component: Designator=X12(GenericPinHeader(.1in))
+Added Component: Designator=X13(GenericPinHeader(.1in))
+Added Component: Designator=X14(GenericPinHeader(.1in))
+Added Component: Designator=X15(GenericPinHeader(.1in))
+Added Component: Designator=X16(GenericPinHeader(.1in))
+Added Component: Designator=X17(GenericPinHeader(.1in))
+Added Component: Designator=X18(GenericPinHeader(.1in))
+Added Component: Designator=X19(GenericPinHeader(.1in))
+Added Component: Designator=X20(GenericPinHeader(.1in))
+Added Component: Designator=X21(GenericPinHeader(.1in))
+Added Component: Designator=X22(GenericPinHeader(.1in))
+Added Component: Designator=X23(GenericPinHeader(.1in))
+Added Pin To Net: NetName=+5V Pin=X12-1
+Added Pin To Net: NetName=GND Pin=X16-1
+Added Pin To Net: NetName=PB_8/D15 Pin=X18-1
+Added Pin To Net: NetName=PB_9/D14 Pin=X20-1
+Added Member To Class: ClassName=main_sch Member=Component X12 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X13 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X14 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X15 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X16 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X17 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X18 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X19 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X20 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X21 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X22 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=main_sch Member=Component X23 GenericPinHeader(0.1in)

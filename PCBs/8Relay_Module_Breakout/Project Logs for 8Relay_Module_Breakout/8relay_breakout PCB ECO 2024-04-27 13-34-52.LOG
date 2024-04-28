@@ -1,0 +1,48 @@
+Added Component: Designator=X1(PHEONIX-1988943)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "DIGIKEY"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/en/products/detail/phoenix-contact/1988943/950906"; VariantName = "[No Variations]"
+Added Component: Designator=X2(GenericPinHeader(.1in))
+Added Component: Designator=X3(GenericPinHeader(.1in))
+Added Component: Designator=X4(GenericPinHeader(.1in))
+Added Component: Designator=X5(GenericPinHeader(.1in))
+Added Component: Designator=X6(GenericPinHeader(.1in))
+Added Component: Designator=X7(GenericPinHeader(.1in))
+Added Component: Designator=X8(GenericPinHeader(.1in))
+Added Component: Designator=X9(GenericPinHeader(.1in))
+Added Component: Designator=X10(GenericPinHeader(.1in))
+Added Component: Designator=X11(GenericPinHeader(.1in))
+Added Component: Designator=X12(GenericPinHeader(.1in))
+Added Pin To Net: NetName=GND_LOOP Pin=X1-1
+Added Pin To Net: NetName=GND_LOOP Pin=X4-1
+Added Net: Name=GND_LOOP
+Added Pin To Net: NetName=GND Pin=X1-11
+Added Pin To Net: NetName=GND Pin=X2-1
+Added Net: Name=GND
+Added Pin To Net: NetName=IN1 Pin=X1-2
+Added Pin To Net: NetName=IN1 Pin=X5-1
+Added Net: Name=IN1
+Added Pin To Net: NetName=IN2 Pin=X1-3
+Added Pin To Net: NetName=IN2 Pin=X6-1
+Added Net: Name=IN2
+Added Pin To Net: NetName=IN3 Pin=X1-4
+Added Pin To Net: NetName=IN3 Pin=X7-1
+Added Net: Name=IN3
+Added Pin To Net: NetName=IN4 Pin=X1-5
+Added Pin To Net: NetName=IN4 Pin=X8-1
+Added Net: Name=IN4
+Added Pin To Net: NetName=IN5 Pin=X1-6
+Added Pin To Net: NetName=IN5 Pin=X9-1
+Added Net: Name=IN5
+Added Pin To Net: NetName=IN6 Pin=X1-7
+Added Pin To Net: NetName=IN6 Pin=X10-1
+Added Net: Name=IN6
+Added Pin To Net: NetName=IN7 Pin=X1-8
+Added Pin To Net: NetName=IN7 Pin=X11-1
+Added Net: Name=IN7
+Added Pin To Net: NetName=IN8 Pin=X1-9
+Added Pin To Net: NetName=IN8 Pin=X12-1
+Added Net: Name=IN8
+Added Pin To Net: NetName=VCC Pin=X1-10
+Added Pin To Net: NetName=VCC Pin=X3-1
+Added Net: Name=VCC
+Added Class: Name=8relay_breakout

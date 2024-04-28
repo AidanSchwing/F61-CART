@@ -1,0 +1,10 @@
+Added Component: Designator=X13(GenericPinHeader(.1in))
+Added Component: Designator=X14(GenericPinHeader(.1in))
+Added Pin To Net: NetName=JD_VCC Pin=X1-13
+Added Pin To Net: NetName=JD_VCC Pin=X13-1
+Added Net: Name=JD_VCC
+Added Pin To Net: NetName=VCC_LOOP Pin=X1-12
+Added Pin To Net: NetName=VCC_LOOP Pin=X14-1
+Added Net: Name=VCC_LOOP
+Added Member To Class: ClassName=8relay_breakout Member=Component X13 GenericPinHeader(0.1in)
+Added Member To Class: ClassName=8relay_breakout Member=Component X14 GenericPinHeader(0.1in)

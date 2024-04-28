@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=RESET Pin=X1-14
+Removed Pin From Net: NetName=IOREF Pin=X1-15
+Added Pin To Net: NetName=IOREF Pin=X1-14
+Added Pin To Net: NetName=RESET Pin=X1-15

@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=NetX3_11 Pin=X7-25
+Added Pin To Net: NetName=NetX3_11 Pin=X9-1
+Added Pin To Net: NetName=NetX3_11 Pin=X9-2
+Change Net Name : Old Net Name=NetX3_11 New Net Name=AVDD
