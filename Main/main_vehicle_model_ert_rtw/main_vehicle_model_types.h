@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.15
+ * Model version                  : 1.18
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
+ * C/C++ source code generated on : Tue Apr 30 16:45:10 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,8 +22,48 @@
 #include "rtwtypes.h"
 #include "MW_SVD.h"
 
-/* Custom Type definition for MATLABSystem: '<Root>/PWM Output1' */
+/* Custom Type definition for MATLABSystem: '<Root>/WHLSPD DIGITAL PIN' */
 #include "MW_SVD.h"
+#ifndef struct_tag_KxFW01GBdhqk5JOEHU3GlD
+#define struct_tag_KxFW01GBdhqk5JOEHU3GlD
+
+struct tag_KxFW01GBdhqk5JOEHU3GlD
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_DIGITALIO_HANDLE;
+};
+
+#endif                                 /* struct_tag_KxFW01GBdhqk5JOEHU3GlD */
+
+#ifndef typedef_mbed_DigitalWrite_main_vehicl_T
+#define typedef_mbed_DigitalWrite_main_vehicl_T
+
+typedef struct tag_KxFW01GBdhqk5JOEHU3GlD mbed_DigitalWrite_main_vehicl_T;
+
+#endif                             /* typedef_mbed_DigitalWrite_main_vehicl_T */
+
+#ifndef struct_tag_UndvUYqhBVOhRRpUse3fWF
+#define struct_tag_UndvUYqhBVOhRRpUse3fWF
+
+struct tag_UndvUYqhBVOhRRpUse3fWF
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_PWM_HANDLE;
+};
+
+#endif                                 /* struct_tag_UndvUYqhBVOhRRpUse3fWF */
+
+#ifndef typedef_mbed_PWMOutput_main_vehicle_m_T
+#define typedef_mbed_PWMOutput_main_vehicle_m_T
+
+typedef struct tag_UndvUYqhBVOhRRpUse3fWF mbed_PWMOutput_main_vehicle_m_T;
+
+#endif                             /* typedef_mbed_PWMOutput_main_vehicle_m_T */
+
 #ifndef struct_tag_p5Oj7yF0nd6COoUgI0GAlG
 #define struct_tag_p5Oj7yF0nd6COoUgI0GAlG
 
@@ -85,26 +125,6 @@ struct tag_5FwKk6wA1XPbMoI1XCDeDF
 typedef struct tag_5FwKk6wA1XPbMoI1XCDeDF mbed_DigitalRead_main_vehicle_T;
 
 #endif                             /* typedef_mbed_DigitalRead_main_vehicle_T */
-
-#ifndef struct_tag_KxFW01GBdhqk5JOEHU3GlD
-#define struct_tag_KxFW01GBdhqk5JOEHU3GlD
-
-struct tag_KxFW01GBdhqk5JOEHU3GlD
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  MW_Handle_Type MW_DIGITALIO_HANDLE;
-};
-
-#endif                                 /* struct_tag_KxFW01GBdhqk5JOEHU3GlD */
-
-#ifndef typedef_mbed_DigitalWrite_main_vehicl_T
-#define typedef_mbed_DigitalWrite_main_vehicl_T
-
-typedef struct tag_KxFW01GBdhqk5JOEHU3GlD mbed_DigitalWrite_main_vehicl_T;
-
-#endif                             /* typedef_mbed_DigitalWrite_main_vehicl_T */
 
 #ifndef struct_tag_45NO01sr76bOLMYCTk1zwH
 #define struct_tag_45NO01sr76bOLMYCTk1zwH
@@ -323,26 +343,6 @@ struct tag_SOZSojNkdsyIbJ9UrSNKSE
 typedef struct tag_SOZSojNkdsyIbJ9UrSNKSE sensors_raspberrypi_ICM20948B_T;
 
 #endif                             /* typedef_sensors_raspberrypi_ICM20948B_T */
-
-#ifndef struct_tag_UndvUYqhBVOhRRpUse3fWF
-#define struct_tag_UndvUYqhBVOhRRpUse3fWF
-
-struct tag_UndvUYqhBVOhRRpUse3fWF
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  MW_Handle_Type MW_PWM_HANDLE;
-};
-
-#endif                                 /* struct_tag_UndvUYqhBVOhRRpUse3fWF */
-
-#ifndef typedef_mbed_PWMOutput_main_vehicle_m_T
-#define typedef_mbed_PWMOutput_main_vehicle_m_T
-
-typedef struct tag_UndvUYqhBVOhRRpUse3fWF mbed_PWMOutput_main_vehicle_m_T;
-
-#endif                             /* typedef_mbed_PWMOutput_main_vehicle_m_T */
 
 /* Parameters (default storage) */
 typedef struct P_main_vehicle_model_T_ P_main_vehicle_model_T;

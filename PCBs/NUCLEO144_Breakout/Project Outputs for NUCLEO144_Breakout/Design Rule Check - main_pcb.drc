@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\Aidan\Documents\F61-CART\PCBs\NUCLEO144_Breakout\main_pcb.PcbDoc
-Date     : 2024-04-27
-Time     : 19:29:52
+Date     : 2024-04-28
+Time     : 01:04:58
 
 Processing Rule : Clearance Constraint (Gap=0.2mm) (All),(All)
 Rule Violations :0
@@ -60,4 +60,4 @@ Rule Violations :0
 
 Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:01
+Time Elapsed        : 00:00:02

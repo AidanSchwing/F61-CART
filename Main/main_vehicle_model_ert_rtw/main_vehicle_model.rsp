@@ -1,9 +1,9 @@
+MW_digitalIO.o
+MW_PWM.o
 MW_AnalogInput.o
 MW_AnalogOutput.o
-MW_digitalIO.o
 MW_I2C.o
 MW_GetPeripheralObjects.o
-MW_PWM.o
 xcp_ext_mode.o
 ert_main.o
 main_vehicle_model.o

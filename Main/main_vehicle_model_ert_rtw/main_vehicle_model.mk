@@ -2,7 +2,7 @@
 ## Makefile generated for component 'main_vehicle_model'. 
 ## 
 ## Makefile     : main_vehicle_model.mk
-## Generated on : Tue Apr 23 15:31:28 2024
+## Generated on : Tue Apr 30 16:22:55 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/main_vehicle_model.elf
 ## Product type : executable
 ## 
@@ -223,7 +223,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogOutput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_I2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_GetPeripheralObjects.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_PWM.cpp $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c $(START_DIR)/main_vehicle_model_ert_rtw/main_vehicle_model.c $(START_DIR)/main_vehicle_model_ert_rtw/main_vehicle_model_data.c $(START_DIR)/main_vehicle_model_ert_rtw/rt_zcfcn.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/mw_mbed_interface.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/BufferedSerial.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/stm32nucleof7xx_init_board.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/GCC/mbed_syscalls.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/xcp_platform_timer_mbed.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/rtiostream_serial_mbed.cpp
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogOutput.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_I2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_GetPeripheralObjects.cpp $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c $(START_DIR)/main_vehicle_model_ert_rtw/main_vehicle_model.c $(START_DIR)/main_vehicle_model_ert_rtw/main_vehicle_model_data.c $(START_DIR)/main_vehicle_model_ert_rtw/rt_zcfcn.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/mw_mbed_interface.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/BufferedSerial.cpp C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmnucleo/STM32F746ZG/src/stm32nucleof7xx_init_board.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/GCC/mbed_syscalls.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/xcp_platform_timer_mbed.c C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/rtiostream_serial_mbed.cpp
 
 MAIN_SRC = $(START_DIR)/main_vehicle_model_ert_rtw/ert_main.c
 
@@ -233,7 +233,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_AnalogInput.o MW_AnalogOutput.o MW_digitalIO.o MW_I2C.o MW_GetPeripheralObjects.o MW_PWM.o xcp_ext_mode.o main_vehicle_model.o main_vehicle_model_data.o rt_zcfcn.o xcp_ext_common.o xcp_ext_classic_trigger.o xcp.o xcp_standard.o xcp_daq.o xcp_calibration.o xcp_fifo.o xcp_transport.o xcp_mem_default.o xcp_drv_rtiostream.o xcp_utils.o xcp_frame_serial.o xcp_ext_param_default_serial.o mw_mbed_interface.o BufferedSerial.o stm32nucleof7xx_init_board.o mbed_syscalls.o SysTickScheduler.o m3m4m4f_multitasking.o sys_arch.o xcp_platform_timer_mbed.o rtiostream_serial_mbed.o
+OBJS = MW_digitalIO.o MW_PWM.o MW_AnalogInput.o MW_AnalogOutput.o MW_I2C.o MW_GetPeripheralObjects.o xcp_ext_mode.o main_vehicle_model.o main_vehicle_model_data.o rt_zcfcn.o xcp_ext_common.o xcp_ext_classic_trigger.o xcp.o xcp_standard.o xcp_daq.o xcp_calibration.o xcp_fifo.o xcp_transport.o xcp_mem_default.o xcp_drv_rtiostream.o xcp_utils.o xcp_frame_serial.o xcp_ext_param_default_serial.o mw_mbed_interface.o BufferedSerial.o stm32nucleof7xx_init_board.o mbed_syscalls.o SysTickScheduler.o m3m4m4f_multitasking.o sys_arch.o xcp_platform_timer_mbed.o rtiostream_serial_mbed.o
 
 MAIN_OBJ = ert_main.o
 
@@ -738,6 +738,14 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+MW_digitalIO.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+MW_PWM.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_PWM.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 MW_AnalogInput.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_AnalogInput.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
@@ -746,19 +754,11 @@ MW_AnalogOutput.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-MW_digitalIO.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_digitalIO.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
 MW_I2C.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_I2C.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 MW_GetPeripheralObjects.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_GetPeripheralObjects.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-MW_PWM.o : C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/src/MW_PWM.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 

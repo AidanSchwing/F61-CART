@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.15
+ * Model version                  : 1.18
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
+ * C/C++ source code generated on : Tue Apr 30 16:45:10 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -28,11 +28,6 @@ P_main_vehicle_model_T main_vehicle_model_P = {
 
   /* Expression: -1
    * Referenced by: '<Root>/Digital Read'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/Digital Read2'
    */
   -1.0,
 
@@ -56,8 +51,33 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 0
+  /* Expression: -1
+   * Referenced by: '<Root>/WHLSPD DIGITAL PIN'
+   */
+  -1.0,
+
+  /* Expression: 1
    * Referenced by: '<Root>/Actuator Relay'
+   */
+  1.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/ACT1_DIR'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/ACT1_DUTY'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/ACT2_DIR'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/ACT2_DUTY'
    */
   0.0,
 
@@ -66,15 +86,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 0
-   * Referenced by: '<Root>/Constant1'
+  /* Expression: 1
+   * Referenced by: '<Root>/Drive Relay'
    */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Constant2'
-   */
-  0.0,
+  1.0,
 
   /* Expression: .5
    * Referenced by: '<S2>/Constant'
@@ -83,21 +98,6 @@ P_main_vehicle_model_T main_vehicle_model_P = {
 
   /* Expression: 0
    * Referenced by: '<S2>/Unit Delay'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<Root>/Drive Relay'
-   */
-  1.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/STEERING MOTOR DUTY'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/STEERING MOTOR DUTY2'
    */
   0.0,
 

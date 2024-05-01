@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.15
+ * Model version                  : 1.18
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue Apr 23 15:37:12 2024
+ * C/C++ source code generated on : Tue Apr 30 16:45:10 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,12 +26,12 @@
 #include "sysran_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
-#include "MW_AnalogIn.h"
 #include "MW_MbedPinInterface.h"
-#include "MW_AnalogOut.h"
 #include "MW_digitalIO.h"
-#include "MW_I2C.h"
 #include "MW_PWM.h"
+#include "MW_AnalogIn.h"
+#include "MW_AnalogOut.h"
+#include "MW_I2C.h"
 #endif                                 /* main_vehicle_model_COMMON_INCLUDES_ */
 
 #include "main_vehicle_model_types.h"
@@ -90,8 +90,8 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T Round;                        /* '<Root>/Round' */
-  real_T Round1;                       /* '<Root>/Round1' */
+  real_T ACT1_DUTY_ROUNDED;            /* '<Root>/Round' */
+  real_T ACT2_DUTY_ROUNDED;            /* '<Root>/Round1' */
   real_T In1;                          /* '<S12>/In1' */
   real_T In1_g;                        /* '<S11>/In1' */
   real_T IMUACCEL[3];                  /* '<Root>/ICM20948 IMU Sensor' */
@@ -110,8 +110,8 @@ typedef struct {
   uint8_T b_value;
   uint8_T slaveAddress;
   uint8_T b_status_p;
+  boolean_T WHEELSPEEDTOGGLE;          /* '<Root>/WHLSPD DIGITAL PIN' */
   boolean_T CHAN_A;                    /* '<Root>/Digital Read3' */
-  boolean_T WHEELSPEEDTOGGLE;          /* '<Root>/Digital Read2' */
   boolean_T CHAN_B;                    /* '<Root>/Digital Read' */
 } B_main_vehicle_model_T;
 
@@ -119,19 +119,19 @@ typedef struct {
 typedef struct {
   sensors_raspberrypi_ICM20948B_T obj; /* '<Root>/ICM20948 IMU Sensor' */
   mbed_AnalogInput_main_vehicle_T obj_n;/* '<Root>/Analog Input1' */
+  mbed_DigitalRead_main_vehicle_T obj_n2;/* '<Root>/WHLSPD DIGITAL PIN' */
   mbed_DigitalRead_main_vehicle_T obj_f;/* '<Root>/Digital Read3' */
-  mbed_DigitalRead_main_vehicle_T obj_n2;/* '<Root>/Digital Read2' */
   mbed_DigitalRead_main_vehicle_T obj_i;/* '<Root>/Digital Read' */
-  mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/Analog Output' */
-  mbed_DigitalWrite_main_vehicl_T obj_nh;/* '<Root>/Digital Write6' */
-  mbed_DigitalWrite_main_vehicl_T obj_e;/* '<Root>/Digital Write5' */
-  mbed_DigitalWrite_main_vehicl_T obj_l;/* '<Root>/Digital Write4' */
-  mbed_DigitalWrite_main_vehicl_T obj_nv;/* '<Root>/Digital Write3' */
   mbed_DigitalWrite_main_vehicl_T obj_ii;/* '<Root>/Digital Write2' */
   mbed_DigitalWrite_main_vehicl_T obj_m;/* '<Root>/Digital Write1' */
   mbed_DigitalWrite_main_vehicl_T obj_j;/* '<Root>/Digital Write' */
-  mbed_PWMOutput_main_vehicle_m_T obj_iw;/* '<Root>/PWM Output1' */
-  mbed_PWMOutput_main_vehicle_m_T obj_ef;/* '<Root>/PWM Output' */
+  mbed_DigitalWrite_main_vehicl_T obj_l;/* '<Root>/DRIVE RELAY PIN' */
+  mbed_DigitalWrite_main_vehicl_T obj_nh;/* '<Root>/ACTUATOR 2 DIR PIN' */
+  mbed_DigitalWrite_main_vehicl_T obj_e;/* '<Root>/ACTUATOR 1 DIR PIN' */
+  mbed_DigitalWrite_main_vehicl_T obj_nv;/* '<Root>/ACT RELAY PIN' */
+  mbed_PWMOutput_main_vehicle_m_T obj_iw;/* '<Root>/ACTUATOR 2 PWM PIN' */
+  mbed_PWMOutput_main_vehicle_m_T obj_ef;/* '<Root>/ACTUATOR 1 PWM PIN' */
+  mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/DRIVE MTR ANALOG PIN' */
   real_T UnitDelay_DSTATE;             /* '<S2>/Unit Delay' */
   int32_T clockTickCounter;            /* '<Root>/Pulse Generator' */
   int8_T TriggeredSubsystem_SubsysRanBC;/* '<S2>/Triggered Subsystem' */
@@ -153,9 +153,6 @@ struct P_main_vehicle_model_T_ {
   real_T DigitalRead_SampleTime;       /* Expression: -1
                                         * Referenced by: '<Root>/Digital Read'
                                         */
-  real_T DigitalRead2_SampleTime;      /* Expression: -1
-                                        * Referenced by: '<Root>/Digital Read2'
-                                        */
   real_T DigitalRead3_SampleTime;      /* Expression: -1
                                         * Referenced by: '<Root>/Digital Read3'
                                         */
@@ -168,32 +165,35 @@ struct P_main_vehicle_model_T_ {
   real_T Out1_Y0_b;                    /* Computed Parameter: Out1_Y0_b
                                         * Referenced by: '<S12>/Out1'
                                         */
-  real_T ActuatorRelay_Value;          /* Expression: 0
+  real_T WHLSPDDIGITALPIN_SampleTime;  /* Expression: -1
+                                        * Referenced by: '<Root>/WHLSPD DIGITAL PIN'
+                                        */
+  real_T ActuatorRelay_Value;          /* Expression: 1
                                         * Referenced by: '<Root>/Actuator Relay'
+                                        */
+  real_T ACT1_DIR_Value;               /* Expression: 0
+                                        * Referenced by: '<Root>/ACT1_DIR'
+                                        */
+  real_T ACT1_DUTY_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/ACT1_DUTY'
+                                        */
+  real_T ACT2_DIR_Value;               /* Expression: 0
+                                        * Referenced by: '<Root>/ACT2_DIR'
+                                        */
+  real_T ACT2_DUTY_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/ACT2_DUTY'
                                         */
   real_T Constant_Value;               /* Expression: 0
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T Constant1_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant1'
-                                        */
-  real_T Constant2_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant2'
+  real_T DriveRelay_Value;             /* Expression: 1
+                                        * Referenced by: '<Root>/Drive Relay'
                                         */
   real_T Constant_Value_i;             /* Expression: .5
                                         * Referenced by: '<S2>/Constant'
                                         */
   real_T UnitDelay_InitialCondition;   /* Expression: 0
                                         * Referenced by: '<S2>/Unit Delay'
-                                        */
-  real_T DriveRelay_Value;             /* Expression: 1
-                                        * Referenced by: '<Root>/Drive Relay'
-                                        */
-  real_T STEERINGMOTORDUTY_Value;      /* Expression: 0
-                                        * Referenced by: '<Root>/STEERING MOTOR DUTY'
-                                        */
-  real_T STEERINGMOTORDUTY2_Value;     /* Expression: 0
-                                        * Referenced by: '<Root>/STEERING MOTOR DUTY2'
                                         */
   real_T PulseGenerator_Amp;           /* Expression: 1
                                         * Referenced by: '<Root>/Pulse Generator'

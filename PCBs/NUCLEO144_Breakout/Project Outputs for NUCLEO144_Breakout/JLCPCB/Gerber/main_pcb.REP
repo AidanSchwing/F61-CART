@@ -2,93 +2,67 @@
 FileName = main_pcb.GBR
 AutoAperture = True
 *************************************************************
-Generating : Top Layer
-      File : main_pcb.GTL
+Generating : Bottom Coverlay 3
+      File : main_pcb.GCB3
 
-    Adding Layer      : Top Layer
+    Adding Layer      : Bottom Coverlay 3
 
-    Adding Layer      : Multi-Layer
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : main_pcb.GM15
+
+    Adding Layer      : Mechanical 15
 
 
 Used DCodes :
     D11
-    D15
-    D16
-    D17
+    D21
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : main_pcb.GTO
+Generating : Mechanical 13
+      File : main_pcb.GM13
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : Mechanical 13
 
 
 Used DCodes :
-    D10
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : main_pcb.GM1
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : main_pcb.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D22
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : main_pcb.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
     D11
-*************************************************************
-
-*************************************************************
-Generating : Top Paste
-      File : main_pcb.GTP
-
-    Adding Layer      : Top Paste
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-*************************************************************
-
-*************************************************************
-Generating : Top Solder
-      File : main_pcb.GTS
-
-    Adding Layer      : Top Solder
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D12
-    D13
-    D14
-*************************************************************
-
-*************************************************************
-Generating : Top Pad Master
-      File : main_pcb.GPT
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D15
-    D16
-*************************************************************
-
-*************************************************************
-Generating : Bottom Solder
-      File : main_pcb.GBS
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D12
-    D13
-    D14
 *************************************************************
 
 *************************************************************
@@ -106,45 +80,80 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Overlay
-      File : main_pcb.GBO
+Generating : Bottom Solder
+      File : main_pcb.GBS
 
-    Adding Layer      : Bottom Overlay
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : main_pcb.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : main_pcb.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : main_pcb.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
     D11
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 13
-      File : main_pcb.GM13
+Generating : Top Pad Master
+      File : main_pcb.GPT
 
-    Adding Layer      : Mechanical 13
+    Adding Layer      : Top Layer
 
-
-Used DCodes :
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 15
-      File : main_pcb.GM15
-
-    Adding Layer      : Mechanical 15
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D11
-*************************************************************
-
-*************************************************************
-Generating : Bottom Coverlay 3
-      File : main_pcb.GCB3
-
-    Adding Layer      : Bottom Coverlay 3
-
-
-Used DCodes :
+    D17
+    D18
+    D19
 *************************************************************
 
 *************************************************************
@@ -157,8 +166,9 @@ Generating : Bottom Pad Master
 
 
 Used DCodes :
-    D15
-    D16
+    D17
+    D18
+    D19
 *************************************************************
 
 *************************************************************
@@ -172,29 +182,28 @@ Generating : Bottom Layer
 
 Used DCodes :
     D11
-    D15
     D16
     D17
-*************************************************************
-
-*************************************************************
-Generating : Keep-Out Layer
-      File : main_pcb.GKO
-
-    Adding Layer      : Keep-Out Layer
-
-
-Used DCodes :
     D18
+    D19
+    D20
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 1
-      File : main_pcb.GM1
+Generating : Top Layer
+      File : main_pcb.GTL
 
-    Adding Layer      : Mechanical 1
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
+    D11
+    D16
+    D17
+    D18
+    D19
+    D20
 *************************************************************
 
