@@ -13,10 +13,8 @@ ert_main.o: \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_digitalIO.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_PWM.h \
- C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
  C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/include/MW_AnalogOut.h \
  C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h \
- C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_I2C.h \
  C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/main_vehicle_model_types.h \
  C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/rt_zcfcn.h \
  C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/zero_crossing_types.h \
@@ -125,10 +123,8 @@ C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/stmn
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_digitalIO.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_PWM.h:
-C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h:
 C:/ProgramData/MATLAB/SupportPackages/R2023b/toolbox/target/supportpackages/mbed/include/MW_AnalogOut.h:
 C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_SVD.h:
-C:/Program\ Files/MATLAB/R2023b/toolbox/target/shared/svd/common/include/MW_I2C.h:
 C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/main_vehicle_model_types.h:
 C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/rt_zcfcn.h:
 C:/Users/Aidan/Documents/F61-CART/Main/main_vehicle_model_ert_rtw/zero_crossing_types.h:

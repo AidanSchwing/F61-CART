@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.18
+ * Model version                  : 1.19
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue Apr 30 16:45:10 2024
+ * C/C++ source code generated on : Thu May 16 12:43:07 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -78,7 +78,7 @@ void rt_OneStep(void)
     {
      case 2 :
       currentTime = (extmodeSimulationTime_T)
-        ((main_vehicle_model_M->Timing.clockTick2) * 0.1);
+        ((main_vehicle_model_M->Timing.clockTick2) * 0.5);
       main_vehicle_model_step2();
 
       /* Get model outputs here */
