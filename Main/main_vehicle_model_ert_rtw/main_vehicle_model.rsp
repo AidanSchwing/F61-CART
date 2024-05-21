@@ -1,6 +1,7 @@
 MW_digitalIO.o
 MW_PWM.o
 MW_AnalogOutput.o
+MW_AnalogInput.o
 xcp_ext_mode.o
 ert_main.o
 main_vehicle_model.o
@@ -19,6 +20,7 @@ xcp_drv_rtiostream.o
 xcp_utils.o
 xcp_frame_serial.o
 xcp_ext_param_default_serial.o
+MW_InterruptIn.o
 mw_mbed_interface.o
 BufferedSerial.o
 stm32nucleof7xx_init_board.o

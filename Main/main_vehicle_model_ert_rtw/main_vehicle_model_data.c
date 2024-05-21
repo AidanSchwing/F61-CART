@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.19
+ * Model version                  : 1.63
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu May 16 12:43:07 2024
+ * C/C++ source code generated on : Tue May 21 12:49:51 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,25 +21,60 @@
 
 /* Block parameters (default storage) */
 P_main_vehicle_model_T main_vehicle_model_P = {
-  /* Computed Parameter: Out1_Y0
-   * Referenced by: '<S2>/Out1'
+  /* Expression: -1
+   * Referenced by: '<Root>/ENC_A1'
    */
-  0.0,
+  -1.0,
 
-  /* Computed Parameter: Out1_Y0_b
+  /* Expression: -1
+   * Referenced by: '<Root>/ENC_B1'
+   */
+  -1.0,
+
+  /* Computed Parameter: Out1_Y0
    * Referenced by: '<S3>/Out1'
    */
   0.0,
 
+  /* Expression: 1
+   * Referenced by: '<S7>/FixPt Constant'
+   */
+  1.0,
+
+  /* Computed Parameter: count_fcn_Y0
+   * Referenced by: '<S1>/count_fcn'
+   */
+  0.0,
+
   /* Expression: -1
-   * Referenced by: '<Root>/WHLSPD DIGITAL PIN'
+   * Referenced by: '<Root>/PRES_DUCER'
    */
   -1.0,
 
-  /* Expression: 1
+  /* Computed Parameter: Out1_Y0_d
+   * Referenced by: '<S5>/Out1'
+   */
+  0.0,
+
+  /* Computed Parameter: Out1_Y0_b
+   * Referenced by: '<S6>/Out1'
+   */
+  0.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/WHL_F1'
+   */
+  -1.0,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/WHL_F2'
+   */
+  -1.0,
+
+  /* Expression: 0
    * Referenced by: '<Root>/Actuator Relay'
    */
-  1.0,
+  0.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/ACT1_DIR'
@@ -62,6 +97,16 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   0.0,
 
   /* Expression: 0
+   * Referenced by: '<Root>/Constant1'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Constant2'
+   */
+  0.0,
+
+  /* Expression: 0
    * Referenced by: '<Root>/Constant'
    */
   0.0,
@@ -72,12 +117,12 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   1.0,
 
   /* Expression: .5
-   * Referenced by: '<S1>/Constant'
+   * Referenced by: '<S2>/Constant'
    */
   0.5,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Unit Delay'
+   * Referenced by: '<S2>/Unit Delay'
    */
   0.0,
 

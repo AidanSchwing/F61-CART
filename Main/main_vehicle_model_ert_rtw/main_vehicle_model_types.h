@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.19
+ * Model version                  : 1.63
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu May 16 12:43:07 2024
+ * C/C++ source code generated on : Tue May 21 12:49:51 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,7 +22,7 @@
 #include "rtwtypes.h"
 #include "MW_SVD.h"
 
-/* Custom Type definition for MATLABSystem: '<Root>/WHLSPD DIGITAL PIN' */
+/* Custom Type definition for MATLABSystem: '<Root>/WHL_F2' */
 #include "MW_SVD.h"
 #ifndef struct_tag_KxFW01GBdhqk5JOEHU3GlD
 #define struct_tag_KxFW01GBdhqk5JOEHU3GlD
@@ -104,6 +104,27 @@ struct tag_5FwKk6wA1XPbMoI1XCDeDF
 typedef struct tag_5FwKk6wA1XPbMoI1XCDeDF mbed_DigitalRead_main_vehicle_T;
 
 #endif                             /* typedef_mbed_DigitalRead_main_vehicle_T */
+
+#ifndef struct_tag_p5Oj7yF0nd6COoUgI0GAlG
+#define struct_tag_p5Oj7yF0nd6COoUgI0GAlG
+
+struct tag_p5Oj7yF0nd6COoUgI0GAlG
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  MW_Handle_Type MW_ANALOGIN_HANDLE;
+  real_T SampleTime;
+};
+
+#endif                                 /* struct_tag_p5Oj7yF0nd6COoUgI0GAlG */
+
+#ifndef typedef_mbed_AnalogInput_main_vehicle_T
+#define typedef_mbed_AnalogInput_main_vehicle_T
+
+typedef struct tag_p5Oj7yF0nd6COoUgI0GAlG mbed_AnalogInput_main_vehicle_T;
+
+#endif                             /* typedef_mbed_AnalogInput_main_vehicle_T */
 
 /* Parameters (default storage) */
 typedef struct P_main_vehicle_model_T_ P_main_vehicle_model_T;

@@ -1,0 +1,10 @@
+config load "C:\Users\Aidan\Documents\F61-CART\Expo\cart_stm32_simulink\cart_stm32_simulink.ioc"
+project toolchain STM32CubeIDE
+
+SetStructure Advanced
+
+project setCustomFWPath "C:\Users\Aidan\STM32Cube\Repository\STM32Cube_FW_F7_V1.16.2"
+
+project generate 
+
+exit wait
