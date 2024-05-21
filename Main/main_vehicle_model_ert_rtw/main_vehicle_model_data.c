@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.63
+ * Model version                  : 1.220
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 12:49:51 2024
+ * C/C++ source code generated on : Tue May 21 16:05:15 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,69 +22,49 @@
 /* Block parameters (default storage) */
 P_main_vehicle_model_T main_vehicle_model_P = {
   /* Expression: -1
-   * Referenced by: '<Root>/ENC_A1'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/ENC_B1'
-   */
-  -1.0,
-
-  /* Computed Parameter: Out1_Y0
-   * Referenced by: '<S3>/Out1'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<S7>/FixPt Constant'
-   */
-  1.0,
-
-  /* Computed Parameter: count_fcn_Y0
-   * Referenced by: '<S1>/count_fcn'
-   */
-  0.0,
-
-  /* Expression: -1
    * Referenced by: '<Root>/PRES_DUCER'
    */
   -1.0,
 
-  /* Computed Parameter: Out1_Y0_d
-   * Referenced by: '<S5>/Out1'
-   */
-  0.0,
-
-  /* Computed Parameter: Out1_Y0_b
+  /* Computed Parameter: Out1_Y0
    * Referenced by: '<S6>/Out1'
    */
   0.0,
 
-  /* Expression: -1
-   * Referenced by: '<Root>/WHL_F1'
+  /* Computed Parameter: Out1_Y0_b
+   * Referenced by: '<S7>/Out1'
    */
-  -1.0,
+  0.0,
 
   /* Expression: -1
    * Referenced by: '<Root>/WHL_F2'
    */
   -1.0,
 
-  /* Expression: 0
-   * Referenced by: '<Root>/Actuator Relay'
+  /* Expression: -1
+   * Referenced by: '<Root>/WHL_F1'
+   */
+  -1.0,
+
+  /* Expression: 0.00001
+   * Referenced by: '<Root>/enc_A'
+   */
+  1.0E-5,
+
+  /* Expression: 0.00001
+   * Referenced by: '<Root>/enc_B'
+   */
+  1.0E-5,
+
+  /* Computed Parameter: Out1_Y0_by
+   * Referenced by: '<S3>/Out1'
    */
   0.0,
 
-  /* Expression: 0
-   * Referenced by: '<Root>/ACT1_DIR'
+  /* Expression: 1
+   * Referenced by: '<S8>/FixPt Constant'
    */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/ACT1_DUTY'
-   */
-  0.0,
+  1.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/ACT2_DIR'
@@ -96,18 +76,53 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
+  /* Expression: 20
+   * Referenced by: '<Root>/ANGLE SETPOINT'
+   */
+  20.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Constant3'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Memory2'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Constant2'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S1>/Constant4'
+   */
+  0.0,
+
+  /* Expression: 1/(500*4) * 360
+   * Referenced by: '<S1>/Gain'
+   */
+  0.18,
+
+  /* Expression: 10
+   * Referenced by: '<Root>/Kp'
+   */
+  10.0,
+
+  /* Expression: 100
+   * Referenced by: '<Root>/Saturation'
+   */
+  100.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Saturation'
+   */
+  0.0,
+
   /* Expression: 0
    * Referenced by: '<Root>/Constant1'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Constant2'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Constant'
    */
   0.0,
 
@@ -123,6 +138,16 @@ P_main_vehicle_model_T main_vehicle_model_P = {
 
   /* Expression: 0
    * Referenced by: '<S2>/Unit Delay'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Actuator Relay'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Constant'
    */
   0.0,
 
@@ -144,7 +169,17 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   /* Expression: 0
    * Referenced by: '<Root>/Pulse Generator'
    */
-  0.0
+  0.0,
+
+  /* Computed Parameter: Memory1_InitialCondition
+   * Referenced by: '<S1>/Memory1'
+   */
+  false,
+
+  /* Computed Parameter: Memory_InitialCondition
+   * Referenced by: '<S1>/Memory'
+   */
+  false
 };
 
 /*

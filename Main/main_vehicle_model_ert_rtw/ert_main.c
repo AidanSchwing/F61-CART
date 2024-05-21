@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.63
+ * Model version                  : 1.220
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 12:49:51 2024
+ * C/C++ source code generated on : Tue May 21 16:05:15 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,14 +24,15 @@
 #include "MW_target_hardware_resources.h"
 
 volatile int IsrOverrun = 0;
-boolean_T isRateRunning[3] = { 0, 0, 0 };
+boolean_T isRateRunning[4] = { 0, 0, 0, 0 };
 
-boolean_T need2runFlags[3] = { 0, 0, 0 };
+boolean_T need2runFlags[4] = { 0, 0, 0, 0 };
 
 void rt_OneStep(void)
 {
   extmodeSimulationTime_T currentTime = (extmodeSimulationTime_T) 0;
-  boolean_T eventFlags[3];
+  boolean_T eventFlags[4];
+  int_T i;
 
   /* Check base rate for overrun */
   if (isRateRunning[0]++) {
@@ -56,44 +57,59 @@ void rt_OneStep(void)
   extmodeEvent(1, currentTime);
   __disable_irq();
   isRateRunning[0]--;
-  if (eventFlags[2]) {
-    if (need2runFlags[2]++) {
-      IsrOverrun = 1;
-      need2runFlags[2]--;              /* allow future iterations to succeed*/
-      return;
+  for (i = 1; i < 4; i++) {
+    if (eventFlags[i]) {
+      if (need2runFlags[i]++) {
+        IsrOverrun = 1;
+        need2runFlags[i]--;            /* allow future iterations to succeed*/
+        break;
+      }
     }
   }
 
-  if (need2runFlags[2]) {
-    if (isRateRunning[1]) {
+  for (i = 2; i < 4; i++) {
+    if (isRateRunning[i]) {
       /* Yield to higher priority*/
       return;
     }
 
-    isRateRunning[2]++;
-    __enable_irq();
+    if (need2runFlags[i]) {
+      isRateRunning[i]++;
+      __enable_irq();
 
-    /* Step the model for subrate "2" */
-    switch (2)
-    {
-     case 2 :
-      currentTime = (extmodeSimulationTime_T)
-        ((main_vehicle_model_M->Timing.clockTick2) * 0.5);
-      main_vehicle_model_step2();
+      /* Step the model for subrate "i" */
+      switch (i)
+      {
+       case 2 :
+        currentTime = (extmodeSimulationTime_T)
+          ((main_vehicle_model_M->Timing.clockTick2) * 0.01);
+        main_vehicle_model_step2();
 
-      /* Get model outputs here */
+        /* Get model outputs here */
 
-      /* Trigger External Mode event */
-      extmodeEvent(2, currentTime);
-      break;
+        /* Trigger External Mode event */
+        extmodeEvent(2, currentTime);
+        break;
 
-     default :
-      break;
+       case 3 :
+        currentTime = (extmodeSimulationTime_T)
+          ((main_vehicle_model_M->Timing.clockTick3) * 0.5);
+        main_vehicle_model_step3();
+
+        /* Get model outputs here */
+
+        /* Trigger External Mode event */
+        extmodeEvent(3, currentTime);
+        break;
+
+       default :
+        break;
+      }
+
+      __disable_irq();
+      need2runFlags[i]--;
+      isRateRunning[i]--;
     }
-
-    __disable_irq();
-    need2runFlags[2]--;
-    isRateRunning[2]--;
   }
 }
 
@@ -101,7 +117,7 @@ volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(void)
 {
-  float modelBaseRate = 0.01;
+  float modelBaseRate = 1.0E-5;
   float systemClock = 216;
   extmodeErrorCode_T errorCode = EXTMODE_SUCCESS;
 
