@@ -20,7 +20,6 @@ xcp_drv_rtiostream.o
 xcp_utils.o
 xcp_frame_serial.o
 xcp_ext_param_default_serial.o
-MW_InterruptIn.o
 mw_mbed_interface.o
 BufferedSerial.o
 stm32nucleof7xx_init_board.o

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.220
+ * Model version                  : 1.246
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:05:15 2024
+ * C/C++ source code generated on : Tue May 21 16:39:59 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,7 +26,6 @@
 #include "sysran_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
-#include "MW_InterruptIn.h"
 #include "MW_MbedPinInterface.h"
 #include "MW_digitalIO.h"
 #include "MW_PWM.h"
@@ -35,7 +34,6 @@
 #endif                                 /* main_vehicle_model_COMMON_INCLUDES_ */
 
 #include "main_vehicle_model_types.h"
-#include "MW_SVD.h"
 #include "rt_zcfcn.h"
 #include "zero_crossing_types.h"
 #include "MW_target_hardware_resources.h"
@@ -95,15 +93,16 @@ typedef struct {
   real_T enc_angle;                    /* '<S1>/Gain' */
   real_T steer_ang_errdeg;             /* '<Root>/Subtract' */
   real_T ACT1_DUTY_ROUNDED;            /* '<Root>/Round2' */
-  real_T Add;                          /* '<Root>/Add' */
-  real_T TmpRTBAtAddOutport1;          /* '<Root>/Add' */
-  real_T FixPtSum1;                    /* '<S8>/FixPt Sum1' */
-  real_T In1;                          /* '<S7>/In1' */
-  real_T In1_g;                        /* '<S6>/In1' */
-  real_T PRESSURE;                     /* '<Root>/PRES_DUCER' */
+  real_T Divide;                       /* '<S2>/Divide' */
+  real_T Divide_e;                     /* '<S3>/Divide' */
+  real_T In1;                          /* '<S9>/In1' */
+  real_T In1_g;                        /* '<S8>/In1' */
+  real_T In1_g2;                       /* '<S7>/In1' */
+  real_T In1_g20;                      /* '<S6>/In1' */
+  real_T BRAKE_PRESSURE;               /* '<Root>/PRES_DUCER' */
   real_T enc_count;                    /* '<S1>/MATLAB Function' */
-  boolean_T WHL_F1;                    /* '<Root>/WHL_F1' */
   boolean_T WHL_F2;                    /* '<Root>/WHL_F2' */
+  boolean_T WHL_F1;                    /* '<Root>/WHL_F1' */
   boolean_T new_A;                     /* '<S1>/MATLAB Function' */
   boolean_T new_B;                     /* '<S1>/MATLAB Function' */
 } B_main_vehicle_model_T;
@@ -111,27 +110,28 @@ typedef struct {
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   mbed_AnalogInput_main_vehicle_T obj; /* '<Root>/PRES_DUCER' */
-  mbed_DigitalRead_main_vehicle_T obj_k;/* '<Root>/enc_B' */
-  mbed_DigitalRead_main_vehicle_T obj_f;/* '<Root>/enc_A' */
-  mbed_DigitalRead_main_vehicle_T obj_n;/* '<Root>/WHL_F1' */
+  mbed_DigitalRead_main_vehicle_T obj_k;/* '<Root>/enc_ch_B' */
+  mbed_DigitalRead_main_vehicle_T obj_f;/* '<Root>/enc_ch_A' */
   mbed_DigitalRead_main_vehicle_T obj_j;/* '<Root>/WHL_F2' */
+  mbed_DigitalRead_main_vehicle_T obj_n;/* '<Root>/WHL_F1' */
   mbed_DigitalWrite_main_vehicl_T obj_i;/* '<Root>/Digital Write2' */
   mbed_DigitalWrite_main_vehicl_T obj_m;/* '<Root>/Digital Write1' */
   mbed_DigitalWrite_main_vehicl_T obj_jb;/* '<Root>/Digital Write' */
-  mbed_DigitalWrite_main_vehicl_T obj_l;/* '<Root>/DRIVE RELAY PIN' */
+  mbed_DigitalWrite_main_vehicl_T obj_l;/* '<Root>/DRIVE RELAY EN PIN' */
   mbed_DigitalWrite_main_vehicl_T obj_nh;/* '<Root>/ACTUATOR 2 DIR PIN' */
   mbed_DigitalWrite_main_vehicl_T obj_ff;/* '<Root>/ACTUATOR 1 DIR PIN1' */
-  mbed_DigitalWrite_main_vehicl_T obj_nv;/* '<Root>/ACT RELAY PIN' */
+  mbed_DigitalWrite_main_vehicl_T obj_nv;/* '<Root>/ACT RELAY EN PIN' */
   mbed_PWMOutput_main_vehicle_m_T obj_iw;/* '<Root>/ACTUATOR 2 PWM PIN' */
   mbed_PWMOutput_main_vehicle_m_T obj_ib;/* '<Root>/ACTUATOR 1 PWM PIN1' */
-  mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/DRIVE MTR ANALOG PIN' */
+  mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/DRIVE MOTOR ANALOG PIN' */
   real_T UnitDelay_DSTATE;             /* '<S2>/Unit Delay' */
+  real_T UnitDelay_DSTATE_k;           /* '<S3>/Unit Delay' */
   real_T Memory2_PreviousInput;        /* '<S1>/Memory2' */
-  MW_Handle_Type iNDEXPININTERRUPT_ExtIntHandle;/* '<Root>/iNDEX PIN INTERRUPT' */
   int32_T clockTickCounter;            /* '<Root>/Pulse Generator' */
-  int8_T Subsystem1_SubsysRanBC;       /* '<Root>/Subsystem1' */
-  int8_T TriggeredSubsystem_SubsysRanBC;/* '<S2>/Triggered Subsystem' */
-  int8_T IfActionSubsystem_SubsysRanBC;/* '<S2>/If Action Subsystem' */
+  int8_T TriggeredSubsystem_SubsysRanBC;/* '<S3>/Triggered Subsystem' */
+  int8_T IfActionSubsystem_SubsysRanBC;/* '<S3>/If Action Subsystem' */
+  int8_T TriggeredSubsystem_SubsysRanB_c;/* '<S2>/Triggered Subsystem' */
+  int8_T IfActionSubsystem_SubsysRanBC_h;/* '<S2>/If Action Subsystem' */
   uint8_T is_active_c1_main_vehicle_model;/* '<Root>/conv_to_dir_pin' */
   uint8_T is_active_c2_main_vehicle_model;/* '<S1>/MATLAB Function' */
   boolean_T Memory1_PreviousInput;     /* '<S1>/Memory1' */
@@ -140,7 +140,8 @@ typedef struct {
 
 /* Zero-crossing (trigger) state */
 typedef struct {
-  ZCSigState TriggeredSubsystem_Trig_ZCE;/* '<S2>/Triggered Subsystem' */
+  ZCSigState TriggeredSubsystem_Trig_ZCE;/* '<S3>/Triggered Subsystem' */
+  ZCSigState TriggeredSubsystem_Trig_ZCE_m;/* '<S2>/Triggered Subsystem' */
 } PrevZCX_main_vehicle_model_T;
 
 /* Parameters (default storage) */
@@ -154,23 +155,23 @@ struct P_main_vehicle_model_T_ {
   real_T Out1_Y0_b;                    /* Computed Parameter: Out1_Y0_b
                                         * Referenced by: '<S7>/Out1'
                                         */
-  real_T WHL_F2_SampleTime;            /* Expression: -1
-                                        * Referenced by: '<Root>/WHL_F2'
+  real_T Out1_Y0_i;                    /* Computed Parameter: Out1_Y0_i
+                                        * Referenced by: '<S8>/Out1'
+                                        */
+  real_T Out1_Y0_c;                    /* Computed Parameter: Out1_Y0_c
+                                        * Referenced by: '<S9>/Out1'
                                         */
   real_T WHL_F1_SampleTime;            /* Expression: -1
                                         * Referenced by: '<Root>/WHL_F1'
                                         */
-  real_T enc_A_SampleTime;             /* Expression: 0.00001
-                                        * Referenced by: '<Root>/enc_A'
+  real_T WHL_F2_SampleTime;            /* Expression: -1
+                                        * Referenced by: '<Root>/WHL_F2'
                                         */
-  real_T enc_B_SampleTime;             /* Expression: 0.00001
-                                        * Referenced by: '<Root>/enc_B'
+  real_T enc_ch_A_SampleTime;          /* Expression: 0.00001
+                                        * Referenced by: '<Root>/enc_ch_A'
                                         */
-  real_T Out1_Y0_by;                   /* Computed Parameter: Out1_Y0_by
-                                        * Referenced by: '<S3>/Out1'
-                                        */
-  real_T FixPtConstant_Value;          /* Expression: 1
-                                        * Referenced by: '<S8>/FixPt Constant'
+  real_T enc_ch_B_SampleTime;          /* Expression: 0.00001
+                                        * Referenced by: '<Root>/enc_ch_B'
                                         */
   real_T ACT2_DIR_Value;               /* Expression: 0
                                         * Referenced by: '<Root>/ACT2_DIR'
@@ -178,8 +179,14 @@ struct P_main_vehicle_model_T_ {
   real_T ACT2_DUTY_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/ACT2_DUTY'
                                         */
-  real_T ANGLESETPOINT_Value;          /* Expression: 20
+  real_T ANGLESETPOINT_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/ANGLE SETPOINT'
+                                        */
+  real_T softwareanglelimit_UpperSat;  /* Expression: 33
+                                        * Referenced by: '<Root>/software angle limit'
+                                        */
+  real_T softwareanglelimit_LowerSat;  /* Expression: -33
+                                        * Referenced by: '<Root>/software angle limit'
                                         */
   real_T Constant3_Value;              /* Expression: 0
                                         * Referenced by: '<S1>/Constant3'
@@ -199,23 +206,32 @@ struct P_main_vehicle_model_T_ {
   real_T Kp_Gain;                      /* Expression: 10
                                         * Referenced by: '<Root>/Kp'
                                         */
-  real_T Saturation_UpperSat;          /* Expression: 100
-                                        * Referenced by: '<Root>/Saturation'
+  real_T pwm_saturation_UpperSat;      /* Expression: 100
+                                        * Referenced by: '<Root>/pwm_saturation'
                                         */
-  real_T Saturation_LowerSat;          /* Expression: 0
-                                        * Referenced by: '<Root>/Saturation'
-                                        */
-  real_T Constant1_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant1'
+  real_T pwm_saturation_LowerSat;      /* Expression: 0
+                                        * Referenced by: '<Root>/pwm_saturation'
                                         */
   real_T DriveRelay_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/Drive Relay'
+                                        */
+  real_T Constant1_Value;              /* Expression: 9/360*2*pi
+                                        * Referenced by: '<S2>/Constant1'
                                         */
   real_T Constant_Value;               /* Expression: .5
                                         * Referenced by: '<S2>/Constant'
                                         */
   real_T UnitDelay_InitialCondition;   /* Expression: 0
                                         * Referenced by: '<S2>/Unit Delay'
+                                        */
+  real_T Constant1_Value_b;            /* Expression: 9/360*2*pi
+                                        * Referenced by: '<S3>/Constant1'
+                                        */
+  real_T Constant_Value_l;             /* Expression: .5
+                                        * Referenced by: '<S3>/Constant'
+                                        */
+  real_T UnitDelay_InitialCondition_l; /* Expression: 0
+                                        * Referenced by: '<S3>/Unit Delay'
                                         */
   real_T ActuatorRelay_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/Actuator Relay'
@@ -283,13 +299,6 @@ struct tag_RTM_main_vehicle_model_T {
     uint32_T clockTickH1;
     uint32_T clockTick2;
     uint32_T clockTick3;
-    uint32_T clockTick4;
-    uint32_T clockTickH4;
-    uint8_T rtmDbBufReadBuf4;
-    uint8_T rtmDbBufWriteBuf4;
-    boolean_T rtmDbBufLastBufWr4;
-    uint32_T rtmDbBufClockTick4[2];
-    uint32_T rtmDbBufClockTickH4[2];
     struct {
       uint16_T TID[4];
     } TaskCounters;
@@ -298,7 +307,7 @@ struct tag_RTM_main_vehicle_model_T {
     SimTimeStep simTimeStep;
     boolean_T stopRequestedFlag;
     time_T *t;
-    time_T tArray[5];
+    time_T tArray[4];
   } Timing;
 };
 
@@ -330,16 +339,6 @@ extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 
 /*-
- * These blocks were eliminated from the model due to optimizations:
- *
- * Block '<S2>/Constant1' : Unused code path elimination
- * Block '<S2>/Divide' : Unused code path elimination
- * Block '<S8>/FixPt Data Type Duplicate' : Unused code path elimination
- * Block '<S8>/FixPt Data Type Propagation' : Unused code path elimination
- * Block '<S8>/FixPt Gateway In' : Eliminate redundant data type conversion
- */
-
-/*-
  * The generated code includes comments that allow you to trace directly
  * back to the appropriate location in the model.  The basic format
  * is <system>/block_name, where system is the system number (uniquely
@@ -356,12 +355,13 @@ extern volatile boolean_T runModel;
  * '<Root>' : 'main_vehicle_model'
  * '<S1>'   : 'main_vehicle_model/ENCODER COUNT'
  * '<S2>'   : 'main_vehicle_model/Subsystem'
- * '<S3>'   : 'main_vehicle_model/Subsystem1'
+ * '<S3>'   : 'main_vehicle_model/Subsystem2'
  * '<S4>'   : 'main_vehicle_model/conv_to_dir_pin'
  * '<S5>'   : 'main_vehicle_model/ENCODER COUNT/MATLAB Function'
  * '<S6>'   : 'main_vehicle_model/Subsystem/If Action Subsystem'
  * '<S7>'   : 'main_vehicle_model/Subsystem/Triggered Subsystem'
- * '<S8>'   : 'main_vehicle_model/Subsystem1/Increment Stored Integer'
+ * '<S8>'   : 'main_vehicle_model/Subsystem2/If Action Subsystem'
+ * '<S9>'   : 'main_vehicle_model/Subsystem2/Triggered Subsystem'
  */
 #endif                                 /* RTW_HEADER_main_vehicle_model_h_ */
 

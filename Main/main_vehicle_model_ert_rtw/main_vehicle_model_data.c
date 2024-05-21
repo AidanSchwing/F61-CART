@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.220
+ * Model version                  : 1.246
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:05:15 2024
+ * C/C++ source code generated on : Tue May 21 16:39:59 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -36,35 +36,35 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: -1
-   * Referenced by: '<Root>/WHL_F2'
+  /* Computed Parameter: Out1_Y0_i
+   * Referenced by: '<S8>/Out1'
    */
-  -1.0,
+  0.0,
+
+  /* Computed Parameter: Out1_Y0_c
+   * Referenced by: '<S9>/Out1'
+   */
+  0.0,
 
   /* Expression: -1
    * Referenced by: '<Root>/WHL_F1'
    */
   -1.0,
 
+  /* Expression: -1
+   * Referenced by: '<Root>/WHL_F2'
+   */
+  -1.0,
+
   /* Expression: 0.00001
-   * Referenced by: '<Root>/enc_A'
+   * Referenced by: '<Root>/enc_ch_A'
    */
   1.0E-5,
 
   /* Expression: 0.00001
-   * Referenced by: '<Root>/enc_B'
+   * Referenced by: '<Root>/enc_ch_B'
    */
   1.0E-5,
-
-  /* Computed Parameter: Out1_Y0_by
-   * Referenced by: '<S3>/Out1'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<S8>/FixPt Constant'
-   */
-  1.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/ACT2_DIR'
@@ -76,10 +76,20 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 20
+  /* Expression: 0
    * Referenced by: '<Root>/ANGLE SETPOINT'
    */
-  20.0,
+  0.0,
+
+  /* Expression: 33
+   * Referenced by: '<Root>/software angle limit'
+   */
+  33.0,
+
+  /* Expression: -33
+   * Referenced by: '<Root>/software angle limit'
+   */
+  -33.0,
 
   /* Expression: 0
    * Referenced by: '<S1>/Constant3'
@@ -112,17 +122,12 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   10.0,
 
   /* Expression: 100
-   * Referenced by: '<Root>/Saturation'
+   * Referenced by: '<Root>/pwm_saturation'
    */
   100.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Saturation'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Constant1'
+   * Referenced by: '<Root>/pwm_saturation'
    */
   0.0,
 
@@ -131,6 +136,11 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   1.0,
 
+  /* Expression: 9/360*2*pi
+   * Referenced by: '<S2>/Constant1'
+   */
+  0.15707963267948966,
+
   /* Expression: .5
    * Referenced by: '<S2>/Constant'
    */
@@ -138,6 +148,21 @@ P_main_vehicle_model_T main_vehicle_model_P = {
 
   /* Expression: 0
    * Referenced by: '<S2>/Unit Delay'
+   */
+  0.0,
+
+  /* Expression: 9/360*2*pi
+   * Referenced by: '<S3>/Constant1'
+   */
+  0.15707963267948966,
+
+  /* Expression: .5
+   * Referenced by: '<S3>/Constant'
+   */
+  0.5,
+
+  /* Expression: 0
+   * Referenced by: '<S3>/Unit Delay'
    */
   0.0,
 

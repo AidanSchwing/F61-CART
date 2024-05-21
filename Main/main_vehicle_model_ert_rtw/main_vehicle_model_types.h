@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.220
+ * Model version                  : 1.246
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:05:15 2024
+ * C/C++ source code generated on : Tue May 21 16:39:59 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,7 +22,7 @@
 #include "rtwtypes.h"
 #include "MW_SVD.h"
 
-/* Custom Type definition for MATLABSystem: '<Root>/enc_B' */
+/* Custom Type definition for MATLABSystem: '<Root>/enc_ch_B' */
 #include "MW_SVD.h"
 #ifndef struct_tag_KxFW01GBdhqk5JOEHU3GlD
 #define struct_tag_KxFW01GBdhqk5JOEHU3GlD
