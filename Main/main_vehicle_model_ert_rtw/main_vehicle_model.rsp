@@ -6,7 +6,6 @@ xcp_ext_mode.o
 ert_main.o
 main_vehicle_model.o
 main_vehicle_model_data.o
-rt_zcfcn.o
 xcp_ext_common.o
 xcp_ext_classic_trigger.o
 xcp.o
@@ -20,6 +19,7 @@ xcp_drv_rtiostream.o
 xcp_utils.o
 xcp_frame_serial.o
 xcp_ext_param_default_serial.o
+MW_InterruptIn.o
 mw_mbed_interface.o
 BufferedSerial.o
 stm32nucleof7xx_init_board.o

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.246
+ * Model version                  : 1.310
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:39:59 2024
+ * C/C++ source code generated on : Thu May 23 16:02:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,40 +21,40 @@
 
 /* Block parameters (default storage) */
 P_main_vehicle_model_T main_vehicle_model_P = {
-  /* Expression: -1
+  /* Mask Parameter: DiscretePIDController_D
+   * Referenced by: '<S35>/Derivative Gain'
+   */
+  0.001,
+
+  /* Mask Parameter: DiscretePIDController_I
+   * Referenced by: '<S38>/Integral Gain'
+   */
+  0.01,
+
+  /* Mask Parameter: DiscretePIDController_InitialCo
+   * Referenced by: '<S36>/Filter'
+   */
+  0.0,
+
+  /* Mask Parameter: DiscretePIDController_Initial_k
+   * Referenced by: '<S41>/Integrator'
+   */
+  0.0,
+
+  /* Mask Parameter: DiscretePIDController_N
+   * Referenced by: '<S44>/Filter Coefficient'
+   */
+  100.0,
+
+  /* Mask Parameter: DiscretePIDController_P
+   * Referenced by: '<S46>/Proportional Gain'
+   */
+  10.0,
+
+  /* Expression: 0.001
    * Referenced by: '<Root>/PRES_DUCER'
    */
-  -1.0,
-
-  /* Computed Parameter: Out1_Y0
-   * Referenced by: '<S6>/Out1'
-   */
-  0.0,
-
-  /* Computed Parameter: Out1_Y0_b
-   * Referenced by: '<S7>/Out1'
-   */
-  0.0,
-
-  /* Computed Parameter: Out1_Y0_i
-   * Referenced by: '<S8>/Out1'
-   */
-  0.0,
-
-  /* Computed Parameter: Out1_Y0_c
-   * Referenced by: '<S9>/Out1'
-   */
-  0.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/WHL_F1'
-   */
-  -1.0,
-
-  /* Expression: -1
-   * Referenced by: '<Root>/WHL_F2'
-   */
-  -1.0,
+  0.001,
 
   /* Expression: 0.00001
    * Referenced by: '<Root>/enc_ch_A'
@@ -66,20 +66,30 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   1.0E-5,
 
-  /* Expression: 0
-   * Referenced by: '<Root>/ACT2_DIR'
+  /* Computed Parameter: Outport_Y0
+   * Referenced by: '<S62>/Outport'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/ACT2_DUTY'
+   * Referenced by: '<S62>/Memory'
+   */
+  0.0,
+
+  /* Computed Parameter: Outport_Y0_m
+   * Referenced by: '<S66>/Outport'
    */
   0.0,
 
   /* Expression: 0
+   * Referenced by: '<S66>/Memory'
+   */
+  0.0,
+
+  /* Expression: -0.2786377708978343
    * Referenced by: '<Root>/ANGLE SETPOINT'
    */
-  0.0,
+  -0.27863777089783431,
 
   /* Expression: 33
    * Referenced by: '<Root>/software angle limit'
@@ -92,27 +102,27 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   -33.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Constant3'
+   * Referenced by: '<S2>/Constant3'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Memory2'
+   * Referenced by: '<S2>/Memory2'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Constant2'
+   * Referenced by: '<S2>/Constant2'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Constant4'
+   * Referenced by: '<S2>/Constant4'
    */
   0.0,
 
   /* Expression: 1/(500*4) * 360
-   * Referenced by: '<S1>/Gain'
+   * Referenced by: '<S2>/Gain'
    */
   0.18,
 
@@ -136,33 +146,63 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   1.0,
 
-  /* Expression: 9/360*2*pi
-   * Referenced by: '<S2>/Constant1'
-   */
-  0.15707963267948966,
-
-  /* Expression: .5
-   * Referenced by: '<S2>/Constant'
-   */
-  0.5,
-
   /* Expression: 0
-   * Referenced by: '<S2>/Unit Delay'
+   * Referenced by: '<Root>/brake % set point'
    */
   0.0,
 
-  /* Expression: 9/360*2*pi
-   * Referenced by: '<S3>/Constant1'
+  /* Expression: 100
+   * Referenced by: '<Root>/Saturation'
    */
-  0.15707963267948966,
-
-  /* Expression: .5
-   * Referenced by: '<S3>/Constant'
-   */
-  0.5,
+  100.0,
 
   /* Expression: 0
-   * Referenced by: '<S3>/Unit Delay'
+   * Referenced by: '<Root>/Saturation'
+   */
+  0.0,
+
+  /* Expression: Filter_constant
+   * Referenced by: '<S61>/Filter_Constant'
+   */
+  0.01,
+
+  /* Expression: 1 - Filter_constant
+   * Referenced by: '<S61>/One'
+   */
+  0.99,
+
+  /* Expression: 0
+   * Referenced by: '<S61>/Unit Delay'
+   */
+  0.0,
+
+  /* Expression: 0.18
+   * Referenced by: '<Root>/Brake Calib. Bias'
+   */
+  0.18,
+
+  /* Expression: 100/(0.42)
+   * Referenced by: '<Root>/scale to % brake'
+   */
+  238.0952380952381,
+
+  /* Computed Parameter: Integrator_gainval
+   * Referenced by: '<S41>/Integrator'
+   */
+  0.001,
+
+  /* Computed Parameter: Filter_gainval
+   * Referenced by: '<S36>/Filter'
+   */
+  0.001,
+
+  /* Expression: 100
+   * Referenced by: '<Root>/pwm_sat'
+   */
+  100.0,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/pwm_sat'
    */
   0.0,
 
@@ -197,14 +237,44 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   0.0,
 
   /* Computed Parameter: Memory1_InitialCondition
-   * Referenced by: '<S1>/Memory1'
+   * Referenced by: '<S2>/Memory1'
    */
   false,
 
-  /* Computed Parameter: Memory_InitialCondition
-   * Referenced by: '<S1>/Memory'
+  /* Computed Parameter: Memory_InitialCondition_l
+   * Referenced by: '<S2>/Memory'
    */
-  false
+  false,
+
+  /* Start of '<S66>/If Action Subsystem1' */
+  {
+    /* Computed Parameter: Wheelspeed_Y0
+     * Referenced by: '<S68>/Wheelspeed'
+     */
+    0.0,
+
+    /* Expression: 22/360*2*pi
+     * Referenced by: '<S68>/count to radial speed'
+     */
+    0.38397243543875248
+  }
+  ,
+
+  /* End of '<S66>/If Action Subsystem1' */
+
+  /* Start of '<S62>/If Action Subsystem1' */
+  {
+    /* Computed Parameter: Wheelspeed_Y0
+     * Referenced by: '<S64>/Wheelspeed'
+     */
+    0.0,
+
+    /* Expression: 22/360*2*pi
+     * Referenced by: '<S64>/count to radial speed'
+     */
+    0.38397243543875248
+  }
+  /* End of '<S62>/If Action Subsystem1' */
 };
 
 /*

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.246
+ * Model version                  : 1.310
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:39:59 2024
+ * C/C++ source code generated on : Thu May 23 16:02:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,7 +21,7 @@
 #define RTW_HEADER_main_vehicle_model_private_h_
 #include "rtwtypes.h"
 #include "multiword_types.h"
-#include "zero_crossing_types.h"
+#include "main_vehicle_model.h"
 #include "main_vehicle_model_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
@@ -44,6 +44,24 @@
 #endif
 
 extern real_T rt_roundd_snf(real_T u);
+void ExtIntPinD0ForRisingEdge(void);
+void ExtIntPinD1ForRisingEdge(void);
+extern void main_vehi_zerooutspeed_Init(DW_zerooutspeed_main_vehicle__T *localDW);
+extern void main_vehicle_m_zerooutspeed(real_T rtu_signal, real_T rtu_timeStamp,
+  real_T rtu_currentTime, real_T *rty_output, DW_zerooutspeed_main_vehicle__T
+  *localDW);
+extern void main_v_conv_to_dir_pin_Init(DW_conv_to_dir_pin_main_vehic_T *localDW);
+extern void main_vehicl_conv_to_dir_pin(real_T rtu_err, real_T *rty_dir,
+  DW_conv_to_dir_pin_main_vehic_T *localDW);
+extern void mai_IfActionSubsystem1_Init(real_T *rty_Wheelspeed,
+  P_IfActionSubsystem1_main_veh_T *localP);
+extern void main_veh_IfActionSubsystem1(real_T rtu_time_diff, real_T
+  *rty_Wheelspeed, P_IfActionSubsystem1_main_veh_T *localP);
+extern void main_ve_MATLABFunction_Init(DW_MATLABFunction_main_vehicl_T *localDW);
+extern void main_v_MATLABFunction_Reset(DW_MATLABFunction_main_vehicl_T *localDW);
+extern void main_vehicle_MATLABFunction(real_T rtu_new_time, real_T
+  *rty_time_diff, real_T *rty_prev_time, DW_MATLABFunction_main_vehicl_T
+  *localDW);
 
 #endif                            /* RTW_HEADER_main_vehicle_model_private_h_ */
 

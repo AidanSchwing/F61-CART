@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.246
+ * Model version                  : 1.310
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:39:59 2024
+ * C/C++ source code generated on : Thu May 23 16:02:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,14 +24,14 @@
 #include "MW_target_hardware_resources.h"
 
 volatile int IsrOverrun = 0;
-boolean_T isRateRunning[4] = { 0, 0, 0, 0 };
+boolean_T isRateRunning[5] = { 0, 0, 0, 0, 0 };
 
-boolean_T need2runFlags[4] = { 0, 0, 0, 0 };
+boolean_T need2runFlags[5] = { 0, 0, 0, 0, 0 };
 
 void rt_OneStep(void)
 {
   extmodeSimulationTime_T currentTime = (extmodeSimulationTime_T) 0;
-  boolean_T eventFlags[4];
+  boolean_T eventFlags[5];
   int_T i;
 
   /* Check base rate for overrun */
@@ -57,7 +57,7 @@ void rt_OneStep(void)
   extmodeEvent(1, currentTime);
   __disable_irq();
   isRateRunning[0]--;
-  for (i = 1; i < 4; i++) {
+  for (i = 1; i < 5; i++) {
     if (eventFlags[i]) {
       if (need2runFlags[i]++) {
         IsrOverrun = 1;
@@ -67,7 +67,7 @@ void rt_OneStep(void)
     }
   }
 
-  for (i = 2; i < 4; i++) {
+  for (i = 2; i < 5; i++) {
     if (isRateRunning[i]) {
       /* Yield to higher priority*/
       return;
@@ -82,7 +82,7 @@ void rt_OneStep(void)
       {
        case 2 :
         currentTime = (extmodeSimulationTime_T)
-          ((main_vehicle_model_M->Timing.clockTick2) * 0.01);
+          ((main_vehicle_model_M->Timing.clockTick2) * 0.001);
         main_vehicle_model_step2();
 
         /* Get model outputs here */
@@ -93,13 +93,24 @@ void rt_OneStep(void)
 
        case 3 :
         currentTime = (extmodeSimulationTime_T)
-          ((main_vehicle_model_M->Timing.clockTick3) * 0.5);
+          ((main_vehicle_model_M->Timing.clockTick3) * 0.01);
         main_vehicle_model_step3();
 
         /* Get model outputs here */
 
         /* Trigger External Mode event */
         extmodeEvent(3, currentTime);
+        break;
+
+       case 4 :
+        currentTime = (extmodeSimulationTime_T)
+          ((main_vehicle_model_M->Timing.clockTick4) * 0.25);
+        main_vehicle_model_step4();
+
+        /* Get model outputs here */
+
+        /* Trigger External Mode event */
+        extmodeEvent(4, currentTime);
         break;
 
        default :

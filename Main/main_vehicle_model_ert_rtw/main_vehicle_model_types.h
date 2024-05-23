@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.246
+ * Model version                  : 1.310
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Tue May 21 16:39:59 2024
+ * C/C++ source code generated on : Thu May 23 16:02:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -125,6 +125,9 @@ struct tag_5FwKk6wA1XPbMoI1XCDeDF
 typedef struct tag_5FwKk6wA1XPbMoI1XCDeDF mbed_DigitalRead_main_vehicle_T;
 
 #endif                             /* typedef_mbed_DigitalRead_main_vehicle_T */
+
+/* Parameters for system: '<S62>/If Action Subsystem1' */
+typedef struct P_IfActionSubsystem1_main_veh_T_ P_IfActionSubsystem1_main_veh_T;
 
 /* Parameters (default storage) */
 typedef struct P_main_vehicle_model_T_ P_main_vehicle_model_T;
