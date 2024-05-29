@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.310
+ * Model version                  : 1.331
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu May 23 16:02:48 2024
+ * C/C++ source code generated on : Wed May 29 00:34:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,12 +24,12 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   /* Mask Parameter: DiscretePIDController_D
    * Referenced by: '<S35>/Derivative Gain'
    */
-  0.001,
+  0.0,
 
   /* Mask Parameter: DiscretePIDController_I
    * Referenced by: '<S38>/Integral Gain'
    */
-  0.01,
+  5.0,
 
   /* Mask Parameter: DiscretePIDController_InitialCo
    * Referenced by: '<S36>/Filter'
@@ -76,7 +76,7 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Computed Parameter: Outport_Y0_m
+  /* Computed Parameter: Outport_Y0_i
    * Referenced by: '<S66>/Outport'
    */
   0.0,
@@ -86,10 +86,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: -0.2786377708978343
+  /* Expression: 0
    * Referenced by: '<Root>/ANGLE SETPOINT'
    */
-  -0.27863777089783431,
+  0.0,
 
   /* Expression: 33
    * Referenced by: '<Root>/software angle limit'
@@ -141,10 +141,45 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 1
+  /* Expression: 0
    * Referenced by: '<Root>/Drive Relay'
    */
-  1.0,
+  0.0,
+
+  /* Expression: Filter_constant
+   * Referenced by: '<S75>/Filter_Constant'
+   */
+  0.1,
+
+  /* Expression: 1 - Filter_constant
+   * Referenced by: '<S75>/One'
+   */
+  0.9,
+
+  /* Expression: 0
+   * Referenced by: '<S75>/Unit Delay'
+   */
+  0.0,
+
+  /* Expression: 1/6
+   * Referenced by: '<Root>/Gain'
+   */
+  0.16666666666666666,
+
+  /* Expression: Filter_constant
+   * Referenced by: '<S72>/Filter_Constant'
+   */
+  0.1,
+
+  /* Expression: 1 - Filter_constant
+   * Referenced by: '<S72>/One'
+   */
+  0.9,
+
+  /* Expression: 0
+   * Referenced by: '<S72>/Unit Delay'
+   */
+  0.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/brake % set point'
@@ -206,10 +241,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 0
+  /* Expression: 1
    * Referenced by: '<Root>/Actuator Relay'
    */
-  0.0,
+  1.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant'
@@ -253,10 +288,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
      */
     0.0,
 
-    /* Expression: 22/360*2*pi
+    /* Expression: 50/360*2*pi
      * Referenced by: '<S68>/count to radial speed'
      */
-    0.38397243543875248
+    0.87266462599716477
   }
   ,
 

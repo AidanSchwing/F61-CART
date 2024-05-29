@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.310
+ * Model version                  : 1.331
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu May 23 16:02:48 2024
+ * C/C++ source code generated on : Wed May 29 00:34:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -129,7 +129,7 @@ void ExtIntPinD1ForRisingEdge(void)
   }
 }
 
-/* Callback for Hardware Interrupt Block: '<Root>/wheelspeed int. pin1' */
+/* Callback for Hardware Interrupt Block: '<Root>/wheelspeed int. pin2' */
 void ExtIntPinD0ForRisingEdge(void)
 {
   if (1 == runModel) {
@@ -142,7 +142,7 @@ void ExtIntPinD0ForRisingEdge(void)
       main_vehicle_model_B.TmpRTBAttime_deltatospeedInpo_h =
         main_vehicle_model_B.Clock;
 
-      /* S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' */
+      /* S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' */
 
       /* Output and update for function-call system: '<S5>/time_delta to speed' */
       {
@@ -182,7 +182,7 @@ void ExtIntPinD0ForRisingEdge(void)
          */
         main_vehicle_MATLABFunction(main_vehicle_model_B.Inport, &time_diff,
           &main_vehicle_model_DW.Memory_PreviousInput,
-          &main_vehicle_model_DW.sf_MATLABFunction_m);
+          &main_vehicle_model_DW.sf_MATLABFunction_h);
 
         /* If: '<S66>/If1' */
         if (time_diff > 0.0) {
@@ -190,7 +190,7 @@ void ExtIntPinD0ForRisingEdge(void)
            *  ActionPort: '<S68>/Action Port'
            */
           main_veh_IfActionSubsystem1(time_diff, &main_vehicle_model_B.Divide,
-            &main_vehicle_model_P.IfActionSubsystem1_n);
+            &main_vehicle_model_P.IfActionSubsystem1_i);
 
           /* End of Outputs for SubSystem: '<S66>/If Action Subsystem1' */
         }
@@ -199,7 +199,7 @@ void ExtIntPinD0ForRisingEdge(void)
         main_vehicle_model_DW.time_deltatospeed_SubsysRanBC = 4;
       }
 
-      /* End of Outputs for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' */
+      /* End of Outputs for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' */
     }
 
     extmodeEvent(6,(((main_vehicle_model_M->Timing.clockTick6+
@@ -504,8 +504,22 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
    *  RateTransition generated from: '<S5>/time_delta to speed'
    * */
   main_vehicle_m_zerooutspeed(main_vehicle_model_B.Divide,
-    main_vehicle_model_B.Inport, main_vehicle_model_B.Clock,
-    &main_vehicle_model_B.output, &main_vehicle_model_DW.sf_zerooutspeed_f);
+    main_vehicle_model_B.Inport, main_vehicle_model_B.Clock, &dir_g,
+    &main_vehicle_model_DW.sf_zerooutspeed_a);
+
+  /* Sum: '<S75>/Add1' incorporates:
+   *  Constant: '<S75>/Filter_Constant'
+   *  Constant: '<S75>/One'
+   *  Product: '<S75>/Product'
+   *  Product: '<S75>/Product1'
+   *  UnitDelay: '<S75>/Unit Delay'
+   */
+  main_vehicle_model_B.Add1 = dir_g * main_vehicle_model_P.Filter_Constant_Value
+    + main_vehicle_model_P.One_Value * main_vehicle_model_DW.UnitDelay_DSTATE;
+
+  /* Gain: '<Root>/Gain' */
+  main_vehicle_model_B.wheelspeedRfiltered = main_vehicle_model_P.Gain_Gain_p *
+    main_vehicle_model_B.Add1;
 
   /* Clock: '<S4>/Clock' */
   main_vehicle_model_B.Clock_a = rtb_steer_ang_errdeg;
@@ -515,7 +529,18 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
    * */
   main_vehicle_m_zerooutspeed(main_vehicle_model_B.Divide_d,
     main_vehicle_model_B.Inport_f, main_vehicle_model_B.Clock_a,
-    &main_vehicle_model_B.output_k, &main_vehicle_model_DW.sf_zerooutspeed);
+    &rtb_steer_ang_errdeg, &main_vehicle_model_DW.sf_zerooutspeed);
+
+  /* Sum: '<S72>/Add1' incorporates:
+   *  Constant: '<S72>/Filter_Constant'
+   *  Constant: '<S72>/One'
+   *  Product: '<S72>/Product'
+   *  Product: '<S72>/Product1'
+   *  UnitDelay: '<S72>/Unit Delay'
+   */
+  main_vehicle_model_B.Add1_h = rtb_steer_ang_errdeg *
+    main_vehicle_model_P.Filter_Constant_Value_b +
+    main_vehicle_model_P.One_Value_j * main_vehicle_model_DW.UnitDelay_DSTATE_b;
 
   /* Update for Memory: '<S2>/Memory2' */
   main_vehicle_model_DW.Memory2_PreviousInput = main_vehicle_model_B.enc_count;
@@ -525,6 +550,12 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
 
   /* Update for Memory: '<S2>/Memory' */
   main_vehicle_model_DW.Memory_PreviousInput_g = main_vehicle_model_B.new_B;
+
+  /* Update for UnitDelay: '<S75>/Unit Delay' */
+  main_vehicle_model_DW.UnitDelay_DSTATE = main_vehicle_model_B.Add1;
+
+  /* Update for UnitDelay: '<S72>/Unit Delay' */
+  main_vehicle_model_DW.UnitDelay_DSTATE_b = main_vehicle_model_B.Add1_h;
 
   /* Update absolute time */
   /* The "clockTick0" counts the number of times the code of this task has
@@ -635,16 +666,16 @@ void main_vehicle_model_step2(void)    /* Sample time: [0.001s, 0.0s] */
    *  Product: '<S61>/Product1'
    *  UnitDelay: '<S61>/Unit Delay'
    */
-  main_vehicle_model_DW.UnitDelay_DSTATE = dir *
-    main_vehicle_model_P.Filter_Constant_Value + main_vehicle_model_P.One_Value *
-    main_vehicle_model_DW.UnitDelay_DSTATE;
+  main_vehicle_model_DW.UnitDelay_DSTATE_g = dir *
+    main_vehicle_model_P.Filter_Constant_Value_e +
+    main_vehicle_model_P.One_Value_a * main_vehicle_model_DW.UnitDelay_DSTATE_g;
 
   /* Gain: '<Root>/scale to % brake' incorporates:
    *  Constant: '<Root>/Brake Calib. Bias'
    *  Sum: '<Root>/Subtract1'
    *  UnitDelay: '<S61>/Unit Delay'
    */
-  main_vehicle_model_B.braking = (main_vehicle_model_DW.UnitDelay_DSTATE -
+  main_vehicle_model_B.braking = (main_vehicle_model_DW.UnitDelay_DSTATE_g -
     main_vehicle_model_P.BrakeCalibBias_Value) *
     main_vehicle_model_P.scaletobrake_Gain;
 
@@ -816,10 +847,10 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_M->Timing.stepSize0 = 1.0E-5;
 
   /* External mode info */
-  main_vehicle_model_M->Sizes.checksums[0] = (2008731814U);
-  main_vehicle_model_M->Sizes.checksums[1] = (3692927118U);
-  main_vehicle_model_M->Sizes.checksums[2] = (1769919174U);
-  main_vehicle_model_M->Sizes.checksums[3] = (2578722539U);
+  main_vehicle_model_M->Sizes.checksums[0] = (2124790350U);
+  main_vehicle_model_M->Sizes.checksums[1] = (3220657178U);
+  main_vehicle_model_M->Sizes.checksums[2] = (3736258195U);
+  main_vehicle_model_M->Sizes.checksums[3] = (2322877114U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -848,7 +879,7 @@ void main_vehicle_model_initialize(void)
       &main_vehicle_model_DW.time_deltatospeed_SubsysRanBC_b;
     systemRan[16] = &rtAlwaysEnabled;
     systemRan[17] = (sysRanDType *)
-      &main_vehicle_model_DW.IfActionSubsystem1_n.IfActionSubsystem1_SubsysRanBC;
+      &main_vehicle_model_DW.IfActionSubsystem1_i.IfActionSubsystem1_SubsysRanBC;
     systemRan[18] = (sysRanDType *)
       &main_vehicle_model_DW.time_deltatospeed_SubsysRanBC;
     systemRan[19] = (sysRanDType *)
@@ -885,9 +916,17 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_DW.Memory_PreviousInput_g =
     main_vehicle_model_P.Memory_InitialCondition_l;
 
-  /* InitializeConditions for UnitDelay: '<S61>/Unit Delay' */
+  /* InitializeConditions for UnitDelay: '<S75>/Unit Delay' */
   main_vehicle_model_DW.UnitDelay_DSTATE =
     main_vehicle_model_P.UnitDelay_InitialCondition;
+
+  /* InitializeConditions for UnitDelay: '<S72>/Unit Delay' */
+  main_vehicle_model_DW.UnitDelay_DSTATE_b =
+    main_vehicle_model_P.UnitDelay_InitialCondition_n;
+
+  /* InitializeConditions for UnitDelay: '<S61>/Unit Delay' */
+  main_vehicle_model_DW.UnitDelay_DSTATE_g =
+    main_vehicle_model_P.UnitDelay_InitialCondition_i;
 
   /* InitializeConditions for DiscreteIntegrator: '<S41>/Integrator' */
   main_vehicle_model_DW.Integrator_DSTATE =
@@ -903,7 +942,7 @@ void main_vehicle_model_initialize(void)
   /* SystemInitialize for MATLAB Function: '<Root>/conv_to_dir_pin1' */
   main_v_conv_to_dir_pin_Init(&main_vehicle_model_DW.sf_conv_to_dir_pin1);
 
-  /* SystemInitialize for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' incorporates:
+  /* SystemInitialize for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' incorporates:
    *  SubSystem: '<S5>/time_delta to speed'
    */
 
@@ -936,33 +975,33 @@ void main_vehicle_model_initialize(void)
 
   /* InitializeConditions for Memory: '<S66>/Memory' */
   main_vehicle_model_DW.Memory_PreviousInput =
-    main_vehicle_model_P.Memory_InitialCondition_m;
+    main_vehicle_model_P.Memory_InitialCondition_f;
 
   /* SystemInitialize for IfAction SubSystem: '<S66>/If Action Subsystem1' */
   mai_IfActionSubsystem1_Init(&main_vehicle_model_B.Divide,
-    &main_vehicle_model_P.IfActionSubsystem1_n);
+    &main_vehicle_model_P.IfActionSubsystem1_i);
 
   /* End of SystemInitialize for SubSystem: '<S66>/If Action Subsystem1' */
 
   /* SystemInitialize for MATLAB Function: '<S66>/MATLAB Function' */
-  main_ve_MATLABFunction_Init(&main_vehicle_model_DW.sf_MATLABFunction_m);
+  main_ve_MATLABFunction_Init(&main_vehicle_model_DW.sf_MATLABFunction_h);
 
   /* SystemInitialize for SignalConversion generated from: '<S66>/Inport' incorporates:
    *  Outport: '<S66>/Outport'
    */
-  main_vehicle_model_B.Inport = main_vehicle_model_P.Outport_Y0_m;
-  main_vehicle_model_DW.wheelspeedintpin1_ExtIntHandle = MW_InterruptIn_Open(D0,
+  main_vehicle_model_B.Inport = main_vehicle_model_P.Outport_Y0_i;
+  main_vehicle_model_DW.wheelspeedintpin2_ExtIntHandle = MW_InterruptIn_Open(D0,
     MW_PULL_DOWN);
 
   /* Register for rising edge callback function */
   MW_InterruptIn_RisingEvent
-    (main_vehicle_model_DW.wheelspeedintpin1_ExtIntHandle,
+    (main_vehicle_model_DW.wheelspeedintpin2_ExtIntHandle,
      &ExtIntPinD0ForRisingEdge);
 
-  /* End of SystemInitialize for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' */
+  /* End of SystemInitialize for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' */
 
   /* SystemInitialize for MATLAB Function: '<S5>/zero out speed' */
-  main_vehi_zerooutspeed_Init(&main_vehicle_model_DW.sf_zerooutspeed_f);
+  main_vehi_zerooutspeed_Init(&main_vehicle_model_DW.sf_zerooutspeed_a);
 
   /* SystemInitialize for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin' incorporates:
    *  SubSystem: '<S4>/time_delta to speed'
@@ -1064,7 +1103,7 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_DW.obj.SampleTime =
     main_vehicle_model_P.PRES_DUCER_SampleTime;
   main_vehicle_model_DW.obj.isInitialized = 1;
-  main_vehicle_model_DW.obj.MW_ANALOGIN_HANDLE = MW_AnalogInSingle_Open(D13);
+  main_vehicle_model_DW.obj.MW_ANALOGIN_HANDLE = MW_AnalogInSingle_Open(D12);
   MW_AnalogIn_SetTriggerSource(main_vehicle_model_DW.obj.MW_ANALOGIN_HANDLE,
     MW_ANALOGIN_SOFTWARE_TRIGGER, 0U);
   main_vehicle_model_DW.obj.isSetupComplete = true;
@@ -1172,10 +1211,10 @@ void main_vehicle_model_terminate(void)
 
   /* End of Terminate for MATLABSystem: '<Root>/DRIVE RELAY EN PIN' */
 
-  /* Terminate for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' */
-  MW_InterruptIn_Close(main_vehicle_model_DW.wheelspeedintpin1_ExtIntHandle);
+  /* Terminate for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' */
+  MW_InterruptIn_Close(main_vehicle_model_DW.wheelspeedintpin2_ExtIntHandle);
 
-  /* End of Terminate for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin1' */
+  /* End of Terminate for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin2' */
   /* Terminate for S-Function (mbedInterruptIn_sfcn): '<Root>/wheelspeed int. pin' */
   MW_InterruptIn_Close(main_vehicle_model_DW.wheelspeedintpin_ExtIntHandle);
 

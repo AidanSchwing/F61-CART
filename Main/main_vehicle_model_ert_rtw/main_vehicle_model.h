@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.310
+ * Model version                  : 1.331
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Thu May 23 16:02:48 2024
+ * C/C++ source code generated on : Wed May 29 00:34:48 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -116,7 +116,10 @@ typedef struct {
 /* Block signals (default storage) */
 typedef struct {
   real_T Clock;                        /* '<S5>/Clock' */
+  real_T Add1;                         /* '<S75>/Add1' */
+  real_T wheelspeedRfiltered;          /* '<Root>/Gain' */
   real_T Clock_a;                      /* '<S4>/Clock' */
+  real_T Add1_h;                       /* '<S72>/Add1' */
   real_T braking;                      /* '<Root>/scale to % brake' */
   real_T brakeerr;                     /* '<Root>/Subtract2' */
   real_T ACT2_DUTY_ROUNDED;            /* '<Root>/Round3' */
@@ -126,8 +129,6 @@ typedef struct {
   real_T Divide;                       /* '<S68>/Divide' */
   real_T Inport_f;                     /* '<S62>/Inport' */
   real_T Divide_d;                     /* '<S64>/Divide' */
-  real_T output;                       /* '<S5>/zero out speed' */
-  real_T output_k;                     /* '<S4>/zero out speed' */
   real_T enc_count;                    /* '<S2>/Quadrature Decode' */
   boolean_T new_A;                     /* '<S2>/Quadrature Decode' */
   boolean_T new_B;                     /* '<S2>/Quadrature Decode' */
@@ -148,13 +149,15 @@ typedef struct {
   mbed_PWMOutput_main_vehicle_m_T obj_lv;/* '<Root>/ACTUATOR 2 PWM PIN1' */
   mbed_PWMOutput_main_vehicle_m_T obj_ib;/* '<Root>/ACTUATOR 1 PWM PIN1' */
   mbed_AnalogOutput_main_vehicl_T obj_h;/* '<Root>/DRIVE MOTOR ANALOG PIN' */
-  real_T UnitDelay_DSTATE;             /* '<S61>/Unit Delay' */
+  real_T UnitDelay_DSTATE;             /* '<S75>/Unit Delay' */
+  real_T UnitDelay_DSTATE_b;           /* '<S72>/Unit Delay' */
+  real_T UnitDelay_DSTATE_g;           /* '<S61>/Unit Delay' */
   real_T Integrator_DSTATE;            /* '<S41>/Integrator' */
   real_T Filter_DSTATE;                /* '<S36>/Filter' */
   real_T Memory2_PreviousInput;        /* '<S2>/Memory2' */
   real_T Memory_PreviousInput;         /* '<S66>/Memory' */
   real_T Memory_PreviousInput_e;       /* '<S62>/Memory' */
-  MW_Handle_Type wheelspeedintpin1_ExtIntHandle;/* '<Root>/wheelspeed int. pin1' */
+  MW_Handle_Type wheelspeedintpin2_ExtIntHandle;/* '<Root>/wheelspeed int. pin2' */
   MW_Handle_Type wheelspeedintpin_ExtIntHandle;/* '<Root>/wheelspeed int. pin' */
   int32_T clockTickCounter;            /* '<Root>/Pulse Generator' */
   int8_T time_deltatospeed_SubsysRanBC;/* '<S5>/time_delta to speed' */
@@ -162,13 +165,13 @@ typedef struct {
   uint8_T is_active_c2_main_vehicle_model;/* '<S2>/Quadrature Decode' */
   boolean_T Memory1_PreviousInput;     /* '<S2>/Memory1' */
   boolean_T Memory_PreviousInput_g;    /* '<S2>/Memory' */
-  DW_MATLABFunction_main_vehicl_T sf_MATLABFunction_m;/* '<S66>/MATLAB Function' */
-  DW_IfActionSubsystem1_main_ve_T IfActionSubsystem1_n;/* '<S66>/If Action Subsystem1' */
+  DW_MATLABFunction_main_vehicl_T sf_MATLABFunction_h;/* '<S66>/MATLAB Function' */
+  DW_IfActionSubsystem1_main_ve_T IfActionSubsystem1_i;/* '<S66>/If Action Subsystem1' */
   DW_MATLABFunction_main_vehicl_T sf_MATLABFunction;/* '<S62>/MATLAB Function' */
   DW_IfActionSubsystem1_main_ve_T IfActionSubsystem1;/* '<S62>/If Action Subsystem1' */
   DW_conv_to_dir_pin_main_vehic_T sf_conv_to_dir_pin1;/* '<Root>/conv_to_dir_pin1' */
   DW_conv_to_dir_pin_main_vehic_T sf_conv_to_dir_pin;/* '<Root>/conv_to_dir_pin' */
-  DW_zerooutspeed_main_vehicle__T sf_zerooutspeed_f;/* '<S5>/zero out speed' */
+  DW_zerooutspeed_main_vehicle__T sf_zerooutspeed_a;/* '<S5>/zero out speed' */
   DW_zerooutspeed_main_vehicle__T sf_zerooutspeed;/* '<S4>/zero out speed' */
 } DW_main_vehicle_model_T;
 
@@ -219,13 +222,13 @@ struct P_main_vehicle_model_T_ {
   real_T Memory_InitialCondition;      /* Expression: 0
                                         * Referenced by: '<S62>/Memory'
                                         */
-  real_T Outport_Y0_m;                 /* Computed Parameter: Outport_Y0_m
+  real_T Outport_Y0_i;                 /* Computed Parameter: Outport_Y0_i
                                         * Referenced by: '<S66>/Outport'
                                         */
-  real_T Memory_InitialCondition_m;    /* Expression: 0
+  real_T Memory_InitialCondition_f;    /* Expression: 0
                                         * Referenced by: '<S66>/Memory'
                                         */
-  real_T ANGLESETPOINT_Value;          /* Expression: -0.2786377708978343
+  real_T ANGLESETPOINT_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/ANGLE SETPOINT'
                                         */
   real_T softwareanglelimit_UpperSat;  /* Expression: 33
@@ -258,8 +261,29 @@ struct P_main_vehicle_model_T_ {
   real_T pwm_saturation_LowerSat;      /* Expression: 0
                                         * Referenced by: '<Root>/pwm_saturation'
                                         */
-  real_T DriveRelay_Value;             /* Expression: 1
+  real_T DriveRelay_Value;             /* Expression: 0
                                         * Referenced by: '<Root>/Drive Relay'
+                                        */
+  real_T Filter_Constant_Value;        /* Expression: Filter_constant
+                                        * Referenced by: '<S75>/Filter_Constant'
+                                        */
+  real_T One_Value;                    /* Expression: 1 - Filter_constant
+                                        * Referenced by: '<S75>/One'
+                                        */
+  real_T UnitDelay_InitialCondition;   /* Expression: 0
+                                        * Referenced by: '<S75>/Unit Delay'
+                                        */
+  real_T Gain_Gain_p;                  /* Expression: 1/6
+                                        * Referenced by: '<Root>/Gain'
+                                        */
+  real_T Filter_Constant_Value_b;      /* Expression: Filter_constant
+                                        * Referenced by: '<S72>/Filter_Constant'
+                                        */
+  real_T One_Value_j;                  /* Expression: 1 - Filter_constant
+                                        * Referenced by: '<S72>/One'
+                                        */
+  real_T UnitDelay_InitialCondition_n; /* Expression: 0
+                                        * Referenced by: '<S72>/Unit Delay'
                                         */
   real_T brakesetpoint_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/brake % set point'
@@ -270,13 +294,13 @@ struct P_main_vehicle_model_T_ {
   real_T Saturation_LowerSat;          /* Expression: 0
                                         * Referenced by: '<Root>/Saturation'
                                         */
-  real_T Filter_Constant_Value;        /* Expression: Filter_constant
+  real_T Filter_Constant_Value_e;      /* Expression: Filter_constant
                                         * Referenced by: '<S61>/Filter_Constant'
                                         */
-  real_T One_Value;                    /* Expression: 1 - Filter_constant
+  real_T One_Value_a;                  /* Expression: 1 - Filter_constant
                                         * Referenced by: '<S61>/One'
                                         */
-  real_T UnitDelay_InitialCondition;   /* Expression: 0
+  real_T UnitDelay_InitialCondition_i; /* Expression: 0
                                         * Referenced by: '<S61>/Unit Delay'
                                         */
   real_T BrakeCalibBias_Value;         /* Expression: 0.18
@@ -297,7 +321,7 @@ struct P_main_vehicle_model_T_ {
   real_T pwm_sat_LowerSat;             /* Expression: 0
                                         * Referenced by: '<Root>/pwm_sat'
                                         */
-  real_T ActuatorRelay_Value;          /* Expression: 0
+  real_T ActuatorRelay_Value;          /* Expression: 1
                                         * Referenced by: '<Root>/Actuator Relay'
                                         */
   real_T Constant_Value;               /* Expression: 0
@@ -323,7 +347,7 @@ struct P_main_vehicle_model_T_ {
                                 /* Computed Parameter: Memory_InitialCondition_l
                                  * Referenced by: '<S2>/Memory'
                                  */
-  P_IfActionSubsystem1_main_veh_T IfActionSubsystem1_n;/* '<S66>/If Action Subsystem1' */
+  P_IfActionSubsystem1_main_veh_T IfActionSubsystem1_i;/* '<S66>/If Action Subsystem1' */
   P_IfActionSubsystem1_main_veh_T IfActionSubsystem1;/* '<S62>/If Action Subsystem1' */
 };
 
@@ -421,20 +445,8 @@ extern volatile boolean_T runModel;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S61>/Data Type Duplicate' : Unused code path elimination
- * Block '<S72>/Add1' : Unused code path elimination
  * Block '<S72>/Data Type Duplicate' : Unused code path elimination
- * Block '<S72>/Filter_Constant' : Unused code path elimination
- * Block '<S72>/One' : Unused code path elimination
- * Block '<S72>/Product' : Unused code path elimination
- * Block '<S72>/Product1' : Unused code path elimination
- * Block '<S72>/Unit Delay' : Unused code path elimination
- * Block '<S75>/Add1' : Unused code path elimination
  * Block '<S75>/Data Type Duplicate' : Unused code path elimination
- * Block '<S75>/Filter_Constant' : Unused code path elimination
- * Block '<S75>/One' : Unused code path elimination
- * Block '<S75>/Product' : Unused code path elimination
- * Block '<S75>/Product1' : Unused code path elimination
- * Block '<S75>/Unit Delay' : Unused code path elimination
  */
 
 /*-
@@ -456,11 +468,11 @@ extern volatile boolean_T runModel;
  * '<S2>'   : 'main_vehicle_model/ENCODER COUNT'
  * '<S3>'   : 'main_vehicle_model/IIR Filter'
  * '<S4>'   : 'main_vehicle_model/calc wheelspeed'
- * '<S5>'   : 'main_vehicle_model/calc wheelspeed1'
+ * '<S5>'   : 'main_vehicle_model/calc wheelspeed2'
  * '<S6>'   : 'main_vehicle_model/conv_to_dir_pin'
  * '<S7>'   : 'main_vehicle_model/conv_to_dir_pin1'
  * '<S8>'   : 'main_vehicle_model/wheelspeed low pass'
- * '<S9>'   : 'main_vehicle_model/wheelspeed low pass1'
+ * '<S9>'   : 'main_vehicle_model/wheelspeed low pass2'
  * '<S10>'  : 'main_vehicle_model/Discrete PID Controller/Anti-windup'
  * '<S11>'  : 'main_vehicle_model/Discrete PID Controller/D Gain'
  * '<S12>'  : 'main_vehicle_model/Discrete PID Controller/Filter'
@@ -517,16 +529,16 @@ extern volatile boolean_T runModel;
  * '<S63>'  : 'main_vehicle_model/calc wheelspeed/zero out speed'
  * '<S64>'  : 'main_vehicle_model/calc wheelspeed/time_delta to speed/If Action Subsystem1'
  * '<S65>'  : 'main_vehicle_model/calc wheelspeed/time_delta to speed/MATLAB Function'
- * '<S66>'  : 'main_vehicle_model/calc wheelspeed1/time_delta to speed'
- * '<S67>'  : 'main_vehicle_model/calc wheelspeed1/zero out speed'
- * '<S68>'  : 'main_vehicle_model/calc wheelspeed1/time_delta to speed/If Action Subsystem1'
- * '<S69>'  : 'main_vehicle_model/calc wheelspeed1/time_delta to speed/MATLAB Function'
+ * '<S66>'  : 'main_vehicle_model/calc wheelspeed2/time_delta to speed'
+ * '<S67>'  : 'main_vehicle_model/calc wheelspeed2/zero out speed'
+ * '<S68>'  : 'main_vehicle_model/calc wheelspeed2/time_delta to speed/If Action Subsystem1'
+ * '<S69>'  : 'main_vehicle_model/calc wheelspeed2/time_delta to speed/MATLAB Function'
  * '<S70>'  : 'main_vehicle_model/wheelspeed low pass/IIR Filter'
  * '<S71>'  : 'main_vehicle_model/wheelspeed low pass/IIR Filter/Low-pass'
  * '<S72>'  : 'main_vehicle_model/wheelspeed low pass/IIR Filter/Low-pass/IIR Low Pass Filter'
- * '<S73>'  : 'main_vehicle_model/wheelspeed low pass1/IIR Filter'
- * '<S74>'  : 'main_vehicle_model/wheelspeed low pass1/IIR Filter/Low-pass'
- * '<S75>'  : 'main_vehicle_model/wheelspeed low pass1/IIR Filter/Low-pass/IIR Low Pass Filter'
+ * '<S73>'  : 'main_vehicle_model/wheelspeed low pass2/IIR Filter'
+ * '<S74>'  : 'main_vehicle_model/wheelspeed low pass2/IIR Filter/Low-pass'
+ * '<S75>'  : 'main_vehicle_model/wheelspeed low pass2/IIR Filter/Low-pass/IIR Low Pass Filter'
  */
 #endif                                 /* RTW_HEADER_main_vehicle_model_h_ */
 
