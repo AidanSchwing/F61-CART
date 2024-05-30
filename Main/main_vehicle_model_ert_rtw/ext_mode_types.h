@@ -7,9 +7,9 @@
  *
  * Code generation for model "main_vehicle_model".
  *
- * Model version              : 1.331
+ * Model version              : 1.337
  * Simulink Coder version : 23.2 (R2023b) 01-Aug-2023
- * C source code generated on : Wed May 29 00:34:48 2024
+ * C source code generated on : Wed May 29 23:24:50 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

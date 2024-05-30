@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.331
+ * Model version                  : 1.337
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed May 29 00:34:48 2024
+ * C/C++ source code generated on : Wed May 29 23:24:50 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -29,7 +29,7 @@ P_main_vehicle_model_T main_vehicle_model_P = {
   /* Mask Parameter: DiscretePIDController_I
    * Referenced by: '<S38>/Integral Gain'
    */
-  5.0,
+  0.1,
 
   /* Mask Parameter: DiscretePIDController_InitialCo
    * Referenced by: '<S36>/Filter'
@@ -86,10 +86,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 0
+  /* Expression: 0.175438596491226
    * Referenced by: '<Root>/ANGLE SETPOINT'
    */
-  0.0,
+  0.175438596491226,
 
   /* Expression: 33
    * Referenced by: '<Root>/software angle limit'
@@ -141,10 +141,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 0
+  /* Expression: 1
    * Referenced by: '<Root>/Drive Relay'
    */
-  0.0,
+  1.0,
 
   /* Expression: Filter_constant
    * Referenced by: '<S75>/Filter_Constant'
@@ -241,10 +241,10 @@ P_main_vehicle_model_T main_vehicle_model_P = {
    */
   0.0,
 
-  /* Expression: 1
+  /* Expression: 0
    * Referenced by: '<Root>/Actuator Relay'
    */
-  1.0,
+  0.0,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant'

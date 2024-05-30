@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.331
+ * Model version                  : 1.337
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed May 29 00:34:48 2024
+ * C/C++ source code generated on : Wed May 29 23:24:50 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -387,13 +387,16 @@ real_T rt_roundd_snf(real_T u)
 void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
 {
   real_T dir_g;
-  real_T rtb_steer_ang_errdeg;
+  real_T output;
   static const int8_T b[16] = { 0, 1, -1, 2, -1, 0, 2, 1, 1, 2, 0, -1, 2, -1, 1,
     0 };
 
   {                                    /* Sample time: [0.0s, 0.0s] */
     rate_monotonic_scheduler();
   }
+
+  /* Constant: '<Root>/ANGLE SETPOINT' */
+  main_vehicle_model_B.angle_setptdeg = main_vehicle_model_P.ANGLESETPOINT_Value;
 
   /* MATLABSystem: '<Root>/enc_ch_A' */
   if (main_vehicle_model_DW.obj_f.SampleTime !=
@@ -437,28 +440,28 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
      1.0) - 1] + (main_vehicle_model_P.Constant3_Value +
                   main_vehicle_model_DW.Memory2_PreviousInput);
 
-  /* Saturate: '<Root>/software angle limit' incorporates:
-   *  Constant: '<Root>/ANGLE SETPOINT'
-   */
-  if (main_vehicle_model_P.ANGLESETPOINT_Value >
+  /* Gain: '<S2>/Gain' */
+  main_vehicle_model_B.enc_angle = main_vehicle_model_P.Gain_Gain *
+    main_vehicle_model_B.enc_count;
+
+  /* Saturate: '<Root>/software angle limit' */
+  if (main_vehicle_model_B.angle_setptdeg >
       main_vehicle_model_P.softwareanglelimit_UpperSat) {
-    rtb_steer_ang_errdeg = main_vehicle_model_P.softwareanglelimit_UpperSat;
-  } else if (main_vehicle_model_P.ANGLESETPOINT_Value <
+    dir_g = main_vehicle_model_P.softwareanglelimit_UpperSat;
+  } else if (main_vehicle_model_B.angle_setptdeg <
              main_vehicle_model_P.softwareanglelimit_LowerSat) {
-    rtb_steer_ang_errdeg = main_vehicle_model_P.softwareanglelimit_LowerSat;
+    dir_g = main_vehicle_model_P.softwareanglelimit_LowerSat;
   } else {
-    rtb_steer_ang_errdeg = main_vehicle_model_P.ANGLESETPOINT_Value;
+    dir_g = main_vehicle_model_B.angle_setptdeg;
   }
 
   /* Sum: '<Root>/Subtract' incorporates:
-   *  Gain: '<S2>/Gain'
    *  Saturate: '<Root>/software angle limit'
    */
-  rtb_steer_ang_errdeg -= main_vehicle_model_P.Gain_Gain *
-    main_vehicle_model_B.enc_count;
+  main_vehicle_model_B.steer_ang_errdeg = dir_g - main_vehicle_model_B.enc_angle;
 
   /* MATLAB Function: '<Root>/conv_to_dir_pin' */
-  main_vehicl_conv_to_dir_pin(rtb_steer_ang_errdeg, &dir_g,
+  main_vehicl_conv_to_dir_pin(main_vehicle_model_B.steer_ang_errdeg, &dir_g,
     &main_vehicle_model_DW.sf_conv_to_dir_pin);
 
   /* MATLABSystem: '<Root>/ACTUATOR 1 DIR PIN1' */
@@ -468,15 +471,14 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
   /* Gain: '<Root>/Kp' incorporates:
    *  Abs: '<Root>/Abs'
    */
-  rtb_steer_ang_errdeg = main_vehicle_model_P.Kp_Gain * fabs
-    (rtb_steer_ang_errdeg);
+  dir_g = main_vehicle_model_P.Kp_Gain * fabs
+    (main_vehicle_model_B.steer_ang_errdeg);
 
   /* Saturate: '<Root>/pwm_saturation' */
-  if (rtb_steer_ang_errdeg > main_vehicle_model_P.pwm_saturation_UpperSat) {
-    rtb_steer_ang_errdeg = main_vehicle_model_P.pwm_saturation_UpperSat;
-  } else if (rtb_steer_ang_errdeg < main_vehicle_model_P.pwm_saturation_LowerSat)
-  {
-    rtb_steer_ang_errdeg = main_vehicle_model_P.pwm_saturation_LowerSat;
+  if (dir_g > main_vehicle_model_P.pwm_saturation_UpperSat) {
+    dir_g = main_vehicle_model_P.pwm_saturation_UpperSat;
+  } else if (dir_g < main_vehicle_model_P.pwm_saturation_LowerSat) {
+    dir_g = main_vehicle_model_P.pwm_saturation_LowerSat;
   }
 
   /* MATLABSystem: '<Root>/ACTUATOR 1 PWM PIN1' incorporates:
@@ -484,7 +486,7 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
    *  Saturate: '<Root>/pwm_saturation'
    */
   MW_PWM_SetDutyCycle(main_vehicle_model_DW.obj_ib.MW_PWM_HANDLE, rt_roundd_snf
-                      (rtb_steer_ang_errdeg));
+                      (dir_g));
 
   /* MATLABSystem: '<Root>/DRIVE RELAY EN PIN' incorporates:
    *  Constant: '<Root>/Drive Relay'
@@ -495,16 +497,16 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
   /* Clock: '<S5>/Clock' incorporates:
    *  Clock: '<S4>/Clock'
    */
-  rtb_steer_ang_errdeg = main_vehicle_model_M->Timing.t[0];
+  dir_g = main_vehicle_model_M->Timing.t[0];
 
   /* Clock: '<S5>/Clock' */
-  main_vehicle_model_B.Clock = rtb_steer_ang_errdeg;
+  main_vehicle_model_B.Clock = dir_g;
 
   /* MATLAB Function: '<S5>/zero out speed' incorporates:
    *  RateTransition generated from: '<S5>/time_delta to speed'
    * */
   main_vehicle_m_zerooutspeed(main_vehicle_model_B.Divide,
-    main_vehicle_model_B.Inport, main_vehicle_model_B.Clock, &dir_g,
+    main_vehicle_model_B.Inport, main_vehicle_model_B.Clock, &output,
     &main_vehicle_model_DW.sf_zerooutspeed_a);
 
   /* Sum: '<S75>/Add1' incorporates:
@@ -514,22 +516,23 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
    *  Product: '<S75>/Product1'
    *  UnitDelay: '<S75>/Unit Delay'
    */
-  main_vehicle_model_B.Add1 = dir_g * main_vehicle_model_P.Filter_Constant_Value
-    + main_vehicle_model_P.One_Value * main_vehicle_model_DW.UnitDelay_DSTATE;
+  main_vehicle_model_B.Add1 = output *
+    main_vehicle_model_P.Filter_Constant_Value + main_vehicle_model_P.One_Value *
+    main_vehicle_model_DW.UnitDelay_DSTATE;
 
   /* Gain: '<Root>/Gain' */
   main_vehicle_model_B.wheelspeedRfiltered = main_vehicle_model_P.Gain_Gain_p *
     main_vehicle_model_B.Add1;
 
   /* Clock: '<S4>/Clock' */
-  main_vehicle_model_B.Clock_a = rtb_steer_ang_errdeg;
+  main_vehicle_model_B.Clock_a = dir_g;
 
   /* MATLAB Function: '<S4>/zero out speed' incorporates:
    *  RateTransition generated from: '<S4>/time_delta to speed'
    * */
   main_vehicle_m_zerooutspeed(main_vehicle_model_B.Divide_d,
-    main_vehicle_model_B.Inport_f, main_vehicle_model_B.Clock_a,
-    &rtb_steer_ang_errdeg, &main_vehicle_model_DW.sf_zerooutspeed);
+    main_vehicle_model_B.Inport_f, main_vehicle_model_B.Clock_a, &dir_g,
+    &main_vehicle_model_DW.sf_zerooutspeed);
 
   /* Sum: '<S72>/Add1' incorporates:
    *  Constant: '<S72>/Filter_Constant'
@@ -538,7 +541,7 @@ void main_vehicle_model_step0(void)    /* Sample time: [0.0s, 0.0s] */
    *  Product: '<S72>/Product1'
    *  UnitDelay: '<S72>/Unit Delay'
    */
-  main_vehicle_model_B.Add1_h = rtb_steer_ang_errdeg *
+  main_vehicle_model_B.Add1_h = dir_g *
     main_vehicle_model_P.Filter_Constant_Value_b +
     main_vehicle_model_P.One_Value_j * main_vehicle_model_DW.UnitDelay_DSTATE_b;
 
@@ -647,6 +650,9 @@ void main_vehicle_model_step2(void)    /* Sample time: [0.001s, 0.0s] */
   real_T dir;
   real_T u0;
 
+  /* Constant: '<Root>/brake % set point' */
+  main_vehicle_model_B.brakesetpt = main_vehicle_model_P.brakesetpoint_Value;
+
   /* MATLABSystem: '<Root>/PRES_DUCER' */
   if (main_vehicle_model_DW.obj.SampleTime !=
       main_vehicle_model_P.PRES_DUCER_SampleTime) {
@@ -679,17 +685,15 @@ void main_vehicle_model_step2(void)    /* Sample time: [0.001s, 0.0s] */
     main_vehicle_model_P.BrakeCalibBias_Value) *
     main_vehicle_model_P.scaletobrake_Gain;
 
-  /* Saturate: '<Root>/Saturation' incorporates:
-   *  Constant: '<Root>/brake % set point'
-   */
-  if (main_vehicle_model_P.brakesetpoint_Value >
-      main_vehicle_model_P.Saturation_UpperSat) {
+  /* Saturate: '<Root>/Saturation' */
+  if (main_vehicle_model_B.brakesetpt > main_vehicle_model_P.Saturation_UpperSat)
+  {
     dir = main_vehicle_model_P.Saturation_UpperSat;
-  } else if (main_vehicle_model_P.brakesetpoint_Value <
+  } else if (main_vehicle_model_B.brakesetpt <
              main_vehicle_model_P.Saturation_LowerSat) {
     dir = main_vehicle_model_P.Saturation_LowerSat;
   } else {
-    dir = main_vehicle_model_P.brakesetpoint_Value;
+    dir = main_vehicle_model_B.brakesetpt;
   }
 
   /* Sum: '<Root>/Subtract2' incorporates:
@@ -730,14 +734,12 @@ void main_vehicle_model_step2(void)    /* Sample time: [0.001s, 0.0s] */
     u0 = main_vehicle_model_P.pwm_sat_LowerSat;
   }
 
-  /* Rounding: '<Root>/Round3' incorporates:
+  /* MATLABSystem: '<Root>/ACTUATOR 2 PWM PIN1' incorporates:
+   *  Rounding: '<Root>/Round3'
    *  Saturate: '<Root>/pwm_sat'
    */
-  main_vehicle_model_B.ACT2_DUTY_ROUNDED = rt_roundd_snf(u0);
-
-  /* MATLABSystem: '<Root>/ACTUATOR 2 PWM PIN1' */
-  MW_PWM_SetDutyCycle(main_vehicle_model_DW.obj_lv.MW_PWM_HANDLE,
-                      main_vehicle_model_B.ACT2_DUTY_ROUNDED);
+  MW_PWM_SetDutyCycle(main_vehicle_model_DW.obj_lv.MW_PWM_HANDLE, rt_roundd_snf
+                      (u0));
 
   /* Gain: '<S38>/Integral Gain' */
   rtb_IntegralGain = main_vehicle_model_P.DiscretePIDController_I * dir;
@@ -847,10 +849,10 @@ void main_vehicle_model_initialize(void)
   main_vehicle_model_M->Timing.stepSize0 = 1.0E-5;
 
   /* External mode info */
-  main_vehicle_model_M->Sizes.checksums[0] = (2124790350U);
-  main_vehicle_model_M->Sizes.checksums[1] = (3220657178U);
-  main_vehicle_model_M->Sizes.checksums[2] = (3736258195U);
-  main_vehicle_model_M->Sizes.checksums[3] = (2322877114U);
+  main_vehicle_model_M->Sizes.checksums[0] = (2275013073U);
+  main_vehicle_model_M->Sizes.checksums[1] = (1581542276U);
+  main_vehicle_model_M->Sizes.checksums[2] = (3215280020U);
+  main_vehicle_model_M->Sizes.checksums[3] = (2298999395U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1187,7 +1189,6 @@ void main_vehicle_model_terminate(void)
   }
 
   /* End of Terminate for MATLABSystem: '<Root>/ACTUATOR 1 DIR PIN1' */
-
   /* Terminate for MATLABSystem: '<Root>/ACTUATOR 1 PWM PIN1' */
   if (!main_vehicle_model_DW.obj_ib.matlabCodegenIsDeleted) {
     main_vehicle_model_DW.obj_ib.matlabCodegenIsDeleted = true;
@@ -1199,7 +1200,6 @@ void main_vehicle_model_terminate(void)
   }
 
   /* End of Terminate for MATLABSystem: '<Root>/ACTUATOR 1 PWM PIN1' */
-
   /* Terminate for MATLABSystem: '<Root>/DRIVE RELAY EN PIN' */
   if (!main_vehicle_model_DW.obj_l.matlabCodegenIsDeleted) {
     main_vehicle_model_DW.obj_l.matlabCodegenIsDeleted = true;

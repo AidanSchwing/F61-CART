@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.331
+ * Model version                  : 1.337
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed May 29 00:34:48 2024
+ * C/C++ source code generated on : Wed May 29 23:24:50 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -115,14 +115,17 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T angle_setptdeg;               /* '<Root>/ANGLE SETPOINT' */
+  real_T enc_angle;                    /* '<S2>/Gain' */
+  real_T steer_ang_errdeg;             /* '<Root>/Subtract' */
   real_T Clock;                        /* '<S5>/Clock' */
   real_T Add1;                         /* '<S75>/Add1' */
   real_T wheelspeedRfiltered;          /* '<Root>/Gain' */
   real_T Clock_a;                      /* '<S4>/Clock' */
   real_T Add1_h;                       /* '<S72>/Add1' */
+  real_T brakesetpt;                   /* '<Root>/brake % set point' */
   real_T braking;                      /* '<Root>/scale to % brake' */
   real_T brakeerr;                     /* '<Root>/Subtract2' */
-  real_T ACT2_DUTY_ROUNDED;            /* '<Root>/Round3' */
   real_T TmpRTBAttime_deltatospeedInport;/* '<S4>/Clock' */
   real_T TmpRTBAttime_deltatospeedInpo_h;/* '<S5>/Clock' */
   real_T Inport;                       /* '<S66>/Inport' */
@@ -228,7 +231,7 @@ struct P_main_vehicle_model_T_ {
   real_T Memory_InitialCondition_f;    /* Expression: 0
                                         * Referenced by: '<S66>/Memory'
                                         */
-  real_T ANGLESETPOINT_Value;          /* Expression: 0
+  real_T ANGLESETPOINT_Value;          /* Expression: 0.175438596491226
                                         * Referenced by: '<Root>/ANGLE SETPOINT'
                                         */
   real_T softwareanglelimit_UpperSat;  /* Expression: 33
@@ -261,7 +264,7 @@ struct P_main_vehicle_model_T_ {
   real_T pwm_saturation_LowerSat;      /* Expression: 0
                                         * Referenced by: '<Root>/pwm_saturation'
                                         */
-  real_T DriveRelay_Value;             /* Expression: 0
+  real_T DriveRelay_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/Drive Relay'
                                         */
   real_T Filter_Constant_Value;        /* Expression: Filter_constant
@@ -321,7 +324,7 @@ struct P_main_vehicle_model_T_ {
   real_T pwm_sat_LowerSat;             /* Expression: 0
                                         * Referenced by: '<Root>/pwm_sat'
                                         */
-  real_T ActuatorRelay_Value;          /* Expression: 1
+  real_T ActuatorRelay_Value;          /* Expression: 0
                                         * Referenced by: '<Root>/Actuator Relay'
                                         */
   real_T Constant_Value;               /* Expression: 0
