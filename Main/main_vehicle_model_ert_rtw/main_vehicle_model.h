@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'main_vehicle_model'.
  *
- * Model version                  : 1.337
+ * Model version                  : 1.340
  * Simulink Coder version         : 23.2 (R2023b) 01-Aug-2023
- * C/C++ source code generated on : Wed May 29 23:24:50 2024
+ * C/C++ source code generated on : Fri May 31 14:27:01 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -231,7 +231,7 @@ struct P_main_vehicle_model_T_ {
   real_T Memory_InitialCondition_f;    /* Expression: 0
                                         * Referenced by: '<S66>/Memory'
                                         */
-  real_T ANGLESETPOINT_Value;          /* Expression: 0.175438596491226
+  real_T ANGLESETPOINT_Value;          /* Expression: -0.8502024291497996
                                         * Referenced by: '<Root>/ANGLE SETPOINT'
                                         */
   real_T softwareanglelimit_UpperSat;  /* Expression: 33
